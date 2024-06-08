@@ -25,24 +25,6 @@ h1 {
     position: relative;
 }
 
-h1 button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-h1 button:hover {
-    background-color: #c82333;
-}
-
 .note {
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
@@ -75,7 +57,7 @@ input {
     padding: 5px 10px;
     margin-top: 10px;
     border-radius: 5px;
-    border: none;
+    border: 0;
     cursor: pointer;
 }
 
@@ -84,17 +66,27 @@ input {
     color: white;
 }
 
+.reset-button:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+.reset-button:active {
+    background-color: #b01c2c;
+    color: white;
+}
+
 .export-button {
     background-color: blue;
     color: white;
 }
 
-/* 添加媒体查询进行响应式设计 */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        /* 在小屏幕上减少内边距 */
-    }
+.export-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
 
-    /* 其他小屏幕样式调整 */
+.export-button:active {
+    background-color: #004085;
+    color: white;
 }
