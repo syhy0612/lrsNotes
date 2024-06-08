@@ -18,13 +18,18 @@ body {
     align-items: flex-start;
 }
 
+#bottom {
+    width: 100%;
+}
+
 .left,
 .right {
     float: left;
+    text-align: center;
     width: 40%;
     height: 80%;
-    text-align: center;
 }
+
 
 .left {
     background-color: skyblue;
@@ -40,7 +45,7 @@ body {
 
 #remarks {
     font-family: "微软雅黑", Arial, sans-serif;
-    width: 100%;
+    width: 99%;
     max-height: 300px;
     /* 仅允许垂直调整大小 */
     resize: vertical;
