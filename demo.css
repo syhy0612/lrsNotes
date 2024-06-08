@@ -1,0 +1,53 @@
+body,
+html {
+    height: 90%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.top-box {
+    flex: 0 0 auto;
+    /* 不伸缩，占据内容所需的高度 */
+    background-color: #f0f0f0;
+    padding: 20px;
+    /* 其他样式 */
+}
+
+.bottom-box {
+    flex: 1 0 auto;
+    /* 占据剩余的空间 */
+    display: flex;
+    justify-content: space-between;
+    /* 子盒子左右分布 */
+}
+
+.bottom-box-left,
+.bottom-box-right {
+    flex: 0 0 50%;
+    /* 各自占据50%的宽度 */
+    padding: 20px;
+    /* 其他样式 */
+}
+
+.bottom-box-left {
+    background-color: #fff;
+    border-radius: 8px 0 0 8px;
+    /* 左上角和左下角圆角 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-box-right {
+    background-color: #fff;
+    border-radius: 0 8px 8px 0;
+    /* 右上角和右下角圆角 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 其他样式，如标题、按钮等 */

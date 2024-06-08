@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="time">北京时间: <span id="bjTime"></span></span>
+            <div class="timer">
+                <button id="timerButton">开始计时: 00:00</button>
+            </div>
+        </div>
+        <div class="content">
+            <textarea placeholder="发言信息"></textarea>
+            <div class="notes">
+                <ul id="notesList">
+                    <li><input type="text" placeholder="备注信息 1"></li>
+                    <li><input type="text" placeholder="备注信息 2"></li>
+                    <li><input type="text" placeholder="备注信息 3"></li>
+                    <!-- Add more as needed -->
+                </ul>
+            </div>
+            <div class="actions">
+                <button onclick="resetNotes()">重置</button>
+                <button onclick="exportNotes()">导出</button>
+            </div>
+        </div>
+        <div class="placeholder">待补充图</div>
+    </div>
+    <script src="script2.js"></script>
+</body>
+
+</html>

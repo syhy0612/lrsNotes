@@ -2,17 +2,23 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .container {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 90%;
+    max-height: 90%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
 }
+
 
 h1 {
     text-align: center;
@@ -39,12 +45,14 @@ h1 button:hover {
 
 .note {
     margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 .note h2 {
     background-color: #f9f9f9;
     border-left: 4px solid #007bff;
     padding: 10px;
+    font-size: 18px;
 }
 
 .note div {
@@ -58,20 +66,35 @@ input {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+
+
+.button {
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+.reset-button {
+    background-color: red;
+    color: white;
+}
+
+.export-button {
+    background-color: blue;
+    color: white;
+}
+
+/* 添加媒体查询进行响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        /* 在小屏幕上减少内边距 */
+    }
+
+    /* 其他小屏幕样式调整 */
 }

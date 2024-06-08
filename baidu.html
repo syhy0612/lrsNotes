@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狼人杀在线笔记</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px;
+        } */
+
+        .panel {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .panel-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timer {
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 5px 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .reset-button {
+            background-color: red;
+            color: white;
+        }
+
+        .export-button {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="panel">
+            <div class="panel-header">备注信息</div>
+            <div>1:</div>
+            <div>2:</div>
+            <div>3:</div>
+            <div>4:</div>
+            <!-- ... 其他备注信息 ... -->
+        </div>
+        <div class="panel">
+            <div class="panel-header">发言信息</div>
+            <!-- 由于发言信息可能更复杂，这里仅展示布局占位 -->
+            <!-- ... 发言内容 ... -->
+        </div>
+        <div class="panel" style="width: 10%;">
+            <div class="panel-header">待补充图</div>
+            <div>5:</div>
+            <div>6:</div>
+            <div>7:</div>
+            <div>8:</div>
+            <!-- ... 其他待补充图 ... -->
+        </div>
+    </div>
+
+    <div class="timer">
+        <span>北京时间：</span>
+        <!-- 这里通常使用JavaScript来动态显示时间 -->
+        <span id="currentTime">11:12:32</span>
+        <span>正在计时：</span>
+        <span id="countdown">08:12</span>
+    </div>
+
+    <button class="button reset-button">重置</button>
+    <button class="button export-button">导出</button>
+
+    <!-- 这里可以添加JavaScript来处理时间更新、重置和导出功能 -->
+    <script>
+        // 注意：这里仅提供一个时间更新的简单示例，并未包含完整的重置和导出功能  
+        function updateTime() {
+            // 这里应该有一个真实的计时逻辑，这里只是模拟静态时间  
+            var currentTimeElement = document.getElementById('currentTime');
+            var countdownElement = document.getElementById('countdown');
+            // 由于静态页面，这里我们不真正更新时间  
+            // 在真实应用中，你会用Date对象和setInterval来更新这些值  
+        }
+        // 初始调用时间更新函数（实际情况下这个函数会在定时器中调用）  
+        updateTime();  
+    </script>
+
+</body>
+
+</html>
