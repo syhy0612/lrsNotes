@@ -40,12 +40,12 @@ body {
 .right {
     /* 背景颜色按需设置 */
     margin-left: 10%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 #remarks {
     font-family: "微软雅黑", Arial, sans-serif;
-    width: 99%;
+    width: 95%;
     max-height: 300px;
     /* 仅允许垂直调整大小 */
     resize: vertical;
@@ -114,7 +114,7 @@ h1 {
 }
 
 input {
-    width: 100%;
+    width: 93%;
     padding: 8px;
     margin: 2px 0;
     box-sizing: border-box;
