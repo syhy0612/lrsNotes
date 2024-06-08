@@ -32,14 +32,13 @@ function stopTimer() {
 }
 
 function resetNotes() {
-    // 弹出确认对话框
-    if (confirm('确定要重置所有笔记吗？')) {
+    if (confirm('确定重置吗？')) {
         document.querySelectorAll('.note-input input, .note-input textarea').forEach(element => {
-            if (element.type === 'text' || element.nodeName === 'TEXTAREA') {
-                element.value = '';  // 清空所有输入和文本区域
-            }
-        });
-        //todo 复原部分信息
+            if (element.type === 'text')
+                element.value = '';
+            if (element.nodeName === 'TEXTAREA')
+                element.value = '警上：\n警下：';
+        })
     }
 }
 

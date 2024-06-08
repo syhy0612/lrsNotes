@@ -58,6 +58,22 @@ body {
     text-align: center;
 }
 
+.role-entry {
+    display: flex;
+    /* 使用 Flexbox 布局 */
+    align-items: center;
+    /* 垂直居中对齐标签和输入框 */
+    /* margin-bottom: 8px; */
+    /* 每个输入框之间的间距 */
+}
+
+/* 发言信息 */
+.role-entry label {
+    margin-right: 10px;
+    font-size: 14px;
+    /* 标签和输入框之间的间隔 */
+}
+
 h1 {
     text-align: center;
     position: relative;
@@ -76,8 +92,19 @@ h1 {
     text-align: left;
 }
 
-.note div {
-    margin-bottom: 10px;
+#roles {
+    /* display: flex; */
+    /* 使用 Flexbox 布局 */
+    /* flex-wrap: wrap; */
+    /* 允许内容换行 */
+    gap: 10px;
+    /* 设置元素间的间隙 */
+    min-height: 200px;
+    /* 设置最小高度 */
+    width: 100%;
+    /* 容器宽度 */
+    padding: 10px;
+    /* 内部填充 */
 }
 
 input {
@@ -89,8 +116,6 @@ input {
     border-radius: 4px;
     font-size: 14px;
 }
-
-
 
 .button {
     padding: 5px 10px;
