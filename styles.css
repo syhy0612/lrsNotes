@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "微软雅黑", Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px 0;
@@ -16,9 +16,47 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
 }
 
+.left,
+.right {
+    float: left;
+    width: 40%;
+    height: 80%;
+    text-align: center;
+}
+
+.left {
+    background-color: skyblue;
+    margin-left: 5%;
+    padding-bottom: 50%;
+}
+
+.right {
+    /* 背景颜色按需设置 */
+    margin-left: 10%;
+}
+
+#remarks {
+    font-family: "微软雅黑", Arial, sans-serif;
+    width: 100%;
+    max-height: 300px;
+    /* 仅允许垂直调整大小 */
+    resize: vertical;
+}
+
+#title {
+    font-size: 28px;
+}
+
+#top {
+    margin: 0 auto;
+}
+
+#top p {
+    margin: 0 auto;
+    text-align: center;
+}
 
 h1 {
     text-align: center;
@@ -26,15 +64,16 @@ h1 {
 }
 
 .note {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 0px;
+    /* border-bottom: 1px solid #ddd; */
 }
 
 .note h2 {
     background-color: #f9f9f9;
-    border-left: 4px solid #007bff;
-    padding: 10px;
+    border-left: 6px solid #007bff;
+    padding: 8px;
     font-size: 18px;
+    text-align: left;
 }
 
 .note div {
@@ -43,8 +82,8 @@ h1 {
 
 input {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 8px;
+    margin: 2px 0;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;

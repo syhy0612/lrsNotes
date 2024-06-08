@@ -4,41 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>狼人杀笔记</title>
+    <title>狼人杀在线笔记</title>
     <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
-    <script src="scripts.js"></script>
+
     <div class="container">
-        <h1>狼人杀笔记</h1>
-        <button id="reset" class="button reset-button" title="重置">重置</button>
-        <button class="button export-button">导出</button>
-        <div class="note">
-            <h2>发言信息</h2>
-            <div id="catalog">
-                <textarea placeholder="请填入">警上：</textarea>
-            </div>
+        <!-- 头部开始 -->
+        <div id="top">
+            <p><b id="title">在线笔记</b> ——syhy</p>
         </div>
-        <div class="note">
-            <h2>角色声明</h2>
-            <div id="roles">
-                <input type="text" value="01:">
-                <input type="text" value="02:">
-                <input type="text" value="03:">
-                <input type="text" value="04:">
-                <input type="text" value="05:">
-                <input type="text" value="06:">
-                <input type="text" value="07:">
-                <input type="text" value="08:">
-                <input type="text" value="09:">
-                <input type="text" value="10:">
-                <input type="text" value="11:">
-                <input type="text" value="12:">
+        <!-- 内容开始 -->
+        <div id="bottom"><br>
+            <!-- 左内容 -->
+            <div class="left">
+                待补充内容
+            </div>
+            <!-- 右内容 -->
+            <div class="right">
+                <div class="header">
+                    <span class="time">当前时间: <span id="localTime"></span></span>
+                    <span class="timer">
+                        <button id="timerButton">开始计时: 00:00</button>
+                    </span>
+                    <button onclick="resetNotes()" class="button reset-button" title="重置">重置</button>
+                    <button onclick="exportNotes()" class="button export-button" title="导出">导出</button>
+                </div>
+                <div class="note">
+                    <h2>备注信息</h2>
+                    <div class="note-input">
+                        <textarea placeholder="请填入" id="remarks">警上：&#10;警下：</textarea>
+                    </div>
+                </div>
+                <div class="note">
+                    <h2>发言信息</h2>
+                    <div id="roles" class="note-input">
+                        <span>01:</span>
+                        <input type="text" value="">
+                        <input type="text" value="02:">
+                        <input type="text" value="03:">
+                        <input type="text" value="04:">
+                        <input type="text" value="05:">
+                        <input type="text" value="06:">
+                        <input type="text" value="07:">
+                        <input type="text" value="08:">
+                        <input type="text" value="09:">
+                        <input type="text" value="10:">
+                        <input type="text" value="11:">
+                        <input type="text" value="12:">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 
 </html>

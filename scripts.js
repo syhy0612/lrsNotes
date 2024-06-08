@@ -1,18 +1,3 @@
-document.getElementById('add-catalog-item').addEventListener('click', function () {
-    let catalog = document.getElementById('catalog');
-    let newItem = document.createElement('input');
-    newItem.type = 'text';
-    newItem.placeholder = '输入新的目录项';
-    catalog.appendChild(newItem);
-});
-
-document.getElementById('reset').addEventListener('click', function () {
-    if (confirm('确定要重置所有内容吗？')) {
-        let inputs = document.querySelectorAll('input');
-        inputs.forEach(input => input.value = '');
-    }
-});
-
 document.getElementById('timerButton').addEventListener('click', function () {
     if (this.textContent.startsWith('开始')) {
         this.textContent = '正在计时: 00:00';
@@ -47,23 +32,30 @@ function stopTimer() {
 }
 
 function resetNotes() {
-    document.querySelectorAll('#notesList input').forEach(input => {
-        input.value = '';
-    });
+    // 弹出确认对话框
+    if (confirm('确定要重置所有笔记吗？')) {
+        document.querySelectorAll('.note-input input, .note-input textarea').forEach(element => {
+            if (element.type === 'text' || element.nodeName === 'TEXTAREA') {
+                element.value = '';  // 清空所有输入和文本区域
+            }
+        });
+        //todo 复原部分信息
+    }
 }
+
+
 
 function exportNotes() {
     let data = Array.from(document.querySelectorAll('#notesList input'), input => input.value).join('\n');
     console.log(data); // This would be replaced with actual export functionality
 }
 
-function updateBeijingTime() {
+function updateLocalTime() {
     setInterval(() => {
         const now = new Date();
         const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
-        document.getElementById('bjTime').textContent = timeStr;
+        document.getElementById('localTime').textContent = timeStr;
     }, 1000);
 }
 
-updateBeijingTime();
-
+updateLocalTime();
