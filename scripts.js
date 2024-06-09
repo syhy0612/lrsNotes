@@ -1,3 +1,18 @@
+function checkDevice() {
+    if (window.innerWidth < 1024) { // 假定宽度小于1024像素为非电脑设备
+        alert("为了最佳体验，建议使用电脑访问本页面。");
+    }
+}
+
+window.onload = function () {
+    checkDevice();
+};
+
+window.onbeforeunload = function () {
+    return "确定要刷新页面吗？这将当前信息丢失。";
+};
+
+
 document.getElementById('timerButton').addEventListener('click', function () {
     if (this.textContent.startsWith('开始')) {
         this.textContent = '正在计时: 00:00';
