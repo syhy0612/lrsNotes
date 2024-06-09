@@ -98,30 +98,78 @@ h1 {
     text-align: left;
 }
 
-#roles {
-    /* display: flex; */
-    /* 使用 Flexbox 布局 */
-    /* flex-wrap: wrap; */
-    /* 允许内容换行 */
-    gap: 10px;
-    /* 设置元素间的间隙 */
-    min-height: 200px;
-    /* 设置最小高度 */
-    width: 100%;
-    /* 容器宽度 */
-    padding: 0px;
-    /* 内部填充 */
+.toggle-icon {
+    cursor: pointer;
+    /* Show pointer on hover to indicate it's clickable */
+    display: block;
+    /* SVG as block to position it correctly */
+    margin: auto;
+    /* Center the icon horizontally */
+    width: 15px;
+    /* Set the width of the SVG */
+    height: 15px;
+    /* Set the height of the SVG */
+    margin-bottom: 5px;
+    object-fit: contain;
 }
 
-input {
-    width: 93%;
-    padding: 8px;
+.role-entry label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center-align the label content */
+}
+
+#roles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 200px;
+    width: 100%;
+    padding: 0;
+}
+
+.role-entry {
+    width: 48%;
+    /* Adjust this value based on your design needs */
+}
+
+.role-entry.even {
+    margin-left: auto;
+    /* This pushes even numbered entries to the right */
+}
+
+/* input {
+    width: 40%;
+    height: 60px;
+    padding: 6px;
     margin: 2px 0;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    font-family: "微软雅黑", Arial, sans-serif;
+} */
+
+.role-entry textarea {
+    width: 100%;
+    /* 充分利用父容器宽度 */
+    /* height: 60px; */
+    /* 设置固定高度，可根据需求调整 */
+    padding: 6px;
+    margin-bottom: 2%;
+    /* 调整为具体的px值可能更好，例如 `10px` */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: "微软雅黑", Arial, sans-serif;
+    resize: none;
+    /* 禁止调整大小 */
 }
+
+
 
 .button {
     padding: 5px 10px;

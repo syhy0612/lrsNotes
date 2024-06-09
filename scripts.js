@@ -33,14 +33,30 @@ function stopTimer() {
 
 function resetNotes() {
     if (confirm('确定重置吗？')) {
-        document.querySelectorAll('.note-input input, .note-input textarea').forEach(element => {
-            if (element.type === 'text')
-                element.value = '';
-            if (element.nodeName === 'TEXTAREA')
+        document.querySelectorAll('textarea').forEach(element => {
+            if (element.id === 'remarks') {
+                // 如果是备注信息的 textarea，设置为特定的值
                 element.value = '警上：\n警下：';
-        })
+            } else {
+                // 其他所有的 textarea 设置为空
+                element.value = '';
+            }
+        });
     }
 }
+
+document.querySelectorAll('.toggle-icon').forEach(item => {
+    item.addEventListener('click', function () {
+        // Check current source and switch to the other
+        if (this.src.includes('hand-up.svg')) {
+            this.src = 'img/hand-down.svg';
+        } else {
+            this.src = 'img/hand-up.svg';
+        }
+    });
+});
+
+
 
 
 
