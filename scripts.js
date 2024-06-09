@@ -1,191 +1,133 @@
+// 初始化函数，用于页面加载完成后立即执行的功能
+function initialize() {
+    checkDevice();  // 检查设备类型并提示
+    adjustLayoutForMobile();  // 调整移动布局
+    updateLocalTime();  // 更新时间显示
+    setupEventListeners();  // 设置所有事件监听器
+}
+
+// 检查设备类型并显示提示
 function checkDevice() {
-    if (window.innerWidth < 1024) { // 假定宽度小于1024像素为非电脑设备
+    if (window.innerWidth < 1024) {
         alert("为了最佳体验，建议使用电脑访问本页面。");
     }
 }
 
-window.onload = function () {
-    checkDevice();
-};
+// 调整页面布局以适应移动端
+function adjustLayoutForMobile() {
+    // 此函数内的具体逻辑依赖于页面元素和CSS
+    // 示例：隐藏左侧面板，调整右侧面板宽度等
+}
 
-window.onbeforeunload = function () {
-    return "确定要刷新页面吗？这将当前信息丢失。";
-};
+// 设置时间显示
+function updateLocalTime() {
+    const localTimeDisplay = document.getElementById('localTime');
+    localTimeDisplay.textContent = formatTime(new Date());  // 初始化时间
 
-// function adjustLayoutForMobile() {
-//     var screenWidth = window.innerWidth;
-//     var leftPanel = document.querySelector('.left');
-//     var rightPanel = document.querySelector('.right');
-//     var bottomPanel = document.querySelector('#bottom');
-//     var resetButton = document.querySelector('.reset-button');
-//     var exportButton = document.querySelector('.export-button');
-//     var separator = document.querySelector('.button-separator');
+    setInterval(() => {
+        localTimeDisplay.textContent = formatTime(new Date());
+    }, 1000);
+}
 
-//     if (screenWidth < 1024) {
-//         // 移动端样式设置
-//         leftPanel.style.display = 'none';
-//         rightPanel.style.width = '90%';
-//         rightPanel.style.margin = '0 auto';
-//         rightPanel.style.float = 'none';
-//         bottomPanel.style.textAlign = 'center';
-//         resetButton.style.float = 'none';
-//         resetButton.style.marginTop = '10px'; // 确保按钮之间有间隔
-//         exportButton.style.marginTop = '0px';
+// 格式化时间为 hh:mm:ss
+function formatTime(date) {
+    return date.toLocaleTimeString('zh-CN', { hour12: false });
+}
 
-//         // 添加 <br> 如果不存在
-//         if (!separator.querySelector('br')) {
-//             var br = document.createElement('br');
-//             separator.appendChild(br);
-//         }
-//     } else {
-//         // 非移动端样式恢复
-//         leftPanel.style.display = 'block';
-//         rightPanel.style.width = '40%';
-//         rightPanel.style.margin = '10%';
-//         rightPanel.style.float = 'left'; // 恢复浮动
-//         bottomPanel.style.textAlign = 'left';
-//         resetButton.style.float = 'right';
-//         resetButton.style.marginTop = '0px'; // 移除按钮间的额外间隔
-//         exportButton.style.marginTop = '0px';
+// 设置事件监听器
+function setupEventListeners() {
+    document.getElementById('timerButton').addEventListener('click', handleTimerClick);
+    document.querySelectorAll('.toggle-icon').forEach(icon => {
+        icon.addEventListener('click', toggleIcon);
+    });
+    window.onresize = adjustLayoutForMobile;
+    window.onbeforeunload = () => "确定要刷新页面吗？这将使当前信息丢失。";
+}
 
-//         // 移除 <br> 标签
-//         var br = separator.querySelector('br');
-//         if (br) {
-//             separator.removeChild(br);
-//         }
-//     }
-// }
-
-window.onload = adjustLayoutForMobile;
-window.onresize = adjustLayoutForMobile;
-
-
-window.onload = adjustLayoutForMobile;
-window.onresize = adjustLayoutForMobile;
-
-
-document.getElementById('timerButton').addEventListener('click', function () {
-    if (this.textContent.startsWith('开始')) {
-        this.textContent = '正在计时: 00:00';
+// 处理计时器按钮点击
+let seconds = 0, interval = null;
+function handleTimerClick() {
+    const timerButton = document.getElementById('timerButton');
+    if (timerButton.textContent.startsWith('开始')) {
+        timerButton.textContent = '正在计时: 00:00';
         startTimer();
-    } else {
-        if (confirm('是否停止计时?')) {
-            this.textContent = '开始计时: 00:00';
-            stopTimer();
-        }
+    } else if (confirm('是否停止计时?')) {
+        timerButton.textContent = '开始计时: 00:00';
+        stopTimer();
     }
-});
+}
 
-let seconds = 0;
-let interval = null;
-
+// 开始计时
 function startTimer() {
     interval = setInterval(function () {
         seconds++;
-        let hours = Math.floor(seconds / 3600);
-        let minutes = Math.floor((seconds % 3600) / 60);
-        let remainingSeconds = seconds % 60;
-        let formattedMinutes = hours > 0 ? (hours * 60 + minutes).toString().padStart(2, '0') : minutes.toString().padStart(2, '0');
+        let totalMinutes = Math.floor(seconds / 60); // 计算总分钟数
+        let remainingSeconds = seconds % 60; // 剩余秒数
+        let formattedMinutes = totalMinutes.toString().padStart(2, '0');
         let formattedSeconds = remainingSeconds.toString().padStart(2, '0');
-        let display = formattedMinutes + ':' + formattedSeconds;
+        let display = formattedMinutes + ':' + formattedSeconds; // 显示格式为 "分:秒"
         document.getElementById('timerButton').textContent = '正在计时: ' + display;
     }, 1000);
 }
 
+
+// 停止计时
 function stopTimer() {
     clearInterval(interval);
     seconds = 0;
 }
 
+// 重置笔记
 function resetNotes() {
     if (confirm('确定重置吗？')) {
         document.querySelectorAll('textarea').forEach(element => {
-            if (element.id === 'remarks') {
-                // 如果是备注信息的 textarea，设置为特定的值
-                element.value = '警上：\n警下：';
-            } else {
-                // 其他所有的 textarea 设置为空
-                element.value = '';
-            }
+            element.value = element.id === 'remarks' ? '警上：\n警下：' : '';
         });
-        // 重置所有举手图标为举手状态
         document.querySelectorAll('.toggle-icon').forEach(icon => {
-            icon.src = 'img/hand-up.png'; // 设置所有图标为举手状态
+            icon.src = 'img/hand-up.png';
         });
     }
 }
 
-document.querySelectorAll('.toggle-icon').forEach(item => {
-    item.addEventListener('click', function () {
-        // Check current source and switch to the other
-        if (this.src.includes('hand-up.png')) {
-            this.src = 'img/hand-down.png';
-        } else {
-            this.src = 'img/hand-up.png';
-        }
-    });
-});
+// 切换图标
+function toggleIcon() {
+    this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
+}
 
-
-
-
-
+// 导出笔记
 function exportNotes() {
-    // 获取当前日期和时间
     const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-
-    const datetime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
-    // 初始化数据字符串，首先添加日期时间
-    let data = `${datetime}\n`;
-
-    // 获取备注信息
+    const datetime = formatTimeForFilename(now);
     const remarks = document.querySelector('#remarks').value;
-    data += '****************************************\n' + remarks + '\n****************************************\n';  // 添加两个换行符以与备注信息分开
+    const data = prepareExportData(datetime, remarks);
 
-    // 添加发言信息标记
-    data += '发言信息：\n';
-
-    // 遍历按照1到12的正常顺序的textarea
-    for (let number = 1; number <= 12; number++) {
-        const textarea = document.querySelector(`#input${number.toString().padStart(2, '0')}`);
-        const contentWithTabs = textarea.value.replace(/\n/g, '\n\t');
-        data += `[${number.toString().padStart(2, '0')}] ` + '\t' + contentWithTabs + '\n';
-        // 在编号6之后添加一个额外的换行符
-        if (number === 6) {
-            data += '****************************************\n'; // 这将添加一个空行作为分隔
-        }
-    }
-
-    // 创建Blob对象，设置类型为 text/plain
     const blob = new Blob([data], { type: 'text/plain' });
-
-    // 创建一个下载链接
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = '狼人杀笔记_' + datetime.replace(/:/g, '-').replace(/\s+/g, '_') + '.txt'; // 为文件命名
-    document.body.appendChild(link); // 将链接添加到页面上
-    link.click(); // 模拟点击以触发下载
-    document.body.removeChild(link); // 下载后移除链接
-    URL.revokeObjectURL(url); // 清除内存中的引用
+    link.download = '狼人杀笔记_' + datetime + '.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 }
 
-
-
-
-function updateLocalTime() {
-    setInterval(() => {
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
-        document.getElementById('localTime').textContent = timeStr;
-    }, 1000);
+// 准备导出数据
+function prepareExportData(datetime, remarks) {
+    let data = `${datetime}\n****************************************\n${remarks}\n****************************************\n发言信息：\n`;
+    for (let number = 1; number <= 12; number++) {
+        const textarea = document.querySelector(`#input${number.toString().padStart(2, '0')}`);
+        const contentWithTabs = textarea.value.replace(/\n/g, '\n\t');
+        data += `[${number}] \t${contentWithTabs}\n`;
+        if (number === 6) data += '****************************************\n';
+    }
+    return data;
 }
 
-updateLocalTime();
+// 格式化时间为文件名
+function formatTimeForFilename(date) {
+    return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+}
+
+// 页面加载完毕后执行初始化
+window.onload = initialize;
