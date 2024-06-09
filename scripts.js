@@ -81,20 +81,21 @@ function exportNotes() {
 
     // 获取备注信息
     const remarks = document.querySelector('#remarks').value;
-    data += '备注信息：\n' + remarks + '\n\n';  // 添加两个换行符以与备注信息分开
+    data += '****************************************\n' + remarks + '\n****************************************\n';  // 添加两个换行符以与备注信息分开
 
     // 添加发言信息标记
     data += '发言信息：\n';
 
-    // 正确的顺序数组
-    const order = [1, 7, 2, 8, 3, 9, 4, 10, 5, 11, 6, 12];
-
-    // 遍历按照特定顺序的textarea
-    order.forEach((number, index) => {
+    // 遍历按照1到12的正常顺序的textarea
+    for (let number = 1; number <= 12; number++) {
         const textarea = document.querySelector(`#input${number.toString().padStart(2, '0')}`);
         const contentWithTabs = textarea.value.replace(/\n/g, '\n\t');
         data += `[${number.toString().padStart(2, '0')}] ` + '\t' + contentWithTabs + '\n';
-    });
+        // 在编号6之后添加一个额外的换行符
+        if (number === 6) {
+            data += '****************************************\n'; // 这将添加一个空行作为分隔
+        }
+    }
 
     // 创建Blob对象，设置类型为 text/plain
     const blob = new Blob([data], { type: 'text/plain' });
