@@ -91,14 +91,29 @@ function resetNotes() {
 
 // 切换图标
 document.querySelectorAll('.toggle-icon').forEach(item => {
+    let touched = false; // 用于标记是否触发了触摸事件
+
     // 定义切换图标的函数
     function toggleIcon() {
         this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
     }
-    // 添加点击和触摸事件监听器
-    item.addEventListener('click', toggleIcon);
-    item.addEventListener('touchstart', toggleIcon);
+
+    // 仅添加触摸事件监听器
+    item.addEventListener('touchstart', function (event) {
+        touched = true; // 标记触摸事件已触发
+        toggleIcon.call(this); // 使用 call 来确保 this 正确指向
+        event.preventDefault(); // 阻止后续的 click 事件
+    });
+
+    // 添加鼠标点击事件监听器
+    item.addEventListener('click', function () {
+        if (!touched) { // 如果没有触发触摸事件，则处理 click 事件
+            toggleIcon.call(this);
+        }
+        touched = false; // 重置触摸事件标记
+    });
 });
+
 
 
 // 导出笔记
