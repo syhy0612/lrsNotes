@@ -5,6 +5,13 @@ body {
     padding: 20px 0;
 }
 
+a {
+    text-decoration: none;
+    /* 去除下划线 */
+    color: black;
+    /* 设置链接颜色为黑色 */
+}
+
 .container {
     background-color: #fff;
     border-radius: 8px;

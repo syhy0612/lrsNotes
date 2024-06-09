@@ -67,15 +67,17 @@ document.querySelectorAll('.toggle-icon').forEach(item => {
 function exportNotes() {
     // 获取当前日期和时间
     const now = new Date();
-    const datetime = now.getFullYear() + '-' +
-        (now.getMonth() + 1).toString().padStart(2, '0') + '-' +
-        now.getDate().toString().padStart(2, '0') + ' ' +
-        now.getHours().toString().padStart(2, '0') + ':' +
-        now.getMinutes().toString().padStart(2, '0') + ':' +
-        now.getSeconds().toString().padStart(2, '0');
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+
+    const datetime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
     // 初始化数据字符串，首先添加日期时间
-    let data = datetime + '\n';
+    let data = `${datetime}\n`;
 
     // 获取备注信息
     const remarks = document.querySelector('#remarks').value;
@@ -84,11 +86,14 @@ function exportNotes() {
     // 添加发言信息标记
     data += '发言信息：\n';
 
-    // 遍历所有 textarea，每个条目前添加编号，去掉冒号，并处理换行与Tab对齐
-    document.querySelectorAll('.role-entry textarea').forEach((textarea, index) => {
-        // 处理每个textarea的内容，为换行后的每行添加Tab对齐
+    // 正确的顺序数组
+    const order = [1, 7, 2, 8, 3, 9, 4, 10, 5, 11, 6, 12];
+
+    // 遍历按照特定顺序的textarea
+    order.forEach((number, index) => {
+        const textarea = document.querySelector(`#input${number.toString().padStart(2, '0')}`);
         const contentWithTabs = textarea.value.replace(/\n/g, '\n\t');
-        data += '[' + (index + 1).toString().padStart(2, '0') + '] ' + '\t' + contentWithTabs + '\n';
+        data += `[${number.toString().padStart(2, '0')}] ` + '\t' + contentWithTabs + '\n';
     });
 
     // 创建Blob对象，设置类型为 text/plain
@@ -98,12 +103,13 @@ function exportNotes() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'ExportedNotes_' + datetime.replace(/:/g, '-').replace(/\s+/g, '_') + '.txt'; // 为文件命名
+    link.download = '狼人杀笔记_' + datetime.replace(/:/g, '-').replace(/\s+/g, '_') + '.txt'; // 为文件命名
     document.body.appendChild(link); // 将链接添加到页面上
     link.click(); // 模拟点击以触发下载
     document.body.removeChild(link); // 下载后移除链接
     URL.revokeObjectURL(url); // 清除内存中的引用
 }
+
 
 
 
