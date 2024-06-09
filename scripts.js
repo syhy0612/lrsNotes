@@ -90,9 +90,16 @@ function resetNotes() {
 }
 
 // 切换图标
-function toggleIcon() {
-    this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
-}
+document.querySelectorAll('.toggle-icon').forEach(item => {
+    // 定义切换图标的函数
+    function toggleIcon() {
+        this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
+    }
+    // 添加点击和触摸事件监听器
+    item.addEventListener('click', toggleIcon);
+    item.addEventListener('touchstart', toggleIcon);
+});
+
 
 // 导出笔记
 function exportNotes() {
