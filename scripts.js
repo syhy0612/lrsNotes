@@ -37,11 +37,28 @@ function formatTime(date) {
 // 设置事件监听器
 function setupEventListeners() {
     document.getElementById('timerButton').addEventListener('click', handleTimerClick);
-    document.querySelectorAll('.toggle-icon').forEach(icon => {
-        icon.addEventListener('click', toggleIcon);
-    });
+    setupToggleIcons();
     window.onresize = adjustLayoutForMobile;
     window.onbeforeunload = () => "确定要刷新页面吗？这将使当前信息丢失。";
+}
+
+// 设置图标切换监听
+function setupToggleIcons() {
+    document.querySelectorAll('.toggle-icon').forEach(icon => {
+        icon.addEventListener('touchend', function (event) {
+            toggleIcon.call(this); // 切换图标
+            event.preventDefault(); // 阻止后续的 click 事件
+        });
+
+        icon.addEventListener('click', function () {
+            toggleIcon.call(this);
+        });
+    });
+}
+
+// 切换图标的实现
+function toggleIcon() {
+    this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
 }
 
 // 处理计时器按钮点击
@@ -70,7 +87,6 @@ function startTimer() {
     }, 1000);
 }
 
-
 // 停止计时
 function stopTimer() {
     clearInterval(interval);
@@ -88,35 +104,6 @@ function resetNotes() {
         });
     }
 }
-
-// 切换图标
-document.querySelectorAll('.toggle-icon').forEach(item => {
-    let touched = false; // 用于标记是否触发了触摸事件
-
-    // 定义切换图标的函数
-    function toggleIcon() {
-        this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
-    }
-
-    // 触摸结束事件
-    item.addEventListener('touchend', function (event) {
-        if (!touched) { // 如果这是第一次触发touchend
-            toggleIcon.call(this); // 切换图标
-            touched = true; // 标记为已处理
-            setTimeout(() => touched = false, 100); // 重置标记，延时可根据需要调整
-        }
-        event.preventDefault(); // 阻止后续的 click 事件
-    });
-
-    // 鼠标点击事件
-    item.addEventListener('click', function () {
-        if (!touched) { // 如果没有触发触摸事件，则处理 click 事件
-            toggleIcon.call(this);
-        }
-    });
-});
-
-
 
 // 导出笔记
 function exportNotes() {
