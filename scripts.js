@@ -12,6 +12,57 @@ window.onbeforeunload = function () {
     return "确定要刷新页面吗？这将当前信息丢失。";
 };
 
+// function adjustLayoutForMobile() {
+//     var screenWidth = window.innerWidth;
+//     var leftPanel = document.querySelector('.left');
+//     var rightPanel = document.querySelector('.right');
+//     var bottomPanel = document.querySelector('#bottom');
+//     var resetButton = document.querySelector('.reset-button');
+//     var exportButton = document.querySelector('.export-button');
+//     var separator = document.querySelector('.button-separator');
+
+//     if (screenWidth < 1024) {
+//         // 移动端样式设置
+//         leftPanel.style.display = 'none';
+//         rightPanel.style.width = '90%';
+//         rightPanel.style.margin = '0 auto';
+//         rightPanel.style.float = 'none';
+//         bottomPanel.style.textAlign = 'center';
+//         resetButton.style.float = 'none';
+//         resetButton.style.marginTop = '10px'; // 确保按钮之间有间隔
+//         exportButton.style.marginTop = '0px';
+
+//         // 添加 <br> 如果不存在
+//         if (!separator.querySelector('br')) {
+//             var br = document.createElement('br');
+//             separator.appendChild(br);
+//         }
+//     } else {
+//         // 非移动端样式恢复
+//         leftPanel.style.display = 'block';
+//         rightPanel.style.width = '40%';
+//         rightPanel.style.margin = '10%';
+//         rightPanel.style.float = 'left'; // 恢复浮动
+//         bottomPanel.style.textAlign = 'left';
+//         resetButton.style.float = 'right';
+//         resetButton.style.marginTop = '0px'; // 移除按钮间的额外间隔
+//         exportButton.style.marginTop = '0px';
+
+//         // 移除 <br> 标签
+//         var br = separator.querySelector('br');
+//         if (br) {
+//             separator.removeChild(br);
+//         }
+//     }
+// }
+
+window.onload = adjustLayoutForMobile;
+window.onresize = adjustLayoutForMobile;
+
+
+window.onload = adjustLayoutForMobile;
+window.onresize = adjustLayoutForMobile;
+
 
 document.getElementById('timerButton').addEventListener('click', function () {
     if (this.textContent.startsWith('开始')) {

@@ -176,7 +176,10 @@ h1 {
     /* 禁止调整大小 */
 }
 
-
+/* 默认情况下，假设在较大屏幕上不需要显示 <br> */
+.button-separator br {
+    display: none;
+}
 
 .button {
     padding: 5px 10px;
@@ -214,4 +217,25 @@ h1 {
 .export-button:active {
     background-color: #004085;
     color: white;
+}
+
+/* 媒体查询：适用于屏幕宽度小于1024px的设备 */
+@media (max-width: 1024px) {
+    .left {
+        display: none;
+        /* 隐藏左侧面板 */
+    }
+
+    .right {
+        width: 90%;
+        /* 右侧面板宽度调整 */
+        margin: 0 auto;
+        /* 居中显示 */
+        float: none;
+        /* 去除浮动 */
+    }
+
+    .button-separator br {
+        display: block;
+    }
 }
