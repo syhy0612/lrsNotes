@@ -98,19 +98,21 @@ document.querySelectorAll('.toggle-icon').forEach(item => {
         this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
     }
 
-    // 仅添加触摸事件监听器
-    item.addEventListener('touchstart', function (event) {
-        touched = true; // 标记触摸事件已触发
-        toggleIcon.call(this); // 使用 call 来确保 this 正确指向
+    // 触摸结束事件
+    item.addEventListener('touchend', function (event) {
+        if (!touched) { // 如果这是第一次触发touchend
+            toggleIcon.call(this); // 切换图标
+            touched = true; // 标记为已处理
+            setTimeout(() => touched = false, 100); // 重置标记，延时可根据需要调整
+        }
         event.preventDefault(); // 阻止后续的 click 事件
     });
 
-    // 添加鼠标点击事件监听器
+    // 鼠标点击事件
     item.addEventListener('click', function () {
         if (!touched) { // 如果没有触发触摸事件，则处理 click 事件
             toggleIcon.call(this);
         }
-        touched = false; // 重置触摸事件标记
     });
 });
 
