@@ -42,16 +42,20 @@ function resetNotes() {
                 element.value = '';
             }
         });
+        // 重置所有举手图标为举手状态
+        document.querySelectorAll('.toggle-icon').forEach(icon => {
+            icon.src = 'img/hand-up.png'; // 设置所有图标为举手状态
+        });
     }
 }
 
 document.querySelectorAll('.toggle-icon').forEach(item => {
     item.addEventListener('click', function () {
         // Check current source and switch to the other
-        if (this.src.includes('hand-up.svg')) {
-            this.src = 'img/hand-down.svg';
+        if (this.src.includes('hand-up.png')) {
+            this.src = 'img/hand-down.png';
         } else {
-            this.src = 'img/hand-up.svg';
+            this.src = 'img/hand-up.png';
         }
     });
 });
