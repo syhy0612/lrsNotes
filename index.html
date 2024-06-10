@@ -35,7 +35,8 @@
                     <!-- 占位符，用于插入 <br> -->
                     <span class="button-separator"><br></span>
                     <button onclick="resetNotes()" class="button reset-button" title="重置">重置</button>
-                    <button onclick="exportNotes()" class="button export-button" title="导出">导出</button>
+                    <button id="exportButton" class="button export-button" title="复制导出">复制导出</button>
+
                 </div>
                 <div class="note">
                     <h2>备注信息</h2>
@@ -112,6 +113,21 @@
             </div>
         </div>
     </div>
+    <!-- 模态框结构 -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>笔记预览</h2>
+            <textarea id="exportText"></textarea>
+            <div>
+                <button id="copyButton" onclick="copyToClipboard()">复制内容</button>
+                <button id="performExportButton" onclick="performExport()">导出</button>
+                <button id="cancelButton" onclick="closeModal()">取消</button>
+            </div>
+        </div>
+    </div>
+
+
     <script defer src="scripts.js"></script>
 </body>
 
