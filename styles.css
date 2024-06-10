@@ -256,6 +256,7 @@ h1 {
     margin-bottom: 20px;
     resize: vertical;
     /* 只允许垂直拉伸 */
+    font-family: "微软雅黑", Arial, sans-serif;
 }
 
 /* 关闭按钮样式 */
@@ -341,6 +342,7 @@ h1 {
     /* 底部偏移 */
     font-size: 17px;
     /* 字体大小 */
+    font-family: "微软雅黑", Arial, sans-serif;
 }
 
 #snackbar.show {
