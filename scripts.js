@@ -105,15 +105,17 @@ function showExportModal() {
 function prepareExportData() {
     const datetime = formatTimeForFilename(new Date());
     const remarks = document.querySelector('#remarks').value;
-    let data = `${datetime}\n***************************************\n${remarks}\n***************************************\n发言信息：\n`;
+    let data = `${datetime}\n****************************************\n${remarks}\n****************************************\n发言信息：\n`;
     for (let number = 1; number <= 12; number++) {
         const textarea = document.querySelector(`#input${number.toString().padStart(2, '0')}`);
         const contentWithTabs = textarea.value.replace(/\n/g, '\n\t');
-        data += `[${number}] \t${contentWithTabs}\n`;
-        if (number === 6) data += '***************************************\n';
+        // 使用 toString().padStart(2, '0') 确保数字以两位格式显示
+        data += `[${number.toString().padStart(2, '0')}] \t${contentWithTabs}\n`;
+        if (number === 6) data += '****************************************\n';
     }
     return data;
 }
+
 
 function formatTimeForFilename(date) {
     const year = date.getFullYear();
