@@ -103,7 +103,7 @@ function showExportModal() {
 
 // 准备导出数据
 function prepareExportData() {
-    const datetime = formatTimeForFilename(new Date());
+    const datetime = topTextTime(new Date());
     const remarks = document.querySelector('#remarks').value;
     let data = `${datetime}\n****************************************\n${remarks}\n****************************************\n发言信息：\n`;
     for (let number = 1; number <= 12; number++) {
@@ -127,6 +127,18 @@ function formatTimeForFilename(date) {
 
     return `${year}-${month}-${day}#${hours}.${minutes}.${seconds}`;
 }
+
+function topTextTime(date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
+    return `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+}
+
 
 // 隐藏模态框并取消导出
 function closeModal() {
