@@ -151,9 +151,17 @@ function performExport() {
 // 复制文本框内容到剪贴板
 function copyToClipboard() {
     const textArea = document.getElementById('exportText');
-    textArea.select();
-    alert('内容已复制到剪贴板。');
+    navigator.clipboard.writeText(textArea.value).then(() => {
+        let snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        snackbar.textContent = "内容已复制"; // 更新文本内容
+        setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+    }).catch(err => {
+        console.error('无法复制内容: ', err);
+    });
 }
+
+
 
 document.getElementById('exportText').addEventListener('keydown', function (e) {
     if (e.key == 'Tab') {

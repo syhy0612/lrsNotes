@@ -314,6 +314,90 @@ h1 {
     background-color: #da190b;
 }
 
+#snackbar {
+    visibility: hidden;
+    /* 默认不可见 */
+    min-width: 250px;
+    /* 最小宽度 */
+    margin-left: -125px;
+    /* 使其在屏幕中央 */
+    background-color: #878787;
+    /* 背景颜色 */
+    color: #fff;
+    /* 文本颜色 */
+    text-align: center;
+    /* 文本居中 */
+    border-radius: 2px;
+    /* 边框圆角 */
+    padding: 16px;
+    /* 内边距 */
+    position: fixed;
+    /* 固定定位 */
+    z-index: 1;
+    /* 在顶层 */
+    left: 50%;
+    /* 左偏移50% */
+    bottom: 30px;
+    /* 底部偏移 */
+    font-size: 17px;
+    /* 字体大小 */
+}
+
+#snackbar.show {
+    visibility: visible;
+    /* 使提示可见 */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
 /* 媒体查询：适用于屏幕宽度小于1024px的设备 */
 @media (max-width: 1024px) {
     .left {
@@ -340,7 +424,7 @@ h1 {
     }
 
     #exportText {
-        height: 320px;
+        height: 360px;
         /* 在小屏设备上设置更小的默认高度 */
     }
 }
