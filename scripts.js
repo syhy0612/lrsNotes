@@ -48,7 +48,20 @@ function setupEventListeners() {
 
 // 切换图标的实现
 function toggleIcon() {
-    this.src = this.src.includes('hand-up.png') ? 'img/hand-down.png' : 'img/hand-up.png';
+    let currentSrc = this.src;
+    let newSrc;
+
+    if (currentSrc.includes('hand-up.png'))
+        newSrc = 'img/hand-down.png';
+    else if (currentSrc.includes('hand-down.png'))
+        newSrc = 'img/hand-none.png';
+    else if (currentSrc.includes('hand-none.png'))
+        newSrc = 'img/hand-jz.png';
+    else if (currentSrc.includes('hand-jz.png'))
+        newSrc = 'img/hand-up.png'; // 循环回到第一个图标
+
+
+    this.src = newSrc;
 }
 
 // 处理计时器按钮点击
