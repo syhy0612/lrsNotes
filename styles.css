@@ -33,6 +33,11 @@ a {
     width: 100%;
 }
 
+.tips {
+    font-size: 12px;
+    color: #888;
+}
+
 .left,
 .right {
     float: left;
