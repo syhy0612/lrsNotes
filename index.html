@@ -38,73 +38,80 @@
                     <button id="exportButton" class="button export-button" title="复制导出">复制导出</button>
 
                 </div>
+                <!-- 备注信息 -->
                 <div class="note">
-                    <h2>备注信息&emsp;<span class="tips">(文本右下角可以拉动哦)</span></h2>
+                    <h2>备注信息<img src="img/lock.png" alt="" class="locked" id="remarkLock"><span
+                            class="tips">(文本右下角可以拉动哦)</span>
+                    </h2>
                     <div class="note-input">
-                        <textarea placeholder="请填入" id="remarks">警上：&#10;警下：</textarea>
+                        <textarea placeholder="请输入" id="remarks" rows="3"></textarea>
                     </div>
                 </div>
+                <!-- 发言信息 -->
                 <div class="note">
-                    <h2>发言信息&emsp;<span class="tips">(点击小手可以切换图标)</span></h2>
+                    <h2>发言信息<img src="img/lock.png" alt="" class="locked" id="talkLock"><span
+                            class="tips">(点击小手可以切换图标)</span>
+                    </h2>
+                    <!-- 玩家发言详情 -->
                     <div id="roles" class="note-input">
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle01">01:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle01">01
+                                <img src="img/hand-none.png" alt="" class="sfMark"></label>
                             <textarea id="input01" rows="3"></textarea>
                         </div>
                         <div class="role-entry even">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle07">07:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle07">07
+                                <img src="img/hr-js.png" alt="Toggle Hand" class="toggle-icon"></label>
                             <textarea id="input07" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle02">02:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle02">02
+                                <img src="img/lrsf-jueyin.png" alt="" class="sfMark"></label>
                             <textarea id="input02" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle08">08:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle08">08
+                                <img src="img/lrsf-lang.png" alt="" class="sfMark"></label>
                             <textarea id="input08" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle03">03:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle03">03
+                                <img src="img/hr-s.png" alt="" class="sfMark"></label>
                             <textarea id="input03" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle09">09:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle09">09
+                                <img src="img/hrsf-shou.png" alt="" class="sfMark"></label>
                             <textarea id="input09" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle04">04:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle04">04
+                                <img src="img/hrsf-jing.png" alt="" class="sfMark"></label>
                             <textarea id="input04" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle10">10:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle10">10
+                                <img src="img/jh-jing2.png" alt="" class="sfMark"></label>
                             <textarea id="input10" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle05">05:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle05">05
+                                <img src="img/hand-none.png" alt="" class="sfMark"></label>
                             <textarea id="input05" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle11">11:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle11">11
+                                <img src="img/hand-none.png" alt="" class="sfMark"></label>
                             <textarea id="input11" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle06">06:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle06">06
+                                <img src="img/hand-none.png" alt="" class="sfMark"></label>
                             <textarea id="input06" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon"
-                                    id="toggle12">12:</label>
+                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle12">12
+                                <img src="img/hand-none.png" alt="" class="sfMark"></label>
                             <textarea id="input12" rows="3"></textarea>
                         </div>
                     </div>

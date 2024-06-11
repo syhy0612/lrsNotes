@@ -114,16 +114,25 @@ h1 {
     text-align: left;
 }
 
-.toggle-icon {
+.note h2 img.locked {
+    height: 22px;
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: bottom;
+}
+
+.toggle-icon,
+.sfMark {
     cursor: pointer;
     /* Show pointer on hover to indicate it's clickable */
     display: block;
     /* SVG as block to position it correctly */
     margin: auto;
     /* Center the icon horizontally */
-    width: 15px;
+    width: 20px;
     /* Set the width of the SVG */
-    height: 15px;
+    height: 20px;
     /* Set the height of the SVG */
     margin-bottom: 5px;
     object-fit: contain;
