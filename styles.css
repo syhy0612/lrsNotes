@@ -53,6 +53,7 @@ a {
     padding-bottom: 50%;
 }
 
+
 .right {
     /* 背景颜色按需设置 */
     margin-left: 10%;
@@ -115,7 +116,7 @@ h1 {
 }
 
 .note h2 img.locked {
-    height: 22px;
+    height: 18px;
     width: auto;
     margin-left: 5px;
     margin-right: 5px;
@@ -262,7 +263,36 @@ h1 {
     overflow: auto;
     /* 添加滚动条 */
     text-align: center;
+}
 
+/* 说明文档基本样式 */
+.explain {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 100px;
+}
+
+/* 说明文档内容区 */
+.explain-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: auto;
+    text-align: center;
+}
+
+.explain-content p {
+    margin: auto 10%;
+    text-align: left;
 }
 
 /* 文本域样式 */

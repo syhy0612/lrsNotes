@@ -1,9 +1,14 @@
+// 页面加载完毕后执行初始化
+window.onload = initialize;
+
 // 初始化函数，用于页面加载完成后立即执行的功能
 function initialize() {
     checkDevice(); // 检查设备类型并提示
     adjustLayoutForMobile(); // 调整移动布局
     updateLocalTime(); // 更新时间显示
     setupEventListeners(); // 设置所有事件监听器
+    loadModesDropdown(); // 加载游戏模式下拉框
+    document.getElementById("toggleButton").addEventListener('click', toggleDisplay);
 }
 
 // 检查设备类型并显示提示
@@ -114,6 +119,11 @@ function showExportModal() {
     document.getElementById('exportModal').style.display = 'block';
 }
 
+// 显示帮助文档
+function showExplainModal() {
+    document.getElementById('explainModal').style.display = 'block';
+}
+
 // 准备导出数据
 function prepareExportData() {
     const datetime = topTextTime(new Date());
@@ -156,6 +166,7 @@ function topTextTime(date) {
 // 隐藏模态框并取消导出
 function closeModal() {
     document.getElementById('exportModal').style.display = 'none';
+    document.getElementById('explainModal').style.display = 'none';
 }
 
 // 执行实际的导出操作
@@ -182,7 +193,7 @@ function copyToClipboard() {
         let snackbar = document.getElementById("snackbar");
         snackbar.className = "show";
         snackbar.textContent = "内容已复制"; // 更新文本内容
-        setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+        setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 2000);
     }).catch(err => {
         console.error('无法复制内容: ', err);
     });
@@ -206,6 +217,52 @@ document.getElementById('exportText').addEventListener('keydown', function (e) {
     }
 });
 
+// 游戏模式数据
+const gameModes = [
+    { name: "狼美人骑士", days: ["周一", "周三", "周日"] },
+    { name: "永序之轮", days: ["周二", "周五"] },
+    { name: "孤独少女", days: ["周二", "周五", "周日"] },
+    { name: "周四测试", days: ["周四"] }
+];
 
-// 页面加载完毕后执行初始化
-window.onload = initialize;
+// 控制是否仅显示当日版型
+let showTodayOnly = false;
+
+// 切换显示全部或今日
+function toggleDisplay() {
+    showTodayOnly = !showTodayOnly;  // 切换状态
+    document.getElementById("toggleButton").textContent = showTodayOnly ? "显示全部" : "显示今日";
+    loadModesDropdown();  // 重新加载下拉框内容
+}
+
+// 加载所有游戏模式到页面上
+function loadModesDropdown() {
+    const today = getToday(); // 获取当前星期几（中文）
+    const select = document.getElementById("modeSelect");
+    select.innerHTML = ''; // 清空现有选项
+
+    gameModes.forEach(mode => {
+        if (!showTodayOnly || mode.days.includes(today)) {
+            const option = document.createElement("option");
+            option.value = mode.name;
+            option.textContent = mode.name;
+            select.appendChild(option);
+        }
+    });
+}
+
+document.getElementById("toggleButton").addEventListener('click', toggleDisplay);
+
+// 过滤游戏模式
+function filterGameModes() {
+    const input = document.getElementById("gameInput").value.toLowerCase();
+    const datalist = document.getElementById("gameModes");
+    datalist.innerHTML = '';  // 清空现有选项
+    gameModes.forEach(mode => {
+        if (mode.name.toLowerCase().includes(input)) {
+            const option = document.createElement("option");
+            option.value = mode.name;
+            datalist.appendChild(option);
+        }
+    });
+}

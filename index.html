@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>狼人杀在线笔记</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="img/syxz.ico">
+    <link rel="shortcut icon" href="img/lrs.png">
 </head>
 
 <body>
@@ -15,15 +15,21 @@
         <!-- 头部开始 -->
         <div id="top">
             <p><b id="title">在线笔记</b> ——
-                <a href="https://github.com/syhy0612/lrsNotes" target="_blank">syhy</a>
+                <!-- https://github.com/syhy0612/lrsNotes -->
+                <a href="javascript:void(0);" target="" onclick="showExplainModal()">说明</a>
             </p>
         </div>
         <!-- 内容开始 -->
         <div id="bottom"><br>
             <!-- 左内容 -->
             <div class="left">
-
-
+                <!-- 测试开始 -->
+                <!-- <input list="gameModes" id="gameInput" placeholder="搜索版型..." oninput="filterGameModes()"> -->
+                <!-- <datalist id="gameModes"> -->
+                <!-- 这里将通过JavaScript动态填充选项 -->
+                <!-- </datalist> -->
+                <!-- <button onclick="toggleDisplay()">显示是否周四</button> -->
+                <!-- 测试结束 -->
             </div>
             <!-- 右内容 -->
             <div class="right">
@@ -40,8 +46,8 @@
                 </div>
                 <!-- 备注信息 -->
                 <div class="note">
-                    <h2>备注信息<img src="img/locked.png" alt="" class="locked" id="remarkLock"><span
-                            class="tips">(文本右下角可以拉动哦)</span>
+                    <h2>备注信息&nbsp;<img src="img/locked.png" alt="" class="locked" id="remarkLock">
+                        <span class="tips">(待删除)</span>
                     </h2>
                     <div class="note-input">
                         <textarea placeholder="请输入" id="remarks" rows="3"></textarea>
@@ -49,8 +55,8 @@
                 </div>
                 <!-- 发言信息 -->
                 <div class="note">
-                    <h2>发言信息<img src="img/unlocked.png" alt="" class="locked" id="talkLock"><span
-                            class="tips">(点击小手可以切换图标)</span>
+                    <h2>发言信息&nbsp;<img src="img/unlocked.png" alt="" class="locked" id="talkLock">
+                        <span class="tips">(待删除)</span>
                     </h2>
                     <!-- 玩家发言详情 -->
                     <div id="roles" class="note-input">
@@ -61,37 +67,37 @@
                         </div>
                         <div class="role-entry even">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle07">07
-                                <img src="img/hr-js.png" alt="Toggle Hand" class="toggle-icon"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input07" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle02">02
-                                <img src="img/lrsf-jueyin.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input02" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle08">08
-                                <img src="img/lrsf-lang.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input08" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle03">03
-                                <img src="img/hr-s.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input03" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle09">09
-                                <img src="img/hrsf-shou.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input09" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle04">04
-                                <img src="img/hrsf-jing.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input04" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle10">10
-                                <img src="img/jh-jing2.png" alt="" class="sfMark"></label>
+                                <img src="img/unknown.png" alt="" class="sfMark"></label>
                             <textarea id="input10" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
@@ -130,6 +136,21 @@
                 <button id="copyButton" onclick="copyToClipboard()">复制内容</button>
                 <button id="performExportButton" onclick="performExport()">导出</button>
                 <button id="cancelButton" onclick="closeModal()">取消</button>
+            </div>
+        </div>
+    </div>
+    <div id="explainModal" class="explain">
+        <div class="explain-content">
+            <h2>说明</h2>
+            <p>
+                源码：<a href="https://github.com/syhy0612/lrsNotes" target="_blank" style="color: blue;">点击跳转</a>
+                <br>
+                <br>
+                6月13日决定暂时停更此项目。
+                <br>
+            </p>
+            <div>
+                <button id="copyButton" onclick="closeModal()">好的</button>
             </div>
         </div>
     </div>
