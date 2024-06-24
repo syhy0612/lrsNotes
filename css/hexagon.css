@@ -1,0 +1,37 @@
+.hexagon {
+    margin: 0 auto 5px auto;
+    width: 18px;
+    height: calc(18px * 2 / 1.7321);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    /* font-family: 'NotoSansSC', Arial, sans-serif; */
+    color: white;
+    background-color: #c8c8c8;
+}
+
+/* 单双字 */
+.hexagon-one {
+    font-size: 11px;
+    line-height: 20px;
+}
+
+.hexagon-two {
+    font-size: 8px;
+    line-height: 20px;
+}
+
+/* 颜色 */
+.hexagon-red {
+    background-color: #770e3a;
+}
+
+.hexagon-green {
+    background-color: #006b42;
+}
+
+.hexagon-blue {
+    background-color: #2c779a;
+}
+
+.hexagon-gold {
+    background-color: #b89534;
+}

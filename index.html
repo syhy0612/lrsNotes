@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>狼人杀在线笔记</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="img/lrs.png">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hexagon.css">
+    <link rel="shortcut icon" href="img/logoLrs.png">
 </head>
 
 <body>
@@ -14,35 +16,37 @@
     <div class="container">
         <!-- 头部开始 -->
         <div id="top">
-            <p><b id="title">在线笔记</b> ——
-                <!-- https://github.com/syhy0612/lrsNotes -->
-                <a href="javascript:void(0);" target="" onclick="showExplainModal()">说明</a>
-            </p>
+            <b id="title">在 线 笔 记</b>
+            <a href="javascript:void(0);" class="iconfont" id="settings-link" onclick="showExplainModal() ">&#xe672;</a>
         </div>
         <!-- 内容开始 -->
         <div id="bottom"><br>
             <!-- 左内容 -->
             <div class="left">
-                <!-- 测试开始 -->
-                <!-- <input list="gameModes" id="gameInput" placeholder="搜索版型..." oninput="filterGameModes()"> -->
-                <!-- <datalist id="gameModes"> -->
-                <!-- 这里将通过JavaScript动态填充选项 -->
-                <!-- </datalist> -->
-                <!-- <button onclick="toggleDisplay()">显示是否周四</button> -->
-                <!-- 测试结束 -->
+                <div>
+                    <button id="" disabled><span class="iconfont">&#xea88;</span></button>
+                    <button id="" disabled><span class="iconfont">&#xea82;</span></button>
+                    <button id="" disabled><span class="iconfont">&#xea81;</span></button>
+                    <button id="reset" disabled><span class="iconfont">&#xea89;</span></button>
+                    <span class="iconfont">&#xe668;</span>
+                    <span class="iconfont">&#xe669;</span>
+                    <span class="iconfont">&#xe672;</span>
+                    <span class="iconfont">&#xe67d;</span>
+                    <span class="iconfont">&#xe882;</span>
+                    <span class="iconfont">&#xe61e;</span>
+                </div>
             </div>
             <!-- 右内容 -->
             <div class="right">
                 <div class="header">
-                    <span class="time">当前时间: <span id="localTime">00:00:00</span></span>
-                    <span class="timer">
-                        <button id="timerButton">开始计时: 00:00</button>
-                    </span>
-                    <!-- 占位符，用于插入 <br> -->
-                    <span class="button-separator"><br></span>
+                    <div class="timer-container">
+                        <div class="timer" id="timer">初始化</div>
+                        <button id="startStop" class="iconfont">&#xea88;</button>
+                        <button id="timeReset" class="iconfont" disabled>&#xea89;</button>
+                    </div>
                     <button onclick="resetNotes()" class="button reset-button" title="重置">重置</button>
-                    <button id="exportButton" class="button export-button" title="复制导出">复制导出</button>
-
+                    <button id="exportButton" class="button export-button" title="导出">导出</button>
+                    <button onclick="selectRoles()" class="button export-button" title="版型">版型</button>
                 </div>
                 <!-- 备注信息 -->
                 <div class="note">
@@ -61,63 +65,75 @@
                     <!-- 玩家发言详情 -->
                     <div id="roles" class="note-input">
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle01">01
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle01">01
+                                <div class="hexagon hexagon-red hexagon-one">狼</div>
+                            </label>
                             <textarea id="input01" rows="3"></textarea>
                         </div>
                         <div class="role-entry even">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle07">07
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-off.svg" class="toggle-icon" id="toggle07">07
+                                <div class="hexagon hexagon-blue hexagon-two">子狐</div>
+                            </label>
                             <textarea id="input07" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle02">02
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle02">02
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input02" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle08">08
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle08">08
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input08" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle03">03
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle03">03
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input03" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle09">09
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle09">09
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input09" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle04">04
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-off.svg" class="toggle-icon" id="toggle04">04
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input04" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle10">10
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle10">10
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input10" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle05">05
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle05">05
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input05" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle11">11
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle11">11
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input11" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle06">06
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-off.svg" class="toggle-icon" id="toggle06">06
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input06" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
-                            <label><img src="img/hand-up.png" alt="Toggle Hand" class="toggle-icon" id="toggle12">12
-                                <img src="img/unknown.png" alt="" class="sfMark"></label>
+                            <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle12">12
+                                <div class="hexagon"></div>
+                            </label>
                             <textarea id="input12" rows="3"></textarea>
                         </div>
                     </div>
@@ -133,20 +149,20 @@
             <h2>笔记预览&emsp;<span class="tips">(文本右下角可以拉动哦)</span></h2>
             <textarea id="exportText"></textarea>
             <div>
-                <button id="copyButton" onclick="copyToClipboard()">复制内容</button>
-                <button id="performExportButton" onclick="performExport()">导出</button>
+                <button id="copyButton" onclick="copyToClipboard()">复制</button>
+                <!-- <button id="performExportButton" onclick="performExport()">导出</button> -->
                 <button id="cancelButton" onclick="closeModal()">取消</button>
             </div>
         </div>
     </div>
     <div id="explainModal" class="explain">
         <div class="explain-content">
-            <h2>说明</h2>
+            <h2>设置</h2>
             <p>
                 源码：<a href="https://github.com/syhy0612/lrsNotes" target="_blank" style="color: blue;">点击跳转</a>
                 <br>
                 <br>
-                6月13日决定暂时停更此项目。
+                6月24日重新拾起项目。
                 <br>
             </p>
             <div>
@@ -162,7 +178,8 @@
         <img src="img/hand-none.png" class="hidden-image">
         <img src="img/hand-jz.png" class="hidden-image">
     </div>
-    <script defer src="scripts.js"></script>
+    <script defer src="js/scripts.js"></script>
+    <script defer src="js/timer.js"></script>
 </body>
 
 </html>
