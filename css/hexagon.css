@@ -3,7 +3,7 @@
     width: 18px;
     height: calc(18px * 2 / 1.7321);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    /* font-family: 'NotoSansSC', Arial, sans-serif; */
+    font-family: '微软雅黑', Arial, sans-serif !important;
     color: white;
     background-color: #c8c8c8;
 }

@@ -10,10 +10,6 @@ function initialize() {
     loadModesDropdown();
 }
 
-function adjustLayoutForMobile() {
-    // 适应移动端的布局调整代码（如果有）
-}
-
 function updateLocalTime() {
     const localTimeDisplay = document.getElementById('localTime');
     if (localTimeDisplay) {
