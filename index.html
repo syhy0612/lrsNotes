@@ -24,7 +24,7 @@
         <div id="bottom"><br>
             <!-- 左内容 -->
             <div class="left">
-                <div>
+                <div style="display: none;">
                     <button id="" disabled><span class="iconfont">&#xea88;</span></button>
                     <button id="" disabled><span class="iconfont">&#xea82;</span></button>
                     <button id="" disabled><span class="iconfont">&#xea81;</span></button>
@@ -42,12 +42,15 @@
                 <div class="header">
                     <div class="timer-container">
                         <div class="timer" id="timer">初始化</div>
-                        <button id="startStop" class="iconfont">&#xea88;</button>
-                        <button id="timeReset" class="iconfont" disabled>&#xea89;</button>
+                        <a href="javascript:void(0);" id="startStop" class="timer-link iconfont">&#xea88;</a>
+                        <a href="javascript:void(0);" id="timeReset" class="timer-link iconfont" disabled>&#xea89;</a>
                     </div>
-                    <button onclick="resetNotes()" class="button reset-button" title="重置">重置</button>
-                    <button onclick="exportButton()" id="exportButton" class="button export-button" title="导出">导出</button>
-                    <button onclick="selectRoles()" class="button export-button" title="版型">版型</button>
+                    <div class="button-container">
+                        <button onclick="resetNotes()" class="button reset-button iconfont" title="重置">&#xe67d;</button>
+                        <button onclick="exportButton()" id="exportButton" class="button export-button iconfont"
+                            title="导出">&#xe668;</button>
+                        <button onclick="selectRoles()" class="button export-button" title="版型">版型</button>
+                    </div>
                 </div>
                 <!-- 备注信息 -->
                 <div class="note">
@@ -79,7 +82,7 @@
                         </div>
                         <div class="role-entry odd">
                             <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle02">02
-                                <div class="hexagon"></div>
+                                <div class="hexagon hexagon-green hexagon-one">X</div>
                             </label>
                             <textarea id="input02" rows="3"></textarea>
                         </div>
@@ -109,13 +112,13 @@
                         </div>
                         <div class="role-entry odd">
                             <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle10">10
-                                <div class="hexagon"></div>
+                                <div class="hexagon hexagon-green hexagon-two">警1</div>
                             </label>
                             <textarea id="input10" rows="3"></textarea>
                         </div>
                         <div class="role-entry odd">
                             <label><img src="svg/hand-on.svg" class="toggle-icon" id="toggle05">05
-                                <div class="hexagon"></div>
+                                <div class="hexagon hexagon-gold hexagon-one">丘</div>
                             </label>
                             <textarea id="input05" rows="3"></textarea>
                         </div>
@@ -127,7 +130,7 @@
                         </div>
                         <div class="role-entry odd">
                             <label><img src="svg/hand-off.svg" class="toggle-icon" id="toggle06">06
-                                <div class="hexagon"></div>
+                                <div class="hexagon hexagon-gold hexagon-one">幸</div>
                             </label>
                             <textarea id="input06" rows="3"></textarea>
                         </div>

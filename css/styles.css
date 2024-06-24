@@ -46,7 +46,7 @@ a {
     text-align: center;
     width: 40%;
     height: 80%;
-    border: #000 solid 1px;
+    /* border: #000 solid 1px; */
 }
 
 
@@ -64,38 +64,37 @@ a {
 
 .timer-container {
     display: flex;
-    /* 使用 Flexbox 布局 */
     align-items: center;
-    /* 垂直居中对齐 */
-    justify-content: center;
-    /* 水平居中显示，如果需要可以调整 */
-    margin: 10px auto 0;
-}
-
-.timer {
-    width: 100px;
+    /* justify-content: center; */
+    margin: 10px auto 0px;
+    width: 120px;
     height: 24px;
     background-color: #000;
-    /* 浅白色背景 */
     border: 4px solid #D2B48C;
-    /* 土黄色边框 */
     border-radius: 5px;
-    text-align: center;
-    /* margin: 10px auto 0; */
-    /* margin-top: 10px; */
-    line-height: 24px;
-    letter-spacing:2px;
-    color: #333;
     color: white;
+}
+#timer {
+    /* padding: 0 0 0 5px; */
+    flex-grow: 1;
+    /* 允许timer根据需要扩展 */
+    text-align: center;
+    min-width: 30px;
+    /* 防止文字变化时压缩过小 */
 }
 
 #startStop,
 #timeReset {
-    padding: 5px 10px;
-    margin-left: 10px;
-    /* margin: 0 5px; */
+    /* padding: 5px 10px; */
+    color: red;
+    /* cursor: pointer; */
 }
 
+
+#timeReset {
+    color: white;
+    margin-left: 5px;
+}
 
 #remarks {
     font-family: "微软雅黑", Arial, sans-serif;

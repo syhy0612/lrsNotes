@@ -33,8 +33,13 @@ function resetNotes() {
         document.querySelectorAll('.toggle-icon').forEach(icon => {
             icon.src = 'svg/hand-on.svg';
         });
+        document.querySelectorAll('.hexagon').forEach(hex => {
+            hex.className = 'hexagon'; // 只保留 "hexagon" 这个类
+            hex.textContent = ''; // 清空文本内容
+        });
     }
 }
+
 
 function exportButtonFunction() {
     const exportModal = document.getElementById('exportModal');

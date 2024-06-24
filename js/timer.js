@@ -1,54 +1,60 @@
 let countdownActive = false;
 let endTime = null;
 let intervalId = null;
-let totalTimeMs = 20 * 60 * 1000; // 时间
-let remainingTimeMs = totalTimeMs; // 添加用于保存剩余时间的变量
+let totalTimeMs = 20 * 60 * 1000; // 时间为3秒
+let tips = "有效局";
+let remainingTimeMs = totalTimeMs; // 保存剩余时间的变量
 
 function formatTime(ms) {
     const totalSeconds = Math.round(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return ms <= 0 ? "时间到" : `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return ms <= 0 ? tips : `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
 function updateTimerDisplay() {
     const currentTime = new Date().getTime();
     const timeLeft = endTime - currentTime;
     remainingTimeMs = timeLeft; // 更新剩余时间
-    document.getElementById('timer').innerText = timeLeft >= 0 ? formatTime(timeLeft) : "时间到";
+    document.getElementById('timer').innerText = timeLeft >= 0 ? formatTime(timeLeft) : tips;
     if (timeLeft <= 0 && countdownActive) {
         clearInterval(intervalId);
         countdownActive = false;
         document.getElementById('startStop').innerHTML = "&#xea88;";
-        document.getElementById('timeReset').disabled = false;
         document.getElementById('startStop').disabled = true;
     }
+    updateButtonState();
 }
 
 function startOrPauseTimer() {
-    if (!countdownActive) {
+    if (!countdownActive && !document.getElementById('startStop').disabled) {
         countdownActive = true;
-        document.getElementById('startStop').innerHTML = "&#xea81;";
-        document.getElementById('timeReset').disabled = true;
+        document.getElementById('startStop').innerHTML = countdownActive ? "&#xea81;" : "&#xea82;";
         endTime = new Date().getTime() + remainingTimeMs; // 使用剩余时间继续计时
         intervalId = setInterval(updateTimerDisplay, 100);
-    } else {
+    } else if (countdownActive) {
         clearInterval(intervalId);
         countdownActive = false;
         document.getElementById('startStop').innerHTML = "&#xea82;";
-        document.getElementById('timeReset').disabled = false;
     }
+    updateButtonState();
 }
 
 function resetTimer() {
-    clearInterval(intervalId);
-    countdownActive = false;
-    endTime = null;
-    remainingTimeMs = totalTimeMs; // 重置时将剩余时间设置为初始时间
-    document.getElementById('timer').innerText = formatTime(totalTimeMs);
-    document.getElementById('startStop').innerHTML = "&#xea88;";
-    document.getElementById('startStop').disabled = false;
-    document.getElementById('timeReset').disabled = true;
+    if (!countdownActive && remainingTimeMs !== totalTimeMs) {  // 只有当计时器停止且时间未复位时才允许复位
+        clearInterval(intervalId);
+        countdownActive = false;
+        endTime = null;
+        remainingTimeMs = totalTimeMs; // 重置时间
+        document.getElementById('timer').innerText = formatTime(totalTimeMs);
+        document.getElementById('startStop').innerHTML = "&#xea88;";
+        document.getElementById('startStop').disabled = false;
+        updateButtonState();
+    }
+}
+
+function updateButtonState() {
+    document.getElementById('timeReset').disabled = countdownActive || remainingTimeMs === totalTimeMs;  // 当计时器在运行或时间已经复位时禁用重置按钮
 }
 
 document.getElementById('startStop').addEventListener('click', startOrPauseTimer);
