@@ -1,48 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    initialize(); // 初始化函数调用
+    setupEventListeners(); // 初始化设置事件监听
 });
 
-function initialize() {
-    checkDevice();
-    adjustLayoutForMobile();
-    updateLocalTime();
-    setupEventListeners();
-    loadModesDropdown();
-}
-
-function updateLocalTime() {
-    const localTimeDisplay = document.getElementById('localTime');
-    if (localTimeDisplay) {
-        localTimeDisplay.textContent = formatTime(new Date());
-
-        setInterval(() => {
-            localTimeDisplay.textContent = formatTime(new Date());
-        }, 1000);
-    }
-}
-
-function formatTime(date) {
-    return date.toLocaleTimeString('zh-CN', { hour12: false });
-}
-
 function setupEventListeners() {
-    const timerButton = document.getElementById('timerButton');
-    if (timerButton) {
-        timerButton.addEventListener('click', handleTimerClick);
-    }
-
     document.querySelectorAll('.toggle-icon').forEach(icon => {
         icon.addEventListener('click', toggleIcon);
     });
 
     const exportButton = document.getElementById('exportButton');
     if (exportButton) {
-        exportButton.addEventListener('click', showExportModal);
+        exportButton.addEventListener('click', exportButtonFunction);
     }
-
-    window.onresize = adjustLayoutForMobile;
-    window.onbeforeunload = () => "确定要刷新页面吗？这将使当前信息丢失。";
 }
+
+
+
 
 function toggleIcon() {
     let currentSrc = this.src;
@@ -64,11 +36,7 @@ function resetNotes() {
     }
 }
 
-function selectRoles(){
-
-}
-
-function showExportModal() {
+function exportButtonFunction() {
     const exportModal = document.getElementById('exportModal');
     if (exportModal) {
         exportModal.style.display = 'block';
@@ -83,8 +51,13 @@ function showExplainModal() {
     }
 }
 
+function selectRoles() {
+    // 这里可以添加您的具体实现逻辑，用于处理版型选择
+}
+
 function closeModal() {
-    ['exportModal', 'explainModal'].forEach(modalId => {
+    const modals = ['exportModal', 'explainModal'];
+    modals.forEach(modalId => {
         const modal = document.getElementById(modalId);
         if (modal) {
             modal.style.display = 'none';
@@ -115,19 +88,17 @@ function topTextTime(date) {
     return `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
 }
 
-// 复制文本框内容到剪贴板
 function copyToClipboard() {
     const textArea = document.getElementById('exportText');
     navigator.clipboard.writeText(textArea.value).then(() => {
-        let snackbar = document.getElementById("snackbar");
+        const snackbar = document.getElementById("snackbar");
         snackbar.className = "show";
-        snackbar.textContent = "内容已复制"; // 更新文本内容
+        snackbar.textContent = "内容已复制";
         setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 2000);
     }).catch(err => {
         console.error('无法复制内容: ', err);
     });
 }
-
 document.getElementById('exportText').addEventListener('keydown', function (e) {
     if (e.key == 'Tab') {
         e.preventDefault();  // 阻止默认行为
