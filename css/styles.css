@@ -83,6 +83,7 @@ a {
     text-align: center;
     min-width: 30px;
     /* 防止文字变化时压缩过小 */
+    line-height: 24px;
 }
 
 #startStop,
