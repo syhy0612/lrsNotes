@@ -66,14 +66,16 @@ a {
     display: flex;
     align-items: center;
     /* justify-content: center; */
-    margin: 10px auto 0px;
+    /* margin: 10px auto 0px; */
     width: 120px;
     height: 24px;
     background-color: #000;
     border: 4px solid #D2B48C;
     border-radius: 5px;
     color: white;
+    display: inline-block;
 }
+
 #timer {
     /* padding: 0 0 0 5px; */
     flex-grow: 1;
@@ -94,6 +96,10 @@ a {
 #timeReset {
     color: white;
     margin-left: 5px;
+}
+
+.responsive-break {
+    display: none;
 }
 
 #remarks {
@@ -552,8 +558,12 @@ h1 {
         /* 去除浮动 */
     }
 
-    .button-separator br {
+    .responsive-break {
         display: block;
+    }
+
+    .note h2,.button{
+        margin-top: 5px;
     }
 
     .modal-content {
