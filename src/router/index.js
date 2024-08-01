@@ -9,9 +9,11 @@ const router = createRouter({
     }, {
         path: '/home', name: 'home', component: HomeView
     }, {
-        path: '/board', name: 'board', component: () => import('../views/board.vue')
+        path: '/board', name: 'board', component: () => import('../views/main.vue')
     }, {
-        path: '/:pathMatch(.*)*', name: 'NotFound', component: HomeView
+        path: '/old', name: 'old', component: () => import('../views/old.vue')
+    }, {
+        path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/notFound.vue')
     }]
 })
 
@@ -24,7 +26,6 @@ router.afterEach((to, from) => {
             }, 3000)
         }*/
     if (to.name === 'NotFound') {
-        // 如果是404页面，3秒后跳转到主页
         setTimeout(() => {
             router.push({name: 'home'})
         }, 3000)
