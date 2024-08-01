@@ -3,16 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - gh-pages
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3  # 使用最新版本的 checkout Action
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # 使用最新版本的 Node.js Action
         with:
           node-version: '16'
 
