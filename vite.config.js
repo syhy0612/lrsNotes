@@ -9,7 +9,7 @@ export default defineConfig({
     server: {
         port: 8080,
     }, base: './', plugins: [vue(), components({
-        resolvers: [ElementPlusResolver()],as 
+        resolvers: [ElementPlusResolver()],
     }),], resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
