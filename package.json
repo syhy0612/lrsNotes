@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "bootstrap": "^5.3.3",
     "element-plus": "^2.7.7",
     "leancloud-storage": "^4.15.2",
