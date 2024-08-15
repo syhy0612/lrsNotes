@@ -6,19 +6,26 @@
           v-model="remarks"
           type="textarea"
           class="note-textarea-top"
-          :autosize="{ minRows: 3, maxRows: 4 }"
+          :rows="4"
           placeholder="请输入"
       />
     </div>
     <div class="note">
       <h2>发言信息</h2>
-      <el-input
-          v-model="chatRecords.player01.message"
-          type="textarea"
-          class="note-textarea-down"
-          :rows="3"
-          placeholder="请输入"
-      />
+      <div class="messageLeft">
+        <div class="messageInfo">
+
+          <el-mention
+              v-model="chatRecords.player01.message"
+              type="textarea"
+              class="note-textarea-down"
+              :rows="3"
+              placeholder="请输入01号玩家发言信息"
+              prefix="C"
+              :options="options"
+          />
+        </div>
+      </div>
     </div>
     <el-button type="primary" @click="debug">调试</el-button>
   </div>
@@ -41,6 +48,53 @@ for (let i = 1; i <= 12; i++) {
     status: 1,//存活状态 1-存活,2-放逐出局,3-其他死亡
   };
 }
+
+const options = ref([
+  {
+    label: '跳-预言家-发金水',
+    value: 'C预@0金水/1.2.3/',
+  },
+  {
+    label: '跳-预言家-发查杀',
+    value: 'C预@0查杀/1.2.3/',
+  },
+  {
+    label: '跳-魔镜-发平民',
+    value: 'C镜@0平民/1.2.3/',
+  },
+  {
+    label: '跳-魔镜-发狼人',
+    value: 'C镜@0狼人/1.2.3/',
+  },
+  {
+    label: '跳-女巫-发银水',
+    value: 'C女巫@0银水',
+  },
+  {
+    label: '跳-守卫-报盾口',
+    value: 'CC守卫/0.1.2/',
+  },
+  {
+    label: '跳-猎人',
+    value: 'C猎人',
+  },
+  {
+    label: '跳-商人-发查验',
+    value: 'C商@0幸运儿-查验',
+  },
+  {
+    label: '跳-商人-发毒药',
+    value: 'C商@0幸运儿-毒药',
+  },
+  {
+    label: '跳-幸运儿-发金水',
+    value: 'C幸@0金水',
+  },
+  {
+    label: '跳-幸运儿-发查杀',
+    value: 'C幸@0查杀',
+  },
+])
 
 //调试按钮
 function debug() {
@@ -66,13 +120,19 @@ $noteWidth: 700px; //提示信息长度
   height: auto;
 }
 
-.note-top{
+.note-top {
   text-align: center;
+  height: 170px;
 }
 
 .note {
-  height: 150px;
+  //height: 150px;
   width: $noteWidth;
+
+  //使文本域禁止拉伸
+  :deep(.el-textarea__inner) {
+    resize: none !important;
+  }
 
   h2 {
     background-color: #f9f9f9;
@@ -92,10 +152,14 @@ $noteWidth: 700px; //提示信息长度
   .note-textarea-down {
     width: 240px;
     height: auto;
+  }
 
-    //使文本域禁止拉伸
-    :deep(.el-textarea__inner) {
-      resize: none !important;
+  .messageLeft {
+    border: #b89534 2px solid;
+    width: 50%;
+
+    .messageInfo {
+
     }
   }
 }
