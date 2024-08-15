@@ -32,7 +32,7 @@
 }
 </style>
 
-<style>
+<style lang="scss" >
 .bgColor {
   height: 100vh;
   width: 100vw;
@@ -40,6 +40,12 @@
   flex-direction: column;
   flex: 1;
   background-color: #20240427;
+  //text-align: center;
+}
+</style>
+
+<style lang="scss"  scoped>
+.bgColor {
   text-align: center;
 }
 </style>
