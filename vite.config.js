@@ -1,27 +1,44 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import components from 'unplugin-vue-components/vite';
-import {ElementPlusResolver} from 'unplugin-vue-components/resolvers';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import postcssPxtorem from 'postcss-pxtorem';
-import {fileURLToPath, URL} from 'url';
+import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
     server: {
         port: 8080,
-    }, base: './', plugins: [vue(), components({
-        resolvers: [ElementPlusResolver()],
-    }),], resolve: {
+    },
+    base: './',
+    plugins: [
+        vue(),
+        AutoImport({
+            resolvers: [ElementPlusResolver()],
+        }),
+        Components({
+            resolvers: [ElementPlusResolver()],
+        }),
+    ],
+    resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
-    }, css: {
+    },
+    css: {
         postcss: {
-            plugins: [postcssPxtorem({
-                rootValue: 192, // 设计稿宽度的一半 / 10
-                propList: ['*'], // 需要转换的属性列表
-            })],
+            plugins: [
+                postcssPxtorem({
+                    rootValue: 192, // 设计稿宽度的一半 / 10
+                    propList: ['*'], // 需要转换的属性列表
+                }),
+            ],
         },
-    }, build: {
+    },
+    build: {
         outDir: 'dist',
+        rollupOptions: {
+            external: ['element-plus']
+        }
     },
 });
