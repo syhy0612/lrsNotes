@@ -11,7 +11,7 @@
           :class="hexagonClasses"
           @click="togglePopover"
       >
-        {{ currentRole.text }}
+        {{ currentRole || '未选' }}
       </div>
     </template>
     <div class="role-options">
@@ -20,7 +20,7 @@
           :key="role.text"
           size="small"
           :class="[`hexagon-${role.color}`, 'role-button']"
-          @click="selectRole(role)"
+          @click="selectRole(role.text)"
       >
         {{ role.text }}
       </el-button>
@@ -29,40 +29,49 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { ElPopover, ElButton } from 'element-plus'
+import {ref, computed} from 'vue'
+import {ElPopover, ElButton} from 'element-plus'
+
+const props = defineProps({
+  currentRole: {
+    type: String,
+    default: ''
+  }
+})
+
+const emit = defineEmits(['update:role'])
 
 const roles = [
-  { text: '狼', color: 'red' },
-  { text: '觉隐', color: 'red' },
-  { text: '民', color: 'blue' },
-  { text: '守', color: 'blue' },
-  { text: '女', color: 'blue' },
-  { text: '猎', color: 'blue' },
-  { text: '镜', color: 'blue' },
-  { text: '神', color: 'gold' },
-  { text: '好人', color: 'gold' },
-  { text: '银水', color: 'gold' },
-  { text: '金水', color: 'gold' },
-  { text: '警1', color: 'green' },
-  { text: '警2', color: 'green' },
-  { text: '警3', color: 'green' },
+  {text: '狼', color: 'red'},
+  {text: '觉隐', color: 'red'},
+  {text: '民', color: 'blue'},
+  {text: '守', color: 'blue'},
+  {text: '女', color: 'blue'},
+  {text: '猎', color: 'blue'},
+  {text: '镜', color: 'blue'},
+  {text: '神', color: 'gold'},
+  {text: '好人', color: 'gold'},
+  {text: '银水', color: 'gold'},
+  {text: '金水', color: 'gold'},
+  {text: '警1', color: 'green'},
+  {text: '警2', color: 'green'},
+  {text: '警3', color: 'green'},
 ]
 
-const currentRole = ref(roles[0])
 const isPopoverVisible = ref(false)
 
 const hexagonClasses = computed(() => {
+  const role = roles.find(r => r.text === props.currentRole) || {color: 'gray'}
   return [
     'hexagon',
-    `hexagon-${currentRole.value.color}`,
-    currentRole.value.text.length === 1 ? 'hexagon-one' : 'hexagon-two',
-    { 'active': isPopoverVisible.value }
+    `hexagon-${role.color}`,
+    props.currentRole?.length === 1 ? 'hexagon-one' : 'hexagon-two',
+    {'active': isPopoverVisible.value}
   ]
 })
 
-const selectRole = (role) => {
-  currentRole.value = role
+const selectRole = (roleText) => {
+  emit('update:role', roleText)
   isPopoverVisible.value = false
 }
 
@@ -91,29 +100,45 @@ const hidePopover = () => {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hexagon.active {
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* 单双字 */
 .hexagon-one {
   font-size: 11px;
-  line-height: 20px;
 }
 
 .hexagon-two {
   font-size: 8px;
-  line-height: 20px;
 }
 
 /* 颜色 */
-.hexagon-red { background-color: #770e3a; }
-.hexagon-blue { background-color: #2c779a; }
-.hexagon-gold { background-color: #b89534; }
-.hexagon-green { background-color: #006b42; }
+.hexagon-red {
+  background-color: #770e3a;
+}
+
+.hexagon-blue {
+  background-color: #2c779a;
+}
+
+.hexagon-gold {
+  background-color: #b89534;
+}
+
+.hexagon-green {
+  background-color: #006b42;
+}
+
+.hexagon-gray {
+  background-color: #c8c8c8;
+}
 
 .role-options {
   display: flex;

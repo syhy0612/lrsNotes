@@ -24,7 +24,10 @@
                     @click="toggleElection(chatRecords[`player${String(i).padStart(2, '0')}`])"
                 >
                 <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
-                <div class="hexagon hexagon-red hexagon-one">狼</div>
+                <RoleSelector
+                    :currentRole="chatRecords[`player${String(i).padStart(2, '0')}`].sign"
+                    @update:role="(newRole) => updatePlayerRole(`player${String(i).padStart(2, '0')}`, newRole)"
+                />
               </div>
               <div class="messageInfo-right">
                 <el-mention
@@ -50,8 +53,11 @@
                     :title="chatRecords[`player${String(i+6).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
                     @click="toggleElection(chatRecords[`player${String(i+6).padStart(2, '0')}`])"
                 >
-                <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
-                <div class="hexagon hexagon-red hexagon-one">狼</div>
+                <div class="player-number">{{ String(i + 6).padStart(2, '0') }}</div>
+                <RoleSelector
+                    :currentRole="chatRecords[`player${String(i+6).padStart(2, '0')}`].sign"
+                    @update:role="(newRole) => updatePlayerRole(`player${String(i+6).padStart(2, '0')}`, newRole)"
+                />
               </div>
               <div class="messageInfo-right">
                 <el-mention
@@ -77,6 +83,7 @@
 import {reactive, ref, toRaw} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
+import RoleSelector from './RoleSelector.vue'
 
 // 自记信息
 const remarks = ref('')
@@ -87,7 +94,7 @@ const chatRecords = reactive(
         Array.from({length: 12}, (_, i) => {
           const playerKey = `player${String(i + 1).padStart(2, '0')}`;
           return [playerKey, {
-            election: '',//上警信息 0-init,1-警上,2-警下
+            election: 2,//上警信息 0-init,1-警上,2-警下
             flag: true,//是否存在 后续如果加入非12人场预留属性
             message: '',//发言信息
             sign: '',//标记信息 如'狼','民'
@@ -110,6 +117,10 @@ const options = ref([
   {label: '跳-幸运儿-发金水', value: 'C幸@0金水'},
   {label: '跳-幸运儿-发查杀', value: 'C幸@0查杀'},
 ])
+
+const updatePlayerRole = (playerKey, newRole) => {
+  chatRecords[playerKey].sign = newRole
+}
 
 function debug() {
   console.log('remarks:', remarks.value)
