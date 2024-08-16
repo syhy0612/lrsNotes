@@ -8,7 +8,6 @@
     <template #reference>
       <div
           :class="hexagonClasses"
-          @click="togglePopover"
       >
         {{ currentRole || '未选' }}
       </div>
@@ -70,16 +69,18 @@ const hexagonClasses = computed(() => {
 })
 
 const selectRole = (roleText) => {
-  if (props.currentRole !== roleText) {
+  if (props.currentRole === roleText) {
+    // 如果点击的是当前角色，清除选择
+    emit('update:role', '')
+    isPopoverVisible.value = false
+  } else {
+    // 如果选择了新角色
     emit('update:role', roleText)
     isPopoverVisible.value = false
   }
-  // 如果选择的是当前角色，不做任何操作，保持弹出窗口打开
 }
 
-const togglePopover = () => {
-  isPopoverVisible.value = !isPopoverVisible.value
-}
+// 移除 togglePopover 函数，因为我们不再需要它
 </script>
 
 <style scoped>
