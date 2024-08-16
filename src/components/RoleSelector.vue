@@ -144,7 +144,7 @@ const selectRole = (roleText) => {
 }
 
 .role-button {
-  flex: 0 0 calc(50% - 2.5px); /* 调整为两列布局 */
+  flex: 0 0 calc(30% - 2.5px); /* 调整为两列布局 */
   margin: 0;
   color: white;
   border: none;
