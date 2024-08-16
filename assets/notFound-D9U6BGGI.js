@@ -1,1 +1,0 @@
-import{_ as s,o as e,c as t,H as a,I as _,b as c}from"./index-DZPLLChk.js";const d={},n=o=>(a("data-v-fa66ca02"),o=o(),_(),o),r={class:"container"},i=n(()=>c("div",{class:"bgColor"},[c("div",{class:"title"},"你来到了知识的荒漠")],-1)),p=[i];function l(o,f){return e(),t("div",r,p)}const u=s(d,[["render",l],["__scopeId","data-v-fa66ca02"]]);export{u as default};
