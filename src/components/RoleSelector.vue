@@ -1,10 +1,9 @@
 <template>
   <el-popover
+      v-model:visible="isPopoverVisible"
       placement="right"
-      :width="200"
+      :width="220"
       trigger="click"
-      @show="showPopover"
-      @hide="hidePopover"
   >
     <template #reference>
       <div
@@ -41,6 +40,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:role'])
 
+const isPopoverVisible = ref(false)
+
 const roles = [
   {text: '狼', color: 'red'},
   {text: '觉隐', color: 'red'},
@@ -58,20 +59,22 @@ const roles = [
   {text: '警3', color: 'green'},
 ]
 
-const isPopoverVisible = ref(false)
-
 const hexagonClasses = computed(() => {
   const role = roles.find(r => r.text === props.currentRole) || {color: 'gray'}
   return [
     'hexagon',
-    `hexagon-${role.color}`,
+    props.currentRole ? `hexagon-${role.color}` : 'hexagon-gray',
     props.currentRole?.length === 1 ? 'hexagon-one' : 'hexagon-two',
     {'active': isPopoverVisible.value}
   ]
 })
 
 const selectRole = (roleText) => {
-  emit('update:role', roleText)
+  if (props.currentRole === roleText) {
+    emit('update:role', '')
+  } else {
+    emit('update:role', roleText)
+  }
   isPopoverVisible.value = false
 }
 
@@ -79,13 +82,6 @@ const togglePopover = () => {
   isPopoverVisible.value = !isPopoverVisible.value
 }
 
-const showPopover = () => {
-  isPopoverVisible.value = true
-}
-
-const hidePopover = () => {
-  isPopoverVisible.value = false
-}
 </script>
 
 <style scoped>
@@ -99,7 +95,7 @@ const hidePopover = () => {
   background-color: #c8c8c8;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,19 +136,25 @@ const hidePopover = () => {
   background-color: #c8c8c8;
 }
 
+
 .role-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 5px; /* 在按钮之间添加均匀的间隔 */
+  padding: 5px; /* 给整个容器添加一些内边距 */
 }
 
 .role-button {
-  flex: 1 0 calc(33.333% - 5px);
+  flex: 0 0 calc(50% - 2.5px); /* 调整为两列布局 */
+  margin: 0;
   color: white;
   border: none;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 14px; /* 调整字体大小以适应按钮 */
 }
 
 .role-button:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 </style>
