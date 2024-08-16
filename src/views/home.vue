@@ -5,8 +5,8 @@
       <router-link to="/board">
         <el-button color="#6633cc">开始使用</el-button>
       </router-link>
-      <router-link to="/old">
-        <el-button color="#12345600" class="btnOld"></el-button>
+      <router-link to="/test">
+        <el-button color="#6633cc" class="btnOld">测试组件</el-button>
       </router-link>
     </div>
   </div>

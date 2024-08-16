@@ -11,6 +11,8 @@ const router = createRouter({
     }, {
         path: '/board', name: 'board', component: () => import('../views/main.vue')
     }, {
+        path: '/test', name: 'test', component: () => import('../components/searchTypes.vue')
+    }, {
         path: '/old', name: 'old', component: () => import('../views/old.vue')
     }, {
         path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/notFound.vue')
