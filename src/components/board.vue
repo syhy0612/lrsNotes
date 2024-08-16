@@ -23,7 +23,8 @@
                     :title="chatRecords[`player${String(i).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
                     @click="toggleElection(chatRecords[`player${String(i).padStart(2, '0')}`])"
                 >
-
+                <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
+                <div class="hexagon hexagon-red hexagon-one">狼</div>
               </div>
               <div class="messageInfo-right">
                 <el-mention
@@ -49,6 +50,8 @@
                     :title="chatRecords[`player${String(i+6).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
                     @click="toggleElection(chatRecords[`player${String(i+6).padStart(2, '0')}`])"
                 >
+                <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
+                <div class="hexagon hexagon-red hexagon-one">狼</div>
               </div>
               <div class="messageInfo-right">
                 <el-mention
@@ -175,18 +178,28 @@ $noteWidth: 700px;
   margin-bottom: 15px;
 }
 
+
 .messageInfo {
   display: flex;
   align-items: flex-start;
 
   &-left {
     margin-right: 10px;
-    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px; // 设置固定宽度
 
     img {
       cursor: pointer;
-      width: 30px;
-      height: 30px;
+      width: 24px; // 稍微缩小图片
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .player-number {
+      font-size: 14px;
+      margin: 4px 0;
     }
   }
 
