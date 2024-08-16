@@ -155,7 +155,7 @@ $noteWidth: 700px; //提示信息长度
   }
 
   .messageLeft {
-    border: #b89534 2px solid;
+    //border: #b89534 2px solid;
     width: 50%;
 
     .messageInfo {

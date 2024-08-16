@@ -23,22 +23,23 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
+            'element-plus': 'element-plus',
         },
     },
     css: {
         postcss: {
             plugins: [
                 postcssPxtorem({
-                    rootValue: 192, // 设计稿宽度的一半 / 10
-                    propList: ['*'], // 需要转换的属性列表
+                    rootValue: 192,
+                    propList: ['*'],
                 }),
             ],
         },
     },
     build: {
         outDir: 'dist',
-        rollupOptions: {
-            external: ['element-plus']
-        }
     },
+    optimizeDeps: {
+        include: ['element-plus/es']
+    }
 });
