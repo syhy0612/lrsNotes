@@ -7,6 +7,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn';
 // import AV from './api/leancloud.js'
 // flexible.js v0.3.2 - 适配解决方案
 import './utils/flexibleModify.js'
+import 'element-plus/dist/index.css'
 
 
 const app = createApp(App);
