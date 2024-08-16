@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import {reactive, ref, toRaw} from 'vue'
+import { reactive, ref, toRaw, onMounted, watch } from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
@@ -117,6 +117,28 @@ const options = ref([
   {label: '跳-幸运儿-发金水', value: 'C幸@0金水'},
   {label: '跳-幸运儿-发查杀', value: 'C幸@0查杀'},
 ])
+
+// 从 localStorage 加载数据
+onMounted(() => {
+  const savedRemarks = localStorage.getItem('remarks')
+  if (savedRemarks) {
+    remarks.value = savedRemarks
+  }
+
+  const savedChatRecords = localStorage.getItem('chatRecords')
+  if (savedChatRecords) {
+    Object.assign(chatRecords, JSON.parse(savedChatRecords))
+  }
+})
+
+// 监听数据变化并保存到 localStorage
+watch(remarks, (newValue) => {
+  localStorage.setItem('remarks', newValue)
+}, {deep: true})
+
+watch(chatRecords, (newValue) => {
+  localStorage.setItem('chatRecords', JSON.stringify(toRaw(newValue)))
+}, {deep: true})
 
 const updatePlayerRole = (playerKey, newRole) => {
   chatRecords[playerKey].sign = newRole
