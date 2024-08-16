@@ -70,18 +70,16 @@ const hexagonClasses = computed(() => {
 })
 
 const selectRole = (roleText) => {
-  if (props.currentRole === roleText) {
-    emit('update:role', '')
-  } else {
+  if (props.currentRole !== roleText) {
     emit('update:role', roleText)
+    isPopoverVisible.value = false
   }
-  isPopoverVisible.value = false
+  // 如果选择的是当前角色，不做任何操作，保持弹出窗口打开
 }
 
 const togglePopover = () => {
   isPopoverVisible.value = !isPopoverVisible.value
 }
-
 </script>
 
 <style scoped>
