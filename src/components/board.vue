@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, toRaw, onMounted, watch } from 'vue'
+import {reactive, ref, toRaw, onMounted, watch} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
@@ -217,7 +217,8 @@ $noteWidth: 700px;
   align-items: flex-start;
 
   &-left {
-    margin-right: 10px;
+    margin-top: 2px;
+    margin-right: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,8 +226,8 @@ $noteWidth: 700px;
 
     img {
       cursor: pointer;
-      width: 24px; // 稍微缩小图片
-      height: 24px;
+      width: 20px;
+      height: 20px;
       margin-bottom: 4px;
     }
 
