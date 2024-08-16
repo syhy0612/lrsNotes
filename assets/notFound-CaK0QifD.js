@@ -1,0 +1,1 @@
+import{b7 as c,J as e,K as t,b8 as a,b9 as d,ab as s}from"./index-DxeyDVsE.js";import"element-plus";const _={},n=o=>(a("data-v-fa66ca02"),o=o(),d(),o),r={class:"container"},i=n(()=>s("div",{class:"bgColor"},[s("div",{class:"title"},"你来到了知识的荒漠")],-1)),p=[i];function l(o,f){return e(),t("div",r,p)}const m=c(_,[["render",l],["__scopeId","data-v-fa66ca02"]]);export{m as default};
