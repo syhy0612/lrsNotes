@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import board from '../components/board.vue'
+import Board from '../components/board.vue'
 
 </script>
 

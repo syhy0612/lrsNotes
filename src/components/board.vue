@@ -162,8 +162,8 @@ $noteWidth: 700px;
 }
 
 .outBox {
-  margin: 30px auto 0;
-  border: #770e3a 2px solid;
+  //margin: 30px auto 0;
+  //border: #770e3a 2px solid;
   box-sizing: border-box;
   width: 1000px;
   height: auto;

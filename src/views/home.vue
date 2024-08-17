@@ -8,6 +8,9 @@
       <router-link to="/test">
         <el-button color="#6633cc" class="btnOld">测试组件</el-button>
       </router-link>
+      <router-link to="/add">
+        <el-button color="#6633cc" class="btnOld">测试组合</el-button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -32,7 +35,7 @@
 }
 </style>
 
-<style lang="scss" >
+<style lang="scss">
 .bgColor {
   height: 100vh;
   width: 100vw;
@@ -44,7 +47,7 @@
 }
 </style>
 
-<style lang="scss"  scoped>
+<style lang="scss" scoped>
 .bgColor {
   text-align: center;
 }
