@@ -1,7 +1,7 @@
 <template>
   <el-popover
       v-model:visible="isPopoverVisible"
-      placement="right"
+      :placement="popoverPlacement"
       :width="220"
       trigger="click"
   >
@@ -34,8 +34,14 @@ const props = defineProps({
   currentRole: {
     type: String,
     default: ''
+  },
+  placement: {
+    type: String,
+    default: 'right'
   }
 })
+
+const popoverPlacement = computed(() => props.placement)
 
 const emit = defineEmits(['update:role'])
 

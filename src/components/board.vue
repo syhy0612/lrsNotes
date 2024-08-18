@@ -27,6 +27,7 @@
                 <RoleSelector
                     :currentRole="chatRecords[`player${String(i).padStart(2, '0')}`].sign"
                     @update:role="(newRole) => updatePlayerRole(`player${String(i).padStart(2, '0')}`, newRole)"
+                    placement="right"
                 />
               </div>
               <div class="messageInfo-right">
@@ -57,6 +58,7 @@
                 <RoleSelector
                     :currentRole="chatRecords[`player${String(i+6).padStart(2, '0')}`].sign"
                     @update:role="(newRole) => updatePlayerRole(`player${String(i+6).padStart(2, '0')}`, newRole)"
+                    placement="left"
                 />
               </div>
               <div class="messageInfo-right">
@@ -69,11 +71,11 @@
                     prefix="C"
                     :options="options"
                 />
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <!--    <el-button type="primary" @click="debug">调试</el-button>-->
   </div>
