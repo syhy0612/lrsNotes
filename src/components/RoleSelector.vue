@@ -56,6 +56,7 @@ const roles = [
   {text: '警1', color: 'green'},
   {text: '警2', color: 'green'},
   {text: '警3', color: 'green'},
+  {text: 'X', color: 'green'},
 ]
 
 const hexagonClasses = computed(() => {
@@ -79,81 +80,75 @@ const selectRole = (roleText) => {
     isPopoverVisible.value = false
   }
 }
-
-// 移除 togglePopover 函数，因为我们不再需要它
 </script>
 
-<style scoped>
-.hexagon {
-  margin: 0 auto 5px auto;
-  width: 18px;
-  height: calc(18px * 2 / 1.7321);
+<style scoped lang="scss">
+$hexagon-size: 18px;
+$hexagon-height: calc($hexagon-size * 2 / 1.7321);
+
+@mixin hexagon-base {
+  width: $hexagon-size;
+  height: $hexagon-height;
+  //line-height: $hexagon-height; // 设置 line-height 等于高度
+  line-height: calc($hexagon-height - 1px);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  font-family: 'Noto Sans SC', Arial, sans-serif !important;
+  font-family: var(--noto-sans-sc), Arial, sans-serif;
   color: white;
-  background-color: #c8c8c8;
   text-align: center;
   cursor: pointer;
   transition: all 0.1s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.hexagon.active {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-/* 单双字 */
-.hexagon-one {
-  font-size: 11px;
-}
-
-.hexagon-two {
-  font-size: 8px;
-}
-
-/* 颜色 */
-.hexagon-red {
-  background-color: #770e3a;
-}
-
-.hexagon-blue {
-  background-color: #2c779a;
-}
-
-.hexagon-gold {
-  background-color: #b89534;
-}
-
-.hexagon-green {
-  background-color: #006b42;
-}
-
-.hexagon-gray {
+.hexagon {
+  @include hexagon-base;
+  margin: 0 auto 5px auto;
   background-color: #c8c8c8;
-}
 
+  &.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  &-one {
+    font-size: 11px;
+  }
+
+  &-two {
+    font-size: 8px;
+  }
+
+  // 颜色变体
+  @each $color, $bg-color in (
+      red: #770e3a,
+      blue: #2c779a,
+      gold: #b89534,
+      green: #006b42,
+      gray: #c8c8c8
+  ) {
+    &-#{$color} {
+      background-color: $bg-color;
+    }
+  }
+}
 
 .role-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px; /* 在按钮之间添加均匀的间隔 */
-  padding: 5px; /* 给整个容器添加一些内边距 */
+  gap: 5px;
+  padding: 5px;
 }
 
 .role-button {
-  flex: 0 0 calc(30% - 2.5px); /* 调整为两列布局 */
+  flex: 0 0 calc(30% - 2.5px);
   margin: 0;
   color: white;
   border: none;
   padding: 5px 0;
   text-align: center;
-  font-size: 14px; /* 调整字体大小以适应按钮 */
-}
+  font-size: 14px;
 
-.role-button:hover {
-  opacity: 0.7;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 </style>
