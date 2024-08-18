@@ -158,4 +158,31 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
     opacity: 0.7;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .hexagon {
+    width: 14px; // 减小六边形大小
+    height: calc(14px * 2 / 1.7321);
+    line-height: calc(14px * 2 / 1.7321 - 0px);
+
+    &-one {
+      font-size: 8px; // 调整单个字符的字体大小
+    }
+
+    &-two {
+      font-size: 6px; // 调整两个字符的字体大小
+    }
+  }
+
+  // 保持弹出框和按钮的原有大小
+  .role-options {
+    gap: 5px;
+    padding: 2px;
+  }
+
+  .role-button {
+    font-size: 12px; // 稍微减小按钮字体大小
+    padding: 3px 0;
+  }
+}
 </style>

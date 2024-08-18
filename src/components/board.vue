@@ -71,11 +71,11 @@
                     prefix="C"
                     :options="options"
                 />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
     <!--    <el-button type="primary" @click="debug">调试</el-button>-->
   </div>
@@ -321,6 +321,23 @@ $noteWidth: 700px;
   .messageInfo-left .el-select .el-input__inner {
     padding: 0 5px;
     font-size: 12px;
+  }
+
+  .messageInfo-left {
+    width: 30px; // 稍微减小宽度
+
+    img {
+      width: 16px; // 减小图片大小
+      height: 16px;
+    }
+
+    .player-number {
+      font-size: 10px; // 减小玩家编号字体大小
+    }
+  }
+
+  .messageInfo-right {
+    width: calc(100% - 35px); // 相应调整右侧宽度
   }
 }
 </style>
