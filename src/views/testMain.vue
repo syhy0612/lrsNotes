@@ -2,7 +2,7 @@
   <div class="bgColor">
     <div class="header">
       <div class="controls">
-        <!-- 这里可以添加计时器和按钮 -->
+        <!--这里可以添加计时器和按钮-->
       </div>
     </div>
     <div class="content">
