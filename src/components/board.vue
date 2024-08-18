@@ -3,6 +3,7 @@
     <div class="note note-top">
       <h2>自记信息
         <el-button
+            plain
             type="primary"
             @click="resetRemarks"
             size="small"
@@ -20,6 +21,7 @@
     <div class="note">
       <h2>发言信息
         <el-button
+            plain
             type="primary"
             @click="resetTalks"
             size="small"
@@ -101,6 +103,7 @@ import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
 import {Refresh} from "@element-plus/icons-vue";
+import {ElMessage, ElMessageBox} from 'element-plus'
 
 // 自记信息
 const remarks = ref('')
@@ -169,6 +172,67 @@ function debug() {
 
 function toggleElection(player) {
   player.election = player.election === 1 ? 2 : 1
+}
+
+
+const resetRemarks = () => {
+  ElMessageBox.confirm(
+      '确定要重置自记信息吗？',
+      '警告',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true,
+      }
+  )
+      .then(() => {
+        remarks.value = ''
+        ElMessage({
+          type: 'success',
+          message: '自记信息已重置',
+          duration: 500
+        })
+      })
+      .catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '已取消重置',
+          duration: 500
+        })
+      })
+}
+
+const resetTalks = () => {
+  ElMessageBox.confirm(
+      '确定要重置所有玩家的发言内容吗？',
+      '警告',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true,
+      }
+  )
+      .then(() => {
+        Object.keys(chatRecords).forEach(key => {
+          chatRecords[key].message = ''
+          chatRecords[key].sign = ''
+          chatRecords[key].election = 2
+        })
+        ElMessage({
+          type: 'success',
+          message: '所有发言信息已重置',
+          duration: 500
+        })
+      })
+      .catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '已取消重置',
+          duration: 500
+        })
+      })
 }
 </script>
 
@@ -262,7 +326,7 @@ $noteWidth: 700px;
 }
 
 .reset-button {
-  margin-left:4px;
+  margin-left: 4px;
   height: 16px;
   width: 16px;
 }
