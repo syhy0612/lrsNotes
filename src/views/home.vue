@@ -39,11 +39,12 @@
 
 <style lang="scss">
 .bgColor {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #20240427;
+  overflow-y: auto;
 }
 </style>
