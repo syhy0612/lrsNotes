@@ -1,17 +1,15 @@
 <template>
-  <div class="container">
-    <div class="bgColor">
-      <div class="title">这是标题</div>
-      <router-link to="/board">
-        <el-button color="#6633cc">开始使用</el-button>
-      </router-link>
-      <router-link to="/test">
-        <el-button color="#6633cc" class="btnOld">测试组件</el-button>
-      </router-link>
-      <router-link to="/add">
-        <el-button color="#6633cc" class="btnOld">测试组合</el-button>
-      </router-link>
-    </div>
+  <div class="bgColor">
+    <div class="title">在线笔记</div>
+    <router-link to="/board">
+      <el-button color="#6633cc">开始使用</el-button>
+    </router-link>
+    <router-link to="/test">
+      <el-button color="#6633cc" class="btnOld">beta1</el-button>
+    </router-link>
+    <router-link to="/add">
+      <el-button color="#6633cc" class="btnOld">beta2</el-button>
+    </router-link>
   </div>
 </template>
 
@@ -33,6 +31,10 @@
 .btnOld {
   margin-top: 20px;
 }
+
+.bgColor {
+  text-align: center;
+}
 </style>
 
 <style lang="scss">
@@ -43,12 +45,5 @@
   flex-direction: column;
   flex: 1;
   background-color: #20240427;
-  //text-align: center;
-}
-</style>
-
-<style lang="scss" scoped>
-.bgColor {
-  text-align: center;
 }
 </style>

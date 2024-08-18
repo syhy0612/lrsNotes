@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <el-button type="primary" @click="debug">调试</el-button>
+    <!--    <el-button type="primary" @click="debug">调试</el-button>-->
   </div>
 </template>
 
@@ -240,6 +240,84 @@ $noteWidth: 700px;
 
   &-right {
     flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .outBox {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .note {
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  .players-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .players-column {
+    width: 49%; /* 略微小于50%以确保两列之间有一点间隔 */
+  }
+
+  .player-item {
+    margin-bottom: 10px;
+  }
+
+  .messageInfo {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .messageInfo-left {
+    width: 40px; /* 保持固定宽度以确保一致性 */
+    margin-right: 5px;
+  }
+
+  .messageInfo-left img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .player-number {
+    font-size: 12px;
+  }
+
+  .messageInfo-right {
+    flex-grow: 1;
+    width: calc(100% - 45px); /* 减去左侧宽度和间距 */
+  }
+
+  .note h2 {
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .note-textarea {
+    width: 100%;
+  }
+
+  :deep(.el-textarea__inner) {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  /* 确保 RoleSelector 组件在移动设备上也能正确显示 */
+  .messageInfo-left .el-select {
+    width: 100%;
+  }
+
+  .messageInfo-left .el-select .el-input__inner {
+    padding: 0 5px;
+    font-size: 12px;
   }
 }
 </style>
