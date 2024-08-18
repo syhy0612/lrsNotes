@@ -1,7 +1,14 @@
 <template>
   <div class="outBox">
     <div class="note note-top">
-      <h2>自记信息</h2>
+      <h2>自记信息
+        <el-button
+            type="primary"
+            @click="resetRemarks"
+            size="small"
+            :icon="Refresh"
+            class="reset-button"/>
+      </h2>
       <el-input
           v-model="remarks"
           type="textarea"
@@ -11,7 +18,14 @@
       />
     </div>
     <div class="note">
-      <h2>发言信息</h2>
+      <h2>发言信息
+        <el-button
+            type="primary"
+            @click="resetTalks"
+            size="small"
+            :icon="Refresh"
+            class="reset-button"/>
+      </h2>
       <div class="players-container">
         <div class="players-column">
           <div v-for="i in 6" :key="`player${i}`" class="player-item">
@@ -86,6 +100,7 @@ import {reactive, ref, toRaw, onMounted, watch} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
+import {Refresh} from "@element-plus/icons-vue";
 
 // 自记信息
 const remarks = ref('')
@@ -244,6 +259,12 @@ $noteWidth: 700px;
   &-right {
     flex-grow: 1;
   }
+}
+
+.reset-button {
+  margin-left:4px;
+  height: 16px;
+  width: 16px;
 }
 
 @media screen and (max-width: 768px) {
