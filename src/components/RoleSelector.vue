@@ -2,7 +2,7 @@
   <el-popover
       v-model:visible="isPopoverVisible"
       :placement="popoverPlacement"
-      :width="220"
+      :width="160"
       trigger="click"
   >
     <template #reference>
