@@ -110,8 +110,9 @@ const options = ref([
   {label: '跳-魔镜-发平民', value: 'C镜@0平民/1.2.3/'},
   {label: '跳-魔镜-发狼人', value: 'C镜@0狼人/1.2.3/'},
   {label: '跳-女巫-发银水', value: 'C女巫@0银水'},
-  {label: '跳-守卫-报盾口', value: 'CC守卫/0.1.2/'},
+  {label: '跳-守卫-报盾口', value: 'C守卫/0.1.2/'},
   {label: '跳-猎人', value: 'C猎人'},
+  {label: '跳-愚者', value: 'C愚者'},
   {label: '跳-商人-发查验', value: 'C商@0幸运儿-查验'},
   {label: '跳-商人-发毒药', value: 'C商@0幸运儿-毒药'},
   {label: '跳-幸运儿-发金水', value: 'C幸@0金水'},
@@ -306,7 +307,7 @@ $noteWidth: 700px;
   :deep(.el-textarea__inner) {
     width: 100%;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 10px;
     padding: 5px;
   }
 
