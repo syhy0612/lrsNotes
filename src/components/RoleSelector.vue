@@ -163,7 +163,7 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
   .hexagon {
     width: 14px; // 减小六边形大小
     height: calc(14px * 2 / 1.7321);
-    line-height: calc(14px * 2 / 1.7321 - 0px);
+    line-height: calc(14px * 2 / 1.7321 - 0.5px);
 
     &-one {
       font-size: 8px; // 调整单个字符的字体大小
