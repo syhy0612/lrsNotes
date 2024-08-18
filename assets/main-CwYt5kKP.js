@@ -1,1 +1,0 @@
-import{B as e}from"./board-CwtLUByt.js";import{_ as a,o as s,c as t,b as o,e as c}from"./index-DJ6JJL8Z.js";/* empty css                 *//* empty css                  */const r={class:"bgColor"},_={class:""},n={__name:"main",setup(i){return(d,m)=>(s(),t("div",r,[o("div",_,[o("div",null,[c(e)])])]))}},B=a(n,[["__scopeId","data-v-a5b14095"]]);export{B as default};
