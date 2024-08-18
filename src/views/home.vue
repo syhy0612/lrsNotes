@@ -34,6 +34,12 @@
 
 .bgColor {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #20240427;
 }
 </style>
 
