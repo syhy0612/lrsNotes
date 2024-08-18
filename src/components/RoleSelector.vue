@@ -97,6 +97,7 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
   text-align: center;
   cursor: pointer;
   transition: all 0.1s ease;
+  user-select: none;
 }
 
 .hexagon {

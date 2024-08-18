@@ -173,6 +173,7 @@ $noteWidth: 700px;
 .note {
   width: $noteWidth;
   margin: 0 auto 20px;
+  user-select: none;
 
   h2 {
     background-color: #f9f9f9;
