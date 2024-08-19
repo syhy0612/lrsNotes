@@ -145,6 +145,6 @@ Email：syhy0612@163.com
 
 如果您觉得这个项目对您有所帮助，欢迎点个star⭐支持一下。您的每一个星星都是我继续改进的动力！
 
-## ⭐Star历史
+## ⭐ Star历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=syhy0612/lrsNotes&type=Date)](https://star-history.com/#syhy0612/lrsNotes&Date)
