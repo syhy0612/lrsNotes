@@ -8,7 +8,7 @@
         <Board/>
       </div>
       <!--按钮组-->
-      <el-radio-group v-model="position" size="large" class="layout-controls">
+      <el-radio-group v-if="isPc" v-model="position" size="large" class="layout-controls">
         <el-radio-button label="left">左对齐</el-radio-button>
         <el-radio-button label="center">居中</el-radio-button>
         <el-radio-button label="right">右对齐</el-radio-button>
