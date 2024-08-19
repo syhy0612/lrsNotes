@@ -18,12 +18,28 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import Board from '../components/board.vue';
-import {ElRadioGroup, ElRadioButton} from 'element-plus';
+import { ElRadioGroup, ElRadioButton } from 'element-plus';
 
 const position = ref('center');
+const isPc = ref(true); // 默认为 true
+
+const checkIsPc = () => {
+  isPc.value = window.innerWidth > 768; // 根据需要调整这个阈值
+};
+
+onMounted(() => {
+  checkIsPc(); // 初始检查
+  window.addEventListener('resize', checkIsPc); // 添加 resize 事件监听器
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkIsPc); // 清理事件监听器
+});
 </script>
+
+
 
 <style lang="scss" scoped>
 .outside {
