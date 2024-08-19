@@ -1,5 +1,4 @@
 <template>
-  <!-- 搜索容器的主要div，使用ref获取DOM引用，用于处理外部点击 -->
   <div class="search-container" ref="containerRef">
     <!-- 使用Element Plus的el-input组件作为搜索输入框 -->
     <el-input
@@ -9,12 +8,12 @@
         @focus="handleFocus"
         @clear="handleClear"
         class="custom-input"
+        :prefix-icon="Search"
         clearable
     >
-      <!-- 自定义输入框后缀图标，用于切换下拉框的显示状态 -->
       <template #suffix>
         <el-icon class="dropdown-icon" @click="toggleDropdown">
-          <ArrowDown :class="{ 'is-reverse': showDropdown }" />
+          <ArrowDown :class="{ 'is-reverse': showDropdown }"/>
         </el-icon>
       </template>
     </el-input>
@@ -143,7 +142,6 @@ const handleFocus = () => {
 const handleClear = () => {
   searchTerm.value = '';
   selectedItem.value = null;
-  // 保持下拉框的当前状态
 };
 
 // 切换下拉框显示状态
@@ -155,7 +153,7 @@ const toggleDropdown = () => {
 const selectItem = (item) => {
   selectedItem.value = item;
   searchTerm.value = item.name;
-  showDropdown.value = false;
+  // 不自动关闭下拉框，让用户自己决定何时关闭
 };
 
 // 计算属性：过滤后的项目列表
