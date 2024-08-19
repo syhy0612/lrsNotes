@@ -1,6 +1,5 @@
 <template>
   <div class="search-container" ref="containerRef">
-    <!-- 使用Element Plus的el-input组件作为搜索输入框 -->
     <el-input
         v-model="searchTerm"
         placeholder="搜索版型..."
@@ -8,17 +7,25 @@
         @focus="handleFocus"
         class="custom-input"
         :prefix-icon="Search"
-        clearable
         @clear="handleClear"
     >
       <template #suffix>
-        <el-icon
-            class="dropdown-icon"
-            @mousedown.prevent="handleIconClick"
-            :class="{ 'is-reverse': showDropdown }"
-        >
-          <ArrowDown />
-        </el-icon>
+        <div class="suffix-container">
+          <el-icon
+              v-if="searchTerm"
+              class="clear-icon el-input__clear"
+              @click="handleClear"
+          >
+            <CircleClose />
+          </el-icon>
+          <el-icon
+              class="dropdown-icon"
+              @mousedown.prevent="handleIconClick"
+              :class="{ 'is-reverse': showDropdown }"
+          >
+            <ArrowDown />
+          </el-icon>
+        </div>
       </template>
     </el-input>
 
@@ -73,7 +80,7 @@
 // 导入Vue 3的组合式API
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 // 导入Element Plus的图标组件
-import { Search, Star, StarFilled, ArrowDown } from '@element-plus/icons-vue';
+import { Search, Star, StarFilled, ArrowDown, CircleClose } from '@element-plus/icons-vue';
 
 // 定义响应式变量
 const searchTerm = ref(''); // 搜索输入
@@ -85,31 +92,31 @@ const containerRef = ref(null); // 容器的DOM引用
 const allItems = ref([
   {id: 1, name: '狼美人骑士', pinyin: 'lmrqs'},
   {id: 2, name: '觉醒之夜', pinyin: 'jxzy'},
-  { id: 3, name: '觉醒孤独少女', pinyin: 'jxgdsn' },
-  { id: 4, name: '觉醒狼王', pinyin: 'jxlw' },
-  { id: 5, name: '迷雾鸦影', pinyin: 'mwyy' },
-  { id: 6, name: '咒狐乌鸦', pinyin: 'zhwy' },
-  { id: 7, name: '孤独少女', pinyin: 'gdsn' },
-  { id: 8, name: '永序之轮', pinyin: 'yxzl' },
-  { id: 9, name: '狼王守卫', pinyin: 'lwsw' },
-  { id: 10, name: '寻香识命', pinyin: 'xxsm' },
-  { id: 11, name: '猎日逐光', pinyin: 'lrzg' },
-  { id: 12, name: '时波之乱', pinyin: 'sbzl' },
-  { id: 13, name: '纯白夜影', pinyin: 'cbyy' },
-  { id: 14, name: '动物梦境', pinyin: 'dwmj' },
-  { id: 15, name: '白狼王守卫', pinyin: 'blwsw' },
-  { id: 16, name: '狼王摄梦人', pinyin: 'lwsmr' },
-  { id: 17, name: '狼王魔术师', pinyin: 'lwmss' },
-  { id: 18, name: '恶夜骑士', pinyin: 'eyqs' },
-  { id: 19, name: '白狼王骑士', pinyin: 'blwqs' },
-  { id: 20, name: '石像鬼守墓人', pinyin: 'sxgsmr' },
-  { id: 21, name: '赤月猎魔人', pinyin: 'cylmr' },
-  { id: 22, name: '噩梦之影', pinyin: 'emzy' },
-  { id: 23, name: '觉醒女巫', pinyin: 'jxnw' },
-  { id: 24, name: '标准场', pinyin: 'bzc' },
-  { id: 25, name: '奇迹商人', pinyin: 'qjsr' },
-  { id: 26, name: '镜隐迷踪', pinyin: 'jymz' },
-  { id: 27, name: '丘比特场', pinyin: 'qbtc' }
+  {id: 3, name: '觉醒孤独少女', pinyin: 'jxgdsn'},
+  {id: 4, name: '觉醒狼王', pinyin: 'jxlw'},
+  {id: 5, name: '迷雾鸦影', pinyin: 'mwyy'},
+  {id: 6, name: '咒狐乌鸦', pinyin: 'zhwy'},
+  {id: 7, name: '孤独少女', pinyin: 'gdsn'},
+  {id: 8, name: '永序之轮', pinyin: 'yxzl'},
+  {id: 9, name: '狼王守卫', pinyin: 'lwsw'},
+  {id: 10, name: '寻香识命', pinyin: 'xxsm'},
+  {id: 11, name: '猎日逐光', pinyin: 'lrzg'},
+  {id: 12, name: '时波之乱', pinyin: 'sbzl'},
+  {id: 13, name: '纯白夜影', pinyin: 'cbyy'},
+  {id: 14, name: '动物梦境', pinyin: 'dwmj'},
+  {id: 15, name: '白狼王守卫', pinyin: 'blwsw'},
+  {id: 16, name: '狼王摄梦人', pinyin: 'lwsmr'},
+  {id: 17, name: '狼王魔术师', pinyin: 'lwmss'},
+  {id: 18, name: '恶夜骑士', pinyin: 'eyqs'},
+  {id: 19, name: '白狼王骑士', pinyin: 'blwqs'},
+  {id: 20, name: '石像鬼守墓人', pinyin: 'sxgsmr'},
+  {id: 21, name: '赤月猎魔人', pinyin: 'cylmr'},
+  {id: 22, name: '噩梦之影', pinyin: 'emzy'},
+  {id: 23, name: '觉醒女巫', pinyin: 'jxnw'},
+  {id: 24, name: '标准场', pinyin: 'bzc'},
+  {id: 25, name: '奇迹商人', pinyin: 'qjsr'},
+  {id: 26, name: '镜隐迷踪', pinyin: 'jymz'},
+  {id: 27, name: '丘比特场', pinyin: 'qbtc'}
 ]);
 
 // 收藏列表
@@ -191,6 +198,7 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside);
 });
 </script>
+
 <style scoped>
 .search-container {
   position: relative;
@@ -199,16 +207,30 @@ onUnmounted(() => {
 }
 
 .custom-input :deep(.el-input__wrapper) {
-  padding-right: 30px;
+  padding-right: 12px;
 }
 
 .custom-input :deep(.el-input__suffix) {
   right: 5px;
 }
 
+.suffix-container {
+  display: flex;
+  align-items: center;
+}
+
+.clear-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  color: #c0c4cc;
+  cursor: pointer;
+}
+
 .dropdown-icon {
   cursor: pointer;
   transition: transform 0.3s;
+  font-size: 14px;
+  color: #c0c4cc;
 }
 
 .dropdown-icon.is-reverse {
