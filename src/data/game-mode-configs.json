@@ -1,34 +1,410 @@
 [
   {
     "id": 1,
-    "name": "狼美人骑士",
-    "pinyin": "lmrqs",
+    "name": "觉醒女巫",
+    "pinyin": "jxnw",
+    "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red"},
-      {"text": "民", "color": "blue"},
-      {"text": "女", "color": "blue"},
-      {"text": "骑士", "color": "gold"}
-    ],
-    "phrases": [
-      {"label": "跳-预言家-发金水", "value": "C预@0金水/1.2.3/"},
-      {"label": "跳-魔镜-发平民", "value": "C镜@0平民/1.2.3/"},
-      {"label": "跳-女巫-发银水", "value": "C女巫@0银水"}
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "觉狼", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "觉女", "color": "blue", "count": 1}
     ]
   },
   {
     "id": 2,
+    "name": "标准场",
+    "pinyin": "bzc",
+    "type": "常驻开放场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 4},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "愚", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 3,
+    "name": "奇迹商人",
+    "pinyin": "qjsr",
+    "type": "常驻开放场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "商", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 4,
+    "name": "镜隐迷踪",
+    "pinyin": "jymz",
+    "type": "常驻开放场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "觉隐", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "镜", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 5,
+    "name": "丘比特场",
+    "pinyin": "qbtc",
+    "type": "常驻开放场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 2},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 5},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "愚", "color": "blue", "count": 1},
+      {"text": "丘", "color": "blue", "count": 1},
+      {"text": "千面人", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 6,
+    "name": "觉醒孤独少女",
+    "pinyin": "jxgdcn",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 4},
+      {"text": "民", "color": "blue", "count": 3},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "觉", "color": "blue", "count": 1},
+      {"text": "孤", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 7,
+    "name": "狼美人骑士",
+    "pinyin": "lmrqs",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "美", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "骑", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 8,
+    "name": "赤月猎魔人",
+    "pinyin": "cylmr",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "赤月", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "愚", "color": "blue", "count": 1},
+      {"text": "猎魔", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 9,
+    "name": "狼王守卫",
+    "pinyin": "lwsw",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 10,
+    "name": "白狼王骑士",
+    "pinyin": "blwqs",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "白狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "骑", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 11,
+    "name": "纯白夜影",
+    "pinyin": "cbxy",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "巫", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "纯", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 12,
+    "name": "动物梦境",
+    "pinyin": "dwmj",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "美", "color": "red", "count": 1},
+      {"text": "羊驼", "color": "blue", "count": 4},
+      {"text": "白猫", "color": "blue", "count": 1},
+      {"text": "河豚", "color": "blue", "count": 1},
+      {"text": "子狐", "color": "blue", "count": 1},
+      {"text": "熊", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 13,
+    "name": "寻香识命",
+    "pinyin": "xxsm",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "香", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "觉预", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 14,
     "name": "觉醒之夜",
     "pinyin": "jxzy",
+    "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red"},
-      {"text": "民", "color": "blue"},
-      {"text": "神", "color": "gold"},
-      {"text": "觉醒者", "color": "green"}
-    ],
-    "phrases": [
-      {"label": "跳-预言家-发金水", "value": "C预@0金水/1.2.3/"},
-      {"label": "跳-魔镜-发狼人", "value": "C镜@0狼人/1.2.3/"},
-      {"label": "跳-觉醒者", "value": "C觉醒@0身份"}
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "贵", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎魔", "color": "blue", "count": 1},
+      {"text": "觉愚", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 15,
+    "name": "永序之轮",
+    "pinyin": "yxzl",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼妃", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "王子", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 16,
+    "name": "孤独少女",
+    "pinyin": "gdcn",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 4},
+      {"text": "民", "color": "blue", "count": 3},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "孤独", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 17,
+    "name": "噩梦之影",
+    "pinyin": "emzy",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "噩", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 18,
+    "name": "时波之乱",
+    "pinyin": "sbzl",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "寂夜", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "白昼", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 19,
+    "name": "觉醒狼王",
+    "pinyin": "jxlw",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "觉王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "商", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 20,
+    "name": "狼王摄梦人",
+    "pinyin": "lwsmr",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 21,
+    "name": "恶夜骑士",
+    "pinyin": "eyqs",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "恶夜", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 22,
+    "name": "狼王魔术师",
+    "pinyin": "lwmss",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "术", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 23,
+    "name": "白狼王守卫",
+    "pinyin": "blwsw",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "白狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "守", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 24,
+    "name": "石像鬼守墓人",
+    "pinyin": "sxgsmr",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "石", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "墓", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 25,
+    "name": "迷雾鸦爪",
+    "pinyin": "mwyz",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "狼鸦", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "愚", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1},
+      {"text": "炼金", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 26,
+    "name": "咒狐乌鸦",
+    "pinyin": "zhwy",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 2},
+      {"text": "狼王", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "猎", "color": "blue", "count": 1},
+      {"text": "鸦", "color": "blue", "count": 1},
+      {"text": "咒狐", "color": "blue", "count": 1}
+    ]
+  },
+  {
+    "id": 27,
+    "name": "猎日逐光",
+    "pinyin": "lrzg",
+    "type": "每周轮播场",
+    "roles": [
+      {"text": "狼", "color": "red", "count": 3},
+      {"text": "侍", "color": "red", "count": 1},
+      {"text": "民", "color": "blue", "count": 4},
+      {"text": "预", "color": "blue", "count": 1},
+      {"text": "女", "color": "blue", "count": 1},
+      {"text": "梦", "color": "blue", "count": 1},
+      {"text": "爵", "color": "blue", "count": 1}
     ]
   }
 ]
