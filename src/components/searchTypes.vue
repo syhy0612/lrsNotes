@@ -6,24 +6,26 @@
         placeholder="搜索版型..."
         @input="handleInput"
         @focus="handleFocus"
-        @clear="handleClear"
         class="custom-input"
         :prefix-icon="Search"
         clearable
+        @clear="handleClear"
     >
       <template #suffix>
-        <el-icon class="dropdown-icon" @click="toggleDropdown">
-          <ArrowDown :class="{ 'is-reverse': showDropdown }"/>
+        <el-icon
+            class="dropdown-icon"
+            @mousedown.prevent="handleIconClick"
+            :class="{ 'is-reverse': showDropdown }"
+        >
+          <ArrowDown />
         </el-icon>
       </template>
     </el-input>
 
-    <!-- 下拉框，使用v-show控制显示/隐藏 -->
     <div v-show="showDropdown" class="dropdown">
       <!-- 收藏部分 -->
       <div v-if="filteredFavorites.length > 0" class="favorites-section">
-        <div class="section-title">收藏</div>
-        <!-- 遍历显示收藏的项目 -->
+        <div class="section-title">收藏版型</div>
         <div
             v-for="item in filteredFavorites"
             :key="item.id"
@@ -41,10 +43,8 @@
         </div>
       </div>
 
-      <!-- 其他项目部分 -->
       <div v-if="filteredOthers.length > 0" class="others-section">
-        <div class="section-title">其他</div>
-        <!-- 遍历显示非收藏的项目 -->
+        <div class="section-title">全部版型</div>
         <div
             v-for="item in filteredOthers"
             :key="item.id"
@@ -52,7 +52,6 @@
             @click="selectItem(item)"
         >
           <span>{{ item.name }}</span>
-          <!-- 收藏图标，点击可添加到收藏 -->
           <el-icon
               class="favorite-icon"
               @click.stop="toggleFavorite(item)"
@@ -64,7 +63,7 @@
 
       <!-- 没有搜索结果时显示的信息 -->
       <div v-if="filteredFavorites.length === 0 && filteredOthers.length === 0" class="no-results">
-        没有匹配结果
+        没有匹配版型
       </div>
     </div>
   </div>
@@ -84,8 +83,8 @@ const containerRef = ref(null); // 容器的DOM引用
 
 // 定义所有可选项
 const allItems = ref([
-  { id: 1, name: '狼美人骑士', pinyin: 'lmrqs' },
-  { id: 2, name: '觉醒之夜', pinyin: 'jxzy' },
+  {id: 1, name: '狼美人骑士', pinyin: 'lmrqs'},
+  {id: 2, name: '觉醒之夜', pinyin: 'jxzy'},
   { id: 3, name: '觉醒孤独少女', pinyin: 'jxgdsn' },
   { id: 4, name: '觉醒狼王', pinyin: 'jxlw' },
   { id: 5, name: '迷雾鸦影', pinyin: 'mwyy' },
@@ -142,10 +141,10 @@ const handleFocus = () => {
 const handleClear = () => {
   searchTerm.value = '';
   selectedItem.value = null;
+  showDropdown.value = false;
 };
 
-// 切换下拉框显示状态
-const toggleDropdown = () => {
+const handleIconClick = () => {
   showDropdown.value = !showDropdown.value;
 };
 
@@ -153,7 +152,7 @@ const toggleDropdown = () => {
 const selectItem = (item) => {
   selectedItem.value = item;
   searchTerm.value = item.name;
-  // 不自动关闭下拉框，让用户自己决定何时关闭
+  showDropdown.value = false;
 };
 
 // 计算属性：过滤后的项目列表
@@ -251,11 +250,11 @@ onUnmounted(() => {
 }
 
 .favorite {
-  background-color: #ecf5ff;
+  background-color: #fff6e0;
 }
 
 .favorite-icon {
-  color: #409eff;
+  color: #ffcc00;
   font-size: 18px;
   transition: all 0.3s;
 }
