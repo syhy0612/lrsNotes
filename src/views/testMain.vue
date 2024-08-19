@@ -2,27 +2,67 @@
   <div class="bgColor">
     <div class="header">
       <div class="controls">
-        <!--这里可以添加计时器和按钮-->
+        <el-button @click="showSettings = true" class="settings-button">
+          <el-icon>
+            <Setting/>
+          </el-icon>
+        </el-button>
       </div>
     </div>
     <div class="content">
       <div class="section">
-        <SearchTypes class="search-types"/>
+        <SearchTypes class="search-types" @select-mode="handleModeSelect"/>
       </div>
       <div class="section">
-        <Board/>
+        <Board :selected-mode="selectedMode"/>
       </div>
     </div>
+
+    <el-dialog
+        v-model="showSettings"
+        title="游戏设置"
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
+        class="settings-dialog"
+    >
+      <GameSettings
+          :game-modes="gameModes"
+          @update-config="updateConfig"
+      />
+    </el-dialog>
   </div>
 </template>
 
 <script setup>
+import {ref, onMounted} from 'vue';
+import {Setting} from '@element-plus/icons-vue';
 import SearchTypes from "@/components/searchTypes.vue";
-import Board from '@/components/board.vue'
+import Board from '@/components/board.vue';
+import GameSettings from '@/components/GameSettings.vue';
+import gameModeConfigs from '@/data/game-mode-configs.json';
+
+const showSettings = ref(false);
+const gameModes = ref(gameModeConfigs);
+const selectedMode = ref(null);
+
+const handleModeSelect = (mode) => {
+  selectedMode.value = mode;
+};
+
+const updateConfig = (newConfig) => {
+  gameModes.value = newConfig;
+  localStorage.setItem('gameModeConfigs', JSON.stringify(newConfig));
+};
+
+onMounted(() => {
+  const savedConfig = localStorage.getItem('gameModeConfigs');
+  if (savedConfig) {
+    gameModes.value = JSON.parse(savedConfig);
+  }
+});
 </script>
 
 <style lang="scss" scoped>
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -41,12 +81,21 @@ import Board from '@/components/board.vue'
   margin-bottom: 20px;
 }
 
+.settings-button {
+  margin-left: 10px;
+}
+
+.settings-dialog {
+  :deep(.el-dialog__body) {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
 .search-types {
-  // 保留原有的边框样式
   border: #770e3a solid 1px;
 }
 
-// 保留原有的背景样式
 .bgImg {
   height: 100%;
   background-size: cover;

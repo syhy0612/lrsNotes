@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "狼美人骑士",
+    "pinyin": "lmrqs",
+    "roles": [
+      {"text": "狼", "color": "red"},
+      {"text": "民", "color": "blue"},
+      {"text": "女", "color": "blue"},
+      {"text": "骑士", "color": "gold"}
+    ],
+    "phrases": [
+      {"label": "跳-预言家-发金水", "value": "C预@0金水/1.2.3/"},
+      {"label": "跳-魔镜-发平民", "value": "C镜@0平民/1.2.3/"},
+      {"label": "跳-女巫-发银水", "value": "C女巫@0银水"}
+    ]
+  },
+  {
+    "id": 2,
+    "name": "觉醒之夜",
+    "pinyin": "jxzy",
+    "roles": [
+      {"text": "狼", "color": "red"},
+      {"text": "民", "color": "blue"},
+      {"text": "神", "color": "gold"},
+      {"text": "觉醒者", "color": "green"}
+    ],
+    "phrases": [
+      {"label": "跳-预言家-发金水", "value": "C预@0金水/1.2.3/"},
+      {"label": "跳-魔镜-发狼人", "value": "C镜@0狼人/1.2.3/"},
+      {"label": "跳-觉醒者", "value": "C觉醒@0身份"}
+    ]
+  }
+]
