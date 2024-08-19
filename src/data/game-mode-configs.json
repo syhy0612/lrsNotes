@@ -5,13 +5,55 @@
     "pinyin": "jxnw",
     "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "觉狼", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "觉女", "color": "blue", "count": 1}
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "觉狼",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉女",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": [
+      {
+        "label": "跳-预言家-发金水",
+        "value": "C预@0金水/1.2.3/"
+      },
+      {
+        "label": "跳-魔镜-发平民",
+        "value": "C镜@0平民/1.2.3/"
+      },
+      {
+        "label": "跳-女巫-发银水",
+        "value": "C女巫@0银水"
+      }
     ]
   },
   {
@@ -20,13 +62,38 @@
     "pinyin": "bzc",
     "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 4},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "愚", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 4
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "愚",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 3,
@@ -34,14 +101,43 @@
     "pinyin": "qjsr",
     "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "商", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "商",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 4,
@@ -49,14 +145,43 @@
     "pinyin": "jymz",
     "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "觉隐", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "镜", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "觉隐",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "镜",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 5,
@@ -64,16 +189,53 @@
     "pinyin": "qbtc",
     "type": "常驻开放场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 2},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 5},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "愚", "color": "blue", "count": 1},
-      {"text": "丘", "color": "blue", "count": 1},
-      {"text": "千面人", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 2
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 5
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "愚",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "丘",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "千面人",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 6,
@@ -81,15 +243,48 @@
     "pinyin": "jxgdcn",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 4},
-      {"text": "民", "color": "blue", "count": 3},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "觉", "color": "blue", "count": 1},
-      {"text": "孤", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 4
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 3
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "孤",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 7,
@@ -97,14 +292,43 @@
     "pinyin": "lmrqs",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "美", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "骑", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "美",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "骑",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 8,
@@ -112,14 +336,43 @@
     "pinyin": "cylmr",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "赤月", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "愚", "color": "blue", "count": 1},
-      {"text": "猎魔", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "赤月",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "愚",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎魔",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 9,
@@ -127,14 +380,43 @@
     "pinyin": "lwsw",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 10,
@@ -142,14 +424,43 @@
     "pinyin": "blwqs",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "白狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "骑", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "白狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "骑",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 11,
@@ -157,14 +468,43 @@
     "pinyin": "cbxy",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "巫", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "纯", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "巫",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "纯",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 12,
@@ -172,14 +512,43 @@
     "pinyin": "dwmj",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "美", "color": "red", "count": 1},
-      {"text": "羊驼", "color": "blue", "count": 4},
-      {"text": "白猫", "color": "blue", "count": 1},
-      {"text": "河豚", "color": "blue", "count": 1},
-      {"text": "子狐", "color": "blue", "count": 1},
-      {"text": "熊", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "美",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "羊驼",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "白猫",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "河豚",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "子狐",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "熊",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 13,
@@ -187,14 +556,43 @@
     "pinyin": "xxsm",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "香", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "觉预", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "香",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉预",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 14,
@@ -202,14 +600,43 @@
     "pinyin": "jxzy",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "贵", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎魔", "color": "blue", "count": 1},
-      {"text": "觉愚", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "贵",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎魔",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉愚",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 15,
@@ -217,14 +644,43 @@
     "pinyin": "yxzl",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼妃", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "王子", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼妃",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "王子",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 16,
@@ -232,14 +688,43 @@
     "pinyin": "gdcn",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 4},
-      {"text": "民", "color": "blue", "count": 3},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "孤独", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 4
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 3
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "孤独",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 17,
@@ -247,14 +732,43 @@
     "pinyin": "emzy",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "噩", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "噩",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 18,
@@ -262,14 +776,43 @@
     "pinyin": "sbzl",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "寂夜", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "白昼", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "寂夜",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "白昼",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 19,
@@ -277,14 +820,43 @@
     "pinyin": "jxlw",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "觉王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "商", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "觉王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "商",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 20,
@@ -292,14 +864,43 @@
     "pinyin": "lwsmr",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 21,
@@ -307,14 +908,43 @@
     "pinyin": "eyqs",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "恶夜", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "恶夜",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 22,
@@ -322,14 +952,43 @@
     "pinyin": "lwmss",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "术", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "术",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 23,
@@ -337,14 +996,43 @@
     "pinyin": "blwsw",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "白狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "守", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "白狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 24,
@@ -352,14 +1040,43 @@
     "pinyin": "sxgsmr",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "石", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "墓", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "石",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "墓",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 25,
@@ -367,14 +1084,43 @@
     "pinyin": "mwyz",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "狼鸦", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "愚", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1},
-      {"text": "炼金", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "狼鸦",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "愚",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "炼金",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 26,
@@ -382,15 +1128,48 @@
     "pinyin": "zhwy",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 2},
-      {"text": "狼王", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "猎", "color": "blue", "count": 1},
-      {"text": "鸦", "color": "blue", "count": 1},
-      {"text": "咒狐", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 2
+      },
+      {
+        "text": "狼王",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "鸦",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "咒狐",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   },
   {
     "id": 27,
@@ -398,13 +1177,42 @@
     "pinyin": "lrzg",
     "type": "每周轮播场",
     "roles": [
-      {"text": "狼", "color": "red", "count": 3},
-      {"text": "侍", "color": "red", "count": 1},
-      {"text": "民", "color": "blue", "count": 4},
-      {"text": "预", "color": "blue", "count": 1},
-      {"text": "女", "color": "blue", "count": 1},
-      {"text": "梦", "color": "blue", "count": 1},
-      {"text": "爵", "color": "blue", "count": 1}
-    ]
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "侍",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "梦",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "爵",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": []
   }
 ]

@@ -16,16 +16,32 @@
 
           <h4>角色</h4>
           <div class="role-options">
-            <div
-                v-for="role in sortedRoles"
-                :key="role.text"
-                class="role-container"
-            >
-              <div v-if="role.count > 1" class="role-count hexagon">
-                {{ role.count }}
+            <div class="role-group wolves">
+              <div
+                  v-for="role in wolveRoles"
+                  :key="role.text"
+                  class="role-container"
+              >
+                <div v-if="role.count > 1" class="role-count hexagon">
+                  {{ role.count }}
+                </div>
+                <div class="hexagon hexagon-red">
+                  {{ role.text }}
+                </div>
               </div>
-              <div :class="['hexagon', `hexagon-${role.color}`]">
-                {{ role.text }}
+            </div>
+            <div class="role-group villagers">
+              <div
+                  v-for="role in villagerRoles"
+                  :key="role.text"
+                  class="role-container"
+              >
+                <div v-if="role.count > 1" class="role-count hexagon">
+                  {{ role.count }}
+                </div>
+                <div class="hexagon hexagon-blue">
+                  {{ role.text }}
+                </div>
               </div>
             </div>
           </div>
@@ -67,9 +83,9 @@
 </template>
 
 <script setup>
-import {ref, computed} from 'vue';
-import {ElMessage} from 'element-plus';
-import {Delete} from '@element-plus/icons-vue';
+import { ref, computed } from 'vue';
+import { ElMessage } from 'element-plus';
+import { Delete } from '@element-plus/icons-vue';
 
 const props = defineProps({
   gameModes: {
@@ -92,19 +108,19 @@ const viewMode = computed(() => {
   return props.gameModes.find(mode => mode.id === viewModeId.value);
 });
 
-const sortedRoles = computed(() => {
+const wolveRoles = computed(() => {
   if (!selectedMode.value) return [];
+  return selectedMode.value.roles.filter(role => role.color === 'red');
+});
 
-  // 对角色进行排序
-  const redRoles = selectedMode.value.roles.filter(role => role.color === 'red');
-  const otherRoles = selectedMode.value.roles.filter(role => role.color !== 'red');
-
-  return [...redRoles, ...otherRoles];
+const villagerRoles = computed(() => {
+  if (!selectedMode.value) return [];
+  return selectedMode.value.roles.filter(role => role.color === 'blue');
 });
 
 const addPhrase = () => {
   if (selectedMode.value) {
-    selectedMode.value.phrases.push({label: '', value: ''});
+    selectedMode.value.phrases.push({ label: '', value: '' });
   }
 };
 
@@ -152,10 +168,13 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
 
 .role-options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px; // 狼人组和好人组之间的间距
   padding: 20px 10px 5px;
-  background-color: rgba(blue,.2);
+}
+
+.role-group {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .role-container {
@@ -163,7 +182,7 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 5px 15px 0;
+  margin-bottom: 15px;
 }
 
 .hexagon {
@@ -199,10 +218,15 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
   top: -$count-hexagon-height / 2;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff6e0;
+  background-color: #a8abb2;
   font-size: 12px;
   z-index: 1;
-  color: black;
+}
+
+.wolves .role-container,
+.villagers .role-container {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .phrase-input {

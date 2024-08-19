@@ -20,7 +20,7 @@
 
     <el-dialog
         v-model="showSettings"
-        title="游戏设置"
+        title="版型设置"
         :close-on-click-modal="false"
         :close-on-press-escape="false"
         class="settings-dialog"
