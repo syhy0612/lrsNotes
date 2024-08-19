@@ -7,7 +7,7 @@
             type="primary"
             @click="resetRemarks"
             size="small"
-            :icon="Refresh"
+            :icon="RefreshRight"
             class="reset-button"/>
       </h2>
       <el-input
@@ -25,7 +25,7 @@
             type="primary"
             @click="resetTalks"
             size="small"
-            :icon="Refresh"
+            :icon="RefreshRight"
             class="reset-button"/>
       </h2>
       <div class="players-container">
@@ -102,7 +102,7 @@ import {reactive, ref, toRaw, onMounted, watch} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
-import {Refresh} from "@element-plus/icons-vue";
+import {RefreshRight} from "@element-plus/icons-vue";
 import {ElMessage, ElMessageBox} from 'element-plus'
 
 // 自记信息
