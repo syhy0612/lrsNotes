@@ -91,6 +91,51 @@
         "text": "愚",
         "color": "blue",
         "count": 1
+      },
+      {
+        "text": "神",
+        "color": "gold",
+        "count": 0
+      },
+      {
+        "text": "好人",
+        "color": "gold",
+        "count": 0
+      },
+      {
+        "text": "金水",
+        "color": "gold",
+        "count": 0
+      },
+      {
+        "text": "银水",
+        "color": "gold",
+        "count": 0
+      },
+      {
+        "text": "警1",
+        "color": "green",
+        "count": 0
+      },
+      {
+        "text": "警1",
+        "color": "green",
+        "count": 0
+      },
+      {
+        "text": "警2",
+        "color": "green",
+        "count": 0
+      },
+      {
+        "text": "警3",
+        "color": "green",
+        "count": 0
+      },
+      {
+        "text": "X",
+        "color": "green",
+        "count": 0
       }
     ],
     "phrases": []
