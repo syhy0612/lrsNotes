@@ -53,7 +53,7 @@
                     class="note-textarea"
                     :rows="3"
                     :placeholder="`请输入${i}号玩家发言信息`"
-                    prefix="C"
+                    :prefix="['A','C']"
                     :options="options"
                 />
               </div>
@@ -84,7 +84,7 @@
                     class="note-textarea"
                     :rows="3"
                     :placeholder="`请输入${i+6}号玩家发言信息`"
-                    prefix="C"
+                    :prefix="['A','C']"
                     :options="options"
                 />
               </div>
@@ -98,18 +98,23 @@
 </template>
 
 <script setup>
-import {reactive, ref, toRaw, onMounted, watch} from 'vue'
+import {ref, computed, watch, onMounted} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
-import {RefreshRight} from "@element-plus/icons-vue";
+import {RefreshRight} from "@element-plus/icons-vue"
 import {ElMessage, ElMessageBox} from 'element-plus'
+import {useGameModeStore} from '@/stores/gameModeStore'
+import {storeToRefs} from 'pinia'
+
+const store = useGameModeStore()
+const {selectedMode} = storeToRefs(store)
 
 // 自记信息
 const remarks = ref('')
 
 // 发言信息
-const chatRecords = reactive(
+const chatRecords = ref(
     Object.fromEntries(
         Array.from({length: 12}, (_, i) => {
           const playerKey = `player${String(i + 1).padStart(2, '0')}`;
@@ -124,20 +129,9 @@ const chatRecords = reactive(
     )
 );
 
-const options = ref([
-  {label: '跳-预言家-发金水', value: 'C预@0金水/1.2.3/'},
-  {label: '跳-预言家-发查杀', value: 'C预@0查杀/1.2.3/'},
-  {label: '跳-魔镜-发平民', value: 'C镜@0平民/1.2.3/'},
-  {label: '跳-魔镜-发狼人', value: 'C镜@0狼人/1.2.3/'},
-  {label: '跳-女巫-发银水', value: 'C女巫@0银水'},
-  {label: '跳-守卫-报盾口', value: 'C守卫/0.1.2/'},
-  {label: '跳-猎人', value: 'C猎人'},
-  {label: '跳-愚者', value: 'C愚者'},
-  {label: '跳-商人-发查验', value: 'C商@0幸运儿-查验'},
-  {label: '跳-商人-发毒药', value: 'C商@0幸运儿-毒药'},
-  {label: '跳-幸运儿-发金水', value: 'C幸@0金水'},
-  {label: '跳-幸运儿-发查杀', value: 'C幸@0查杀'},
-])
+const options = computed(() => {
+  return selectedMode.value ? selectedMode.value.phrases : []
+})
 
 // 从 localStorage 加载数据
 onMounted(() => {
@@ -148,7 +142,7 @@ onMounted(() => {
 
   const savedChatRecords = localStorage.getItem('chatRecords')
   if (savedChatRecords) {
-    Object.assign(chatRecords, JSON.parse(savedChatRecords))
+    Object.assign(chatRecords.value, JSON.parse(savedChatRecords))
   }
 })
 
@@ -158,11 +152,11 @@ watch(remarks, (newValue) => {
 }, {deep: true})
 
 watch(chatRecords, (newValue) => {
-  localStorage.setItem('chatRecords', JSON.stringify(toRaw(newValue)))
+  localStorage.setItem('chatRecords', JSON.stringify(newValue))
 }, {deep: true})
 
 const updatePlayerRole = (playerKey, newRole) => {
-  chatRecords[playerKey].sign = newRole
+  chatRecords.value[playerKey].sign = newRole
 }
 
 function debug() {
@@ -170,10 +164,10 @@ function debug() {
   console.log('chatRecords:', toRaw(chatRecords))
 }
 
+
 function toggleElection(player) {
   player.election = player.election === 1 ? 2 : 1
 }
-
 
 const resetRemarks = () => {
   ElMessageBox.confirm(
@@ -215,10 +209,10 @@ const resetTalks = () => {
       }
   )
       .then(() => {
-        Object.keys(chatRecords).forEach(key => {
-          chatRecords[key].message = ''
-          chatRecords[key].sign = ''
-          chatRecords[key].election = 2
+        Object.keys(chatRecords.value).forEach(key => {
+          chatRecords.value[key].message = ''
+          chatRecords.value[key].sign = ''
+          chatRecords.value[key].election = 2
         })
         ElMessage({
           type: 'success',

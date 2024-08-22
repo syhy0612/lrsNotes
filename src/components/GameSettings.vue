@@ -1,16 +1,16 @@
 <template>
   <div class="game-settings">
+    <el-select v-model="selectedModeId" placeholder="选择游戏版型" @change="handleModeChange">
+      <el-option
+          v-for="mode in gameModes"
+          :key="mode.id"
+          :label="mode.name"
+          :value="mode.id"
+      />
+    </el-select>
+
     <el-tabs v-model="activeTab">
       <el-tab-pane label="版型配置" name="config">
-        <el-select v-model="selectedModeId" placeholder="选择游戏版型">
-          <el-option
-              v-for="mode in gameModes"
-              :key="mode.id"
-              :label="mode.name"
-              :value="mode.id"
-          />
-        </el-select>
-
         <div v-if="selectedMode" class="mode-config">
           <h3>{{ selectedMode.name }} 配置</h3>
 
@@ -48,10 +48,10 @@
 
           <h4>快捷短语</h4>
           <div v-for="(phrase, index) in selectedMode.phrases" :key="index" class="phrase-input">
-            <el-input v-model="selectedMode.phrases[index].label" placeholder="标签">
+            <el-input v-model="selectedMode.phrases[index].label" placeholder="标签" @input="markAsChanged">
               <template #prepend>标签</template>
             </el-input>
-            <el-input v-model="selectedMode.phrases[index].value" placeholder="值">
+            <el-input v-model="selectedMode.phrases[index].value" placeholder="值" @input="markAsChanged">
               <template #prepend>值</template>
             </el-input>
             <el-button @click="removePhrase(index)" type="danger" :icon="Delete" circle></el-button>
@@ -62,83 +62,176 @@
       </el-tab-pane>
 
       <el-tab-pane label="查看配置" name="view">
-        <el-select v-model="viewModeId" placeholder="选择游戏版型">
-          <el-option
-              v-for="mode in gameModes"
-              :key="mode.id"
-              :label="mode.name"
-              :value="mode.id"
+        <div class="config-view-container">
+          <el-button
+              class="copy-button"
+              :icon="CopyDocument"
+              circle
+              @click="copyConfig"
           />
-        </el-select>
-
-        <pre v-if="viewMode" class="config-view">{{ JSON.stringify(viewMode, null, 2) }}</pre>
+          <pre v-if="selectedMode" class="config-view">{{ JSON.stringify(selectedMode, null, 2) }}</pre>
+        </div>
       </el-tab-pane>
     </el-tabs>
 
     <div class="actions">
-      <el-button @click="saveConfig" type="primary">保存配置</el-button>
-      <el-button @click="resetConfig" type="warning">重置配置</el-button>
+      <el-button @click="confirmSave" type="primary" :disabled="!hasChanges">保存配置</el-button>
+      <el-button @click="confirmReset" type="warning">重置配置</el-button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { ElMessage } from 'element-plus';
-import { Delete } from '@element-plus/icons-vue';
+import {ref, computed, watch, onBeforeUnmount} from 'vue';
+import {ElMessage, ElMessageBox} from 'element-plus';
+import {Delete, CopyDocument} from '@element-plus/icons-vue';
+import {useGameModeStore} from '@/stores/gameModeStore';
+import {storeToRefs} from 'pinia';
 
-const props = defineProps({
-  gameModes: {
-    type: Array,
-    required: true
-  }
-});
-
-const emit = defineEmits(['update-config']);
+const store = useGameModeStore();
+const {gameModes} = storeToRefs(store);
 
 const activeTab = ref('config');
 const selectedModeId = ref(null);
-const viewModeId = ref(null);
+const originalModes = ref(JSON.parse(JSON.stringify(gameModes.value)));
+const hasChanges = ref(false);
 
 const selectedMode = computed(() => {
-  return props.gameModes.find(mode => mode.id === selectedModeId.value);
-});
-
-const viewMode = computed(() => {
-  return props.gameModes.find(mode => mode.id === viewModeId.value);
+  return gameModes.value.find(mode => mode.id === selectedModeId.value);
 });
 
 const wolveRoles = computed(() => {
-  if (!selectedMode.value) return [];
+  if (!selectedMode.value || !selectedMode.value.roles) return [];
   return selectedMode.value.roles.filter(role => role.color === 'red');
 });
 
 const villagerRoles = computed(() => {
-  if (!selectedMode.value) return [];
+  if (!selectedMode.value || !selectedMode.value.roles) return [];
   return selectedMode.value.roles.filter(role => role.color === 'blue');
 });
 
+const handleModeChange = (modeId) => {
+  store.selectMode(modeId);
+};
+
+const markAsChanged = () => {
+  hasChanges.value = true;
+};
+
 const addPhrase = () => {
   if (selectedMode.value) {
-    selectedMode.value.phrases.push({ label: '', value: '' });
+    selectedMode.value.phrases.push({label: '', value: ''});
+    markAsChanged();
   }
 };
 
 const removePhrase = (index) => {
   if (selectedMode.value) {
     selectedMode.value.phrases.splice(index, 1);
+    markAsChanged();
   }
 };
 
+const confirmSave = () => {
+  ElMessageBox.confirm(
+      '确定要保存当前配置吗？这将覆盖之前的设置。',
+      '保存确认',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
+  ).then(() => {
+    saveConfig();
+  }).catch(() => {
+    ElMessage({
+      type: 'info',
+      message: '已取消保存',
+      duration: 500
+    });
+  });
+};
+
 const saveConfig = () => {
-  emit('update-config', props.gameModes);
+  store.updateGameModes(gameModes.value);
+  originalModes.value = JSON.parse(JSON.stringify(gameModes.value));
+  hasChanges.value = false;
   ElMessage.success('配置已保存');
 };
 
-const resetConfig = () => {
-  // 这里应该从原始配置重新加载
-  ElMessage.warning('配置已重置（实际功能需要实现）');
+const confirmReset = () => {
+  ElMessageBox.confirm(
+      '确定要重置所有配置吗？这将丢失所有未保存的更改。',
+      '重置确认',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
+  ).then(() => {
+    resetConfig();
+  }).catch(() => {
+    ElMessage({
+      type: 'info',
+      message: '已取消重置',
+      duration: 500
+    });
+  });
 };
+
+const resetConfig = () => {
+  store.resetToOriginal();
+  gameModes.value = JSON.parse(JSON.stringify(store.gameModes));
+  originalModes.value = JSON.parse(JSON.stringify(gameModes.value));
+  hasChanges.value = false;
+  ElMessage({
+        message: '配置已重置',
+        type: 'warning',
+        duration: 500
+      });
+};
+
+const copyConfig = () => {
+  if (selectedMode.value) {
+    const configText = JSON.stringify(selectedMode.value, null, 2);
+    navigator.clipboard.writeText(configText).then(() => {
+      ElMessage({
+        message: '配置已复制到剪贴板',
+        type: 'success',
+        duration: 500
+      });
+    }).catch(err => {
+      console.error('无法复制文本: ', err);
+      ElMessage({
+        message: '复制失败，请手动复制',
+        type: 'error',
+        duration: 500
+      });
+    });
+  }
+};
+
+// 监听 gameModes 的变化
+watch(gameModes, () => {
+  hasChanges.value = JSON.stringify(gameModes.value) !== JSON.stringify(originalModes.value);
+}, {deep: true});
+
+// 初始化选中的模式
+selectedModeId.value = store.selectedModeId;
+
+// 处理页面关闭前的未保存更改
+const handleBeforeUnload = (event) => {
+  if (hasChanges.value) {
+    event.preventDefault();
+    event.returnValue = '';
+  }
+};
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload);
+});
+
+window.addEventListener('beforeunload', handleBeforeUnload);
 </script>
 
 <style scoped lang="scss">
@@ -270,5 +363,11 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
     font-size: 10px;
     top: -$count-hexagon-height / 2;
   }
+}
+
+.copy-button {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 </style>

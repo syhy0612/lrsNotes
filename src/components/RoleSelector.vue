@@ -63,6 +63,7 @@ const roles = [
   {text: '警2', color: 'green'},
   {text: '警3', color: 'green'},
   {text: 'X', color: 'green'},
+  {text: '你', color: 'purple'},
 ]
 
 const hexagonClasses = computed(() => {
@@ -130,6 +131,7 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
       blue: #2c779a,
       gold: #b89534,
       green: #006b42,
+      purple: #c616c5,
       gray: #c8c8c8
   ) {
     &-#{$color} {

@@ -1,27 +1,27 @@
 <template>
   <div class="search-container" ref="containerRef">
     <el-input
-        v-model="searchTerm"
-        placeholder="搜索版型..."
-        @input="handleInput"
-        @focus="handleFocus"
-        class="custom-input"
-        :prefix-icon="Search"
-        @clear="handleClear"
+      v-model="searchTerm"
+      placeholder="搜索版型..."
+      @input="handleInput"
+      @focus="handleFocus"
+      class="custom-input"
+      :prefix-icon="Search"
+      @clear="handleClear"
     >
       <template #suffix>
         <div class="suffix-container">
           <el-icon
-              v-if="searchTerm"
-              class="clear-icon el-input__clear"
-              @click="handleClear"
+            v-if="searchTerm"
+            class="clear-icon el-input__clear"
+            @click="handleClear"
           >
             <CircleClose />
           </el-icon>
           <el-icon
-              class="dropdown-icon"
-              @mousedown.prevent="handleIconClick"
-              :class="{ 'is-reverse': showDropdown }"
+            class="dropdown-icon"
+            @mousedown.prevent="handleIconClick"
+            :class="{ 'is-reverse': showDropdown }"
           >
             <ArrowDown />
           </el-icon>
@@ -29,21 +29,21 @@
       </template>
     </el-input>
 
-    <div v-show="showDropdown" class="dropdown">
+    <div v-if="store.isInitialized" v-show="showDropdown" class="dropdown">
       <!-- 收藏部分 -->
       <div v-if="filteredFavorites.length > 0" class="favorites-section">
         <div class="section-title">收藏版型</div>
         <div
-            v-for="item in filteredFavorites"
-            :key="item.id"
-            class="dropdown-item favorite"
-            @click="selectItem(item)"
+          v-for="item in filteredFavorites"
+          :key="item.id"
+          class="dropdown-item favorite"
+          @click="selectItem(item)"
         >
           <span>{{ item.name }}</span>
           <!-- 收藏图标，点击可切换收藏状态 -->
           <el-icon
-              class="favorite-icon"
-              @click.stop="toggleFavorite(item)"
+            class="favorite-icon"
+            @click.stop="toggleFavorite(item)"
           >
             <StarFilled />
           </el-icon>
@@ -53,15 +53,15 @@
       <div v-if="filteredOthers.length > 0" class="others-section">
         <div class="section-title">全部版型</div>
         <div
-            v-for="item in filteredOthers"
-            :key="item.id"
-            class="dropdown-item"
-            @click="selectItem(item)"
+          v-for="item in filteredOthers"
+          :key="item.id"
+          class="dropdown-item"
+          @click="selectItem(item)"
         >
           <span>{{ item.name }}</span>
           <el-icon
-              class="favorite-icon"
-              @click.stop="toggleFavorite(item)"
+            class="favorite-icon"
+            @click.stop="toggleFavorite(item)"
           >
             <Star />
           </el-icon>
@@ -77,60 +77,34 @@
 </template>
 
 <script setup>
-// 导入Vue 3的组合式API
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-// 导入Element Plus的图标组件
-import { Search, Star, StarFilled, ArrowDown, CircleClose } from '@element-plus/icons-vue';
+import { ref, computed, onMounted, onUnmounted, watch} from 'vue';
+import {Search, Star, StarFilled, ArrowDown, CircleClose} from '@element-plus/icons-vue';
+import {useGameModeStore} from '@/stores/gameModeStore';
+import {storeToRefs} from 'pinia';
+
+const store = useGameModeStore();
+const {gameModes, isInitialized} = storeToRefs(store);
 
 // 定义响应式变量
-const searchTerm = ref(''); // 搜索输入
-const showDropdown = ref(false); // 控制下拉框显示
-const selectedItem = ref(null); // 当前选中的项目
-const containerRef = ref(null); // 容器的DOM引用
+const searchTerm = ref('');
+const showDropdown = ref(false);
+const containerRef = ref(null);
 
-// 定义所有可选项
-const allItems = ref([
-  {id: 1, name: '狼美人骑士', pinyin: 'lmrqs'},
-  {id: 2, name: '觉醒之夜', pinyin: 'jxzy'},
-  {id: 3, name: '觉醒孤独少女', pinyin: 'jxgdsn'},
-  {id: 4, name: '觉醒狼王', pinyin: 'jxlw'},
-  {id: 5, name: '迷雾鸦影', pinyin: 'mwyy'},
-  {id: 6, name: '咒狐乌鸦', pinyin: 'zhwy'},
-  {id: 7, name: '孤独少女', pinyin: 'gdsn'},
-  {id: 8, name: '永序之轮', pinyin: 'yxzl'},
-  {id: 9, name: '狼王守卫', pinyin: 'lwsw'},
-  {id: 10, name: '寻香识命', pinyin: 'xxsm'},
-  {id: 11, name: '猎日逐光', pinyin: 'lrzg'},
-  {id: 12, name: '时波之乱', pinyin: 'sbzl'},
-  {id: 13, name: '纯白夜影', pinyin: 'cbyy'},
-  {id: 14, name: '动物梦境', pinyin: 'dwmj'},
-  {id: 15, name: '白狼王守卫', pinyin: 'blwsw'},
-  {id: 16, name: '狼王摄梦人', pinyin: 'lwsmr'},
-  {id: 17, name: '狼王魔术师', pinyin: 'lwmss'},
-  {id: 18, name: '恶夜骑士', pinyin: 'eyqs'},
-  {id: 19, name: '白狼王骑士', pinyin: 'blwqs'},
-  {id: 20, name: '石像鬼守墓人', pinyin: 'sxgsmr'},
-  {id: 21, name: '赤月猎魔人', pinyin: 'cylmr'},
-  {id: 22, name: '噩梦之影', pinyin: 'emzy'},
-  {id: 23, name: '觉醒女巫', pinyin: 'jxnw'},
-  {id: 24, name: '标准场', pinyin: 'bzc'},
-  {id: 25, name: '奇迹商人', pinyin: 'qjsr'},
-  {id: 26, name: '镜隐迷踪', pinyin: 'jymz'},
-  {id: 27, name: '丘比特场', pinyin: 'qbtc'}
-]);
+// 过滤后的项目列表
+const filteredItems = computed(() => {
+  if (!gameModes.value) return [];
+  const term = searchTerm.value.toLowerCase();
+  return gameModes.value.filter(item =>
+      item.name.toLowerCase().includes(term) ||
+      item.pinyin.includes(term)
+  );
+});
 
-// 收藏列表
-const favorites = ref([]);
+// 过滤后的收藏项目
+const filteredFavorites = computed(() => filteredItems.value.filter(item => item.isFavorite));
 
-// 切换收藏状态的函数
-const toggleFavorite = (item) => {
-  const index = favorites.value.findIndex(fav => fav.id === item.id);
-  if (index > -1) {
-    favorites.value.splice(index, 1);
-  } else {
-    favorites.value.push(item);
-  }
-};
+// 过滤后的非收藏项目
+const filteredOthers = computed(() => filteredItems.value.filter(item => !item.isFavorite));
 
 // 处理输入事件
 const handleInput = () => {
@@ -147,7 +121,6 @@ const handleFocus = () => {
 // 处理清除事件
 const handleClear = () => {
   searchTerm.value = '';
-  selectedItem.value = null;
   showDropdown.value = false;
 };
 
@@ -157,29 +130,15 @@ const handleIconClick = () => {
 
 // 选择项目的函数
 const selectItem = (item) => {
-  selectedItem.value = item;
+  store.selectMode(item.id);
   searchTerm.value = item.name;
   showDropdown.value = false;
 };
 
-// 计算属性：过滤后的项目列表
-const filteredItems = computed(() => {
-  const term = searchTerm.value.toLowerCase();
-  return allItems.value.filter(item =>
-      item.name.toLowerCase().includes(term) ||
-      item.pinyin.includes(term)
-  );
-});
-
-// 计算属性：过滤后的收藏项目
-const filteredFavorites = computed(() => {
-  return filteredItems.value.filter(item => favorites.value.some(fav => fav.id === item.id));
-});
-
-// 计算属性：过滤后的非收藏项目
-const filteredOthers = computed(() => {
-  return filteredItems.value.filter(item => !favorites.value.some(fav => fav.id === item.id));
-});
+// 切换收藏状态的函数
+const toggleFavorite = (item) => {
+  store.toggleFavorite(item.id);
+};
 
 // 处理外部点击事件，关闭下拉框
 const handleClickOutside = (event) => {
@@ -189,14 +148,28 @@ const handleClickOutside = (event) => {
 };
 
 // 组件挂载时添加点击事件监听器
-onMounted(() => {
+onMounted(async () => {
   document.addEventListener('click', handleClickOutside);
+  if (!store.isInitialized) {
+    await store.initializeStore();
+  }
+  if (store.selectedMode) {
+    searchTerm.value = store.selectedMode.name;
+  }
 });
 
 // 组件卸载时移除点击事件监听器
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside);
 });
+
+// 监听 gameModes 的变化
+watch(gameModes, (newGameModes) => {
+  if (newGameModes && newGameModes.length > 0 && store.selectedMode) {
+    searchTerm.value = store.selectedMode.name;
+  }
+});
+
 </script>
 
 <style scoped>

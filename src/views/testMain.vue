@@ -14,7 +14,7 @@
         <SearchTypes class="search-types" @select-mode="handleModeSelect"/>
       </div>
       <div class="section">
-        <Board :selected-mode="selectedMode"/>
+        <Board />
       </div>
     </div>
 
@@ -25,40 +25,33 @@
         :close-on-press-escape="false"
         class="settings-dialog"
     >
-      <GameSettings
-          :game-modes="gameModes"
-          @update-config="updateConfig"
-      />
+      <GameSettings @update-config="updateConfig" />
     </el-dialog>
   </div>
 </template>
 
 <script setup>
-import {ref, onMounted} from 'vue';
-import {Setting} from '@element-plus/icons-vue';
+import { ref, onMounted } from 'vue';
+import { Setting } from '@element-plus/icons-vue';
+import { useGameModeStore } from '@/stores/gameModeStore';
 import SearchTypes from "@/components/searchTypes.vue";
 import Board from '@/components/board.vue';
 import GameSettings from '@/components/GameSettings.vue';
-import gameModeConfigs from '@/data/game-mode-configs.json';
 
 const showSettings = ref(false);
-const gameModes = ref(gameModeConfigs);
-const selectedMode = ref(null);
+const store = useGameModeStore();
 
-const handleModeSelect = (mode) => {
-  selectedMode.value = mode;
+const handleModeSelect = (modeId) => {
+  store.selectMode(modeId);
 };
 
 const updateConfig = (newConfig) => {
-  gameModes.value = newConfig;
-  localStorage.setItem('gameModeConfigs', JSON.stringify(newConfig));
+  store.updateGameModes(newConfig);
+  store.saveToLocalStorage();
 };
 
 onMounted(() => {
-  const savedConfig = localStorage.getItem('gameModeConfigs');
-  if (savedConfig) {
-    gameModes.value = JSON.parse(savedConfig);
-  }
+  store.loadFromLocalStorage();
 });
 </script>
 

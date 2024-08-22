@@ -1,6 +1,9 @@
 import './assets/main.css';
 import {createApp} from 'vue';
+import {createPinia} from 'pinia'
 import App from './App.vue';
+
+const pinia = createPinia()
 import router from './router';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css'
@@ -14,6 +17,7 @@ const app = createApp(App);
 app.use(ElementPlus, {
     locale: zhCn,
 });
+app.use(pinia);
 app.use(router);
 // 将 LeanCloud 实例挂载到 Vue 实例中
 // app.config.globalProperties.$AV = AV;

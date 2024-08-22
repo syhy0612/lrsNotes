@@ -4,6 +4,7 @@
     "name": "觉醒女巫",
     "pinyin": "jxnw",
     "type": "常驻开放场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -61,6 +62,7 @@
     "name": "标准场",
     "pinyin": "bzc",
     "type": "常驻开放场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -145,6 +147,7 @@
     "name": "奇迹商人",
     "pinyin": "qjsr",
     "type": "常驻开放场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -189,6 +192,7 @@
     "name": "镜隐迷踪",
     "pinyin": "jymz",
     "type": "常驻开放场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -233,6 +237,7 @@
     "name": "丘比特场",
     "pinyin": "qbtc",
     "type": "常驻开放场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -287,6 +292,7 @@
     "name": "觉醒孤独少女",
     "pinyin": "jxgdcn",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -336,6 +342,7 @@
     "name": "狼美人骑士",
     "pinyin": "lmrqs",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -380,6 +387,7 @@
     "name": "赤月猎魔人",
     "pinyin": "cylmr",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -424,6 +432,7 @@
     "name": "狼王守卫",
     "pinyin": "lwsw",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -468,6 +477,7 @@
     "name": "白狼王骑士",
     "pinyin": "blwqs",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -512,6 +522,7 @@
     "name": "纯白夜影",
     "pinyin": "cbxy",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -556,6 +567,7 @@
     "name": "动物梦境",
     "pinyin": "dwmj",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -600,6 +612,7 @@
     "name": "寻香识命",
     "pinyin": "xxsm",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -644,6 +657,7 @@
     "name": "觉醒之夜",
     "pinyin": "jxzy",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -688,6 +702,7 @@
     "name": "永序之轮",
     "pinyin": "yxzl",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -732,6 +747,7 @@
     "name": "孤独少女",
     "pinyin": "gdcn",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -776,6 +792,7 @@
     "name": "噩梦之影",
     "pinyin": "emzy",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -820,6 +837,7 @@
     "name": "时波之乱",
     "pinyin": "sbzl",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -864,6 +882,7 @@
     "name": "觉醒狼王",
     "pinyin": "jxlw",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -908,6 +927,7 @@
     "name": "狼王摄梦人",
     "pinyin": "lwsmr",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -952,6 +972,7 @@
     "name": "恶夜骑士",
     "pinyin": "eyqs",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -996,6 +1017,7 @@
     "name": "狼王魔术师",
     "pinyin": "lwmss",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -1040,6 +1062,7 @@
     "name": "白狼王守卫",
     "pinyin": "blwsw",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -1084,6 +1107,7 @@
     "name": "石像鬼守墓人",
     "pinyin": "sxgsmr",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -1128,6 +1152,7 @@
     "name": "迷雾鸦爪",
     "pinyin": "mwyz",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -1172,6 +1197,7 @@
     "name": "咒狐乌鸦",
     "pinyin": "zhwy",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
@@ -1221,6 +1247,7 @@
     "name": "猎日逐光",
     "pinyin": "lrzg",
     "type": "每周轮播场",
+    "isFavorite": false,
     "roles": [
       {
         "text": "狼",
