@@ -61,8 +61,8 @@ const roles = computed(() => {
     {text: '金水', color: 'gold'},
     {text: '银水', color: 'gold'},
     {text: '警1', color: 'green'},
-    {text: '警1', color: 'green'},
-    {text: '警1', color: 'green'},
+    {text: '警2', color: 'green'},
+    {text: '警3', color: 'green'},
     {text: 'X', color: 'green'},
     {text: '你', color: 'purple'}
   ]
