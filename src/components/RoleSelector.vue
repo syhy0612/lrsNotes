@@ -29,6 +29,8 @@
 <script setup>
 import {ref, computed} from 'vue'
 import {ElPopover, ElButton} from 'element-plus'
+import {useGameModeStore} from '@/stores/gameModeStore'
+import {storeToRefs} from 'pinia'
 
 const props = defineProps({
   currentRole: {
@@ -47,27 +49,27 @@ const emit = defineEmits(['update:role'])
 
 const isPopoverVisible = ref(false)
 
-const roles = [
-  {text: '狼', color: 'red'},
-  {text: '觉隐', color: 'red'},
-  {text: '民', color: 'blue'},
-  {text: '守', color: 'blue'},
-  {text: '女', color: 'blue'},
-  {text: '猎', color: 'blue'},
-  {text: '镜', color: 'blue'},
-  {text: '神', color: 'gold'},
-  {text: '好人', color: 'gold'},
-  {text: '银水', color: 'gold'},
-  {text: '金水', color: 'gold'},
-  {text: '警1', color: 'green'},
-  {text: '警2', color: 'green'},
-  {text: '警3', color: 'green'},
-  {text: 'X', color: 'green'},
-  {text: '你', color: 'purple'},
-]
+const store = useGameModeStore()
+const {selectedMode} = storeToRefs(store)
+
+const roles = computed(() => {
+  const modeRoles = selectedMode.value?.roles || []
+  return [
+    ...modeRoles,
+    {text: '神', color: 'gold'},
+    {text: '好人', color: 'gold'},
+    {text: '金水', color: 'gold'},
+    {text: '银水', color: 'gold'},
+    {text: '警1', color: 'green'},
+    {text: '警1', color: 'green'},
+    {text: '警1', color: 'green'},
+    {text: 'X', color: 'green'},
+    {text: '你', color: 'purple'}
+  ]
+})
 
 const hexagonClasses = computed(() => {
-  const role = roles.find(r => r.text === props.currentRole) || {color: 'gray'}
+  const role = roles.value.find(r => r.text === props.currentRole) || {color: 'gray'}
   return [
     'hexagon',
     props.currentRole ? `hexagon-${role.color}` : 'hexagon-gray',
@@ -96,7 +98,6 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
 @mixin hexagon-base {
   width: $hexagon-size;
   height: $hexagon-height;
-  //line-height: $hexagon-height; // 设置 line-height 等于高度
   line-height: calc($hexagon-height - 1px);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   font-family: var(--noto-sans-sc), Arial, sans-serif;
@@ -163,27 +164,26 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
 
 @media screen and (max-width: 768px) {
   .hexagon {
-    width: 14px; // 减小六边形大小
+    width: 14px;
     height: calc(14px * 2 / 1.7321);
     line-height: calc(14px * 2 / 1.7321 - 0.5px);
 
     &-one {
-      font-size: 8px; // 调整单个字符的字体大小
+      font-size: 8px;
     }
 
     &-two {
-      font-size: 6px; // 调整两个字符的字体大小
+      font-size: 6px;
     }
   }
 
-  // 保持弹出框和按钮的原有大小
   .role-options {
     gap: 5px;
     padding: 2px;
   }
 
   .role-button {
-    font-size: 12px; // 稍微减小按钮字体大小
+    font-size: 12px;
     padding: 3px 0;
   }
 }

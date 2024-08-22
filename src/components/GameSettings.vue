@@ -2,10 +2,10 @@
   <div class="game-settings">
     <el-select v-model="selectedModeId" placeholder="选择游戏版型" @change="handleModeChange">
       <el-option
-          v-for="mode in gameModes"
-          :key="mode.id"
-          :label="mode.name"
-          :value="mode.id"
+        v-for="mode in gameModes"
+        :key="mode.id"
+        :label="mode.name"
+        :value="mode.id"
       />
     </el-select>
 
@@ -18,9 +18,9 @@
           <div class="role-options">
             <div class="role-group wolves">
               <div
-                  v-for="role in wolveRoles"
-                  :key="role.text"
-                  class="role-container"
+                v-for="role in wolveRoles"
+                :key="role.text"
+                class="role-container"
               >
                 <div v-if="role.count > 1" class="role-count hexagon">
                   {{ role.count }}
@@ -32,9 +32,9 @@
             </div>
             <div class="role-group villagers">
               <div
-                  v-for="role in villagerRoles"
-                  :key="role.text"
-                  class="role-container"
+                v-for="role in villagerRoles"
+                :key="role.text"
+                class="role-container"
               >
                 <div v-if="role.count > 1" class="role-count hexagon">
                   {{ role.count }}
@@ -49,10 +49,10 @@
           <h4>快捷短语</h4>
           <div v-for="(phrase, index) in selectedMode.phrases" :key="index" class="phrase-input">
             <el-input v-model="selectedMode.phrases[index].label" placeholder="标签" @input="markAsChanged">
-              <template #prepend>标签</template>
+              <template #prepend>提示</template>
             </el-input>
             <el-input v-model="selectedMode.phrases[index].value" placeholder="值" @input="markAsChanged">
-              <template #prepend>值</template>
+              <template #prepend>起跳</template>
             </el-input>
             <el-button @click="removePhrase(index)" type="danger" :icon="Delete" circle></el-button>
           </div>
@@ -64,10 +64,10 @@
       <el-tab-pane label="查看配置" name="view">
         <div class="config-view-container">
           <el-button
-              class="copy-button"
-              :icon="CopyDocument"
-              circle
-              @click="copyConfig"
+            class="copy-button"
+            :icon="CopyDocument"
+            circle
+            @click="copyConfig"
           />
           <pre v-if="selectedMode" class="config-view">{{ JSON.stringify(selectedMode, null, 2) }}</pre>
         </div>
@@ -82,14 +82,16 @@
 </template>
 
 <script setup>
-import {ref, computed, watch, onBeforeUnmount} from 'vue';
-import {ElMessage, ElMessageBox} from 'element-plus';
-import {Delete, CopyDocument} from '@element-plus/icons-vue';
-import {useGameModeStore} from '@/stores/gameModeStore';
-import {storeToRefs} from 'pinia';
+import { ref, computed, watch, onMounted } from 'vue';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import { Delete, CopyDocument } from '@element-plus/icons-vue';
+import { useGameModeStore } from '@/stores/gameModeStore';
+import { storeToRefs } from 'pinia';
+
+const emit = defineEmits(['update-config']);
 
 const store = useGameModeStore();
-const {gameModes} = storeToRefs(store);
+const { gameModes } = storeToRefs(store);
 
 const activeTab = ref('config');
 const selectedModeId = ref(null);
@@ -120,7 +122,7 @@ const markAsChanged = () => {
 
 const addPhrase = () => {
   if (selectedMode.value) {
-    selectedMode.value.phrases.push({label: '', value: ''});
+    selectedMode.value.phrases.push({ label: '', value: '' });
     markAsChanged();
   }
 };
@@ -134,13 +136,13 @@ const removePhrase = (index) => {
 
 const confirmSave = () => {
   ElMessageBox.confirm(
-      '确定要保存当前配置吗？这将覆盖之前的设置。',
-      '保存确认',
-      {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      }
+    '确定要保存当前配置吗？这将覆盖之前的设置。',
+    '保存确认',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    }
   ).then(() => {
     saveConfig();
   }).catch(() => {
@@ -153,21 +155,25 @@ const confirmSave = () => {
 };
 
 const saveConfig = () => {
-  store.updateGameModes(gameModes.value);
+  emit('update-config', gameModes.value);
   originalModes.value = JSON.parse(JSON.stringify(gameModes.value));
   hasChanges.value = false;
-  ElMessage.success('配置已保存');
+  ElMessage({
+    type: 'success',
+    message: '配置已保存',
+    duration: 500
+  });
 };
 
 const confirmReset = () => {
   ElMessageBox.confirm(
-      '确定要重置所有配置吗？这将丢失所有未保存的更改。',
-      '重置确认',
-      {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      }
+    '确定要重置所有配置吗？这将丢失所有未保存的更改。',
+    '重置确认',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    }
   ).then(() => {
     resetConfig();
   }).catch(() => {
@@ -185,10 +191,10 @@ const resetConfig = () => {
   originalModes.value = JSON.parse(JSON.stringify(gameModes.value));
   hasChanges.value = false;
   ElMessage({
-        message: '配置已重置',
-        type: 'warning',
-        duration: 500
-      });
+    type: 'warning',
+    message: '配置已重置',
+    duration: 500
+  });
 };
 
 const copyConfig = () => {
@@ -214,24 +220,48 @@ const copyConfig = () => {
 // 监听 gameModes 的变化
 watch(gameModes, () => {
   hasChanges.value = JSON.stringify(gameModes.value) !== JSON.stringify(originalModes.value);
-}, {deep: true});
+}, { deep: true });
 
 // 初始化选中的模式
-selectedModeId.value = store.selectedModeId;
+onMounted(() => {
+  selectedModeId.value = store.selectedModeId;
+});
 
-// 处理页面关闭前的未保存更改
-const handleBeforeUnload = (event) => {
+// 处理关闭确认
+const handleClose = (done) => {
   if (hasChanges.value) {
-    event.preventDefault();
-    event.returnValue = '';
+    ElMessageBox.confirm(
+      '有未保存的更改，是否保存？',
+      '确认',
+      {
+        confirmButtonText: '保存',
+        cancelButtonText: '不保存',
+        type: 'warning',
+        distinguishCancelAndClose: true,
+      }
+    )
+      .then(() => {
+        saveConfig();
+        done(true);
+      })
+      .catch((action) => {
+        if (action === 'cancel') {
+          // 用户选择不保存
+          hasChanges.value = false;
+          done(true);
+        } else {
+          // 用户关闭对话框，不执行任何操作
+          done(false);
+        }
+      });
+  } else {
+    done(true);
   }
 };
 
-onBeforeUnmount(() => {
-  window.removeEventListener('beforeunload', handleBeforeUnload);
+defineExpose({
+  handleClose
 });
-
-window.addEventListener('beforeunload', handleBeforeUnload);
 </script>
 
 <style scoped lang="scss">

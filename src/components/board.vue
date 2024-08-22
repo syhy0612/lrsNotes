@@ -94,6 +94,16 @@
       </div>
     </div>
     <!--    <el-button type="primary" @click="debug">调试</el-button>-->
+    <el-dialog
+        v-model="showSettings"
+        title="版型设置"
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
+        :before-close="handleSettingsClose"
+        class="settings-dialog"
+    >
+      <GameSettings ref="gameSettingsRef" @update-config="updateConfig"/>
+    </el-dialog>
   </div>
 </template>
 
@@ -102,6 +112,7 @@ import {ref, computed, watch, onMounted} from 'vue'
 import handOnImage from '@/assets/hand-on.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
+import GameSettings from './GameSettings.vue'
 import {RefreshRight} from "@element-plus/icons-vue"
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useGameModeStore} from '@/stores/gameModeStore'
@@ -132,6 +143,9 @@ const chatRecords = ref(
 const options = computed(() => {
   return selectedMode.value ? selectedMode.value.phrases : []
 })
+
+const showSettings = ref(false)
+const gameSettingsRef = ref(null)
 
 // 从 localStorage 加载数据
 onMounted(() => {
@@ -227,6 +241,26 @@ const resetTalks = () => {
           duration: 500
         })
       })
+}
+
+const handleSettingsClose = (done) => {
+  if (gameSettingsRef.value) {
+    gameSettingsRef.value.handleClose((shouldClose) => {
+      if (shouldClose) {
+        showSettings.value = false
+        done()
+      } else {
+        // 用户取消关闭，不执行任何操作
+      }
+    })
+  } else {
+    done()
+  }
+}
+
+const updateConfig = (newConfig) => {
+  // 处理配置更新
+  store.updateGameModes(newConfig)
 }
 </script>
 
