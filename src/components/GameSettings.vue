@@ -136,7 +136,7 @@ const removePhrase = (index) => {
 
 const confirmSave = () => {
   ElMessageBox.confirm(
-    '确定要保存当前配置吗？这将覆盖之前的设置。',
+    '确定要保存当前配置吗？这将覆盖之前的配置。',
     '保存确认',
     {
       confirmButtonText: '确定',
