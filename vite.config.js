@@ -5,6 +5,7 @@ import Components from 'unplugin-vue-components/vite';
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers';
 import postcssPxtorem from 'postcss-pxtorem';
 import {fileURLToPath, URL} from 'url';
+import svgLoader from 'vite-svg-loader';
 
 export default defineConfig({
     server: {
@@ -20,11 +21,15 @@ export default defineConfig({
         Components({
             resolvers: [ElementPlusResolver()],
         }),
+        svgLoader({
+            svgoConfig: {
+                multipass: true,
+            },
+        }),
     ],
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
-            'element-plus': 'element-plus',
         },
     },
     css: {
@@ -41,6 +46,6 @@ export default defineConfig({
         outDir: 'dist',
     },
     optimizeDeps: {
-        include: ['element-plus/es']
-    }
+        include: ['element-plus/es'],
+    },
 });

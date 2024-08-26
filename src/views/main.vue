@@ -9,18 +9,18 @@
       </div>
       <!--按钮组-->
       <el-radio-group v-if="isPc" v-model="position" size="large" class="layout-controls">
-        <el-radio-button label="left">左对齐</el-radio-button>
-        <el-radio-button label="center">居中</el-radio-button>
-        <el-radio-button label="right">右对齐</el-radio-button>
+        <el-radio-button value="left">靠左</el-radio-button>
+        <el-radio-button value="center">居中</el-radio-button>
+        <el-radio-button value="right">靠右</el-radio-button>
       </el-radio-group>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import Board from '../components/board.vue';
-import { ElRadioGroup, ElRadioButton } from 'element-plus';
+import {ElRadioGroup, ElRadioButton} from 'element-plus';
 
 const position = ref('center');
 const isPc = ref(true); // 默认为 true
@@ -38,7 +38,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', checkIsPc); // 清理事件监听器
 });
 </script>
-
 
 
 <style lang="scss" scoped>

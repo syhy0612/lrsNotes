@@ -9,6 +9,13 @@
             size="small"
             :icon="RefreshRight"
             class="reset-button"/>
+        <el-button
+            plain
+            type="primary"
+            @click="exportInfo"
+            size="small"
+            :icon="Edit "
+            class="reset-button"/>
       </h2>
       <el-input
           v-model="remarks"
@@ -27,6 +34,16 @@
             size="small"
             :icon="RefreshRight"
             class="reset-button"/>
+        <el-button
+            plain
+            type="primary"
+            @click="handUp"
+            size="small"
+            class="reset-button">
+          <el-icon>
+            <LittleHand/>
+          </el-icon>
+        </el-button>
       </h2>
       <div class="players-container">
         <div class="players-column">
@@ -104,16 +121,37 @@
       <GameSettings ref="gameSettingsRef" @update-config="updateConfig"/>
     </el-dialog>
   </div>
+  <el-dialog
+      v-model="showExportDialog"
+      title="导出信息"
+      :close-on-click-modal="false"
+      class="export-dialog"
+  >
+    <el-input
+        v-model="exportedInfo"
+        type="textarea"
+        :rows="10"
+        class="export-textarea"
+    />
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button type="primary" @click="copyExportedInfo">
+          复制到剪贴板
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup>
 import {ref, computed, watch, onMounted} from 'vue'
-import handUpImage from '@/assets/hand-up.svg'
-import handDownImage from '@/assets/hand-down.svg'
-import handOffImage from '@/assets/hand-off.svg'
+import handUpImage from '@/assets/hand-up.svg?url'
+import handDownImage from '@/assets/hand-down.svg?url'
+import handOffImage from '@/assets/hand-off.svg?url'
 import RoleSelector from './RoleSelector.vue'
 import GameSettings from './GameSettings.vue'
-import {RefreshRight} from "@element-plus/icons-vue"
+import {Edit, RefreshRight,} from "@element-plus/icons-vue"
+import LittleHand from '@/assets/little-hand.svg?component'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useGameModeStore} from '@/stores/gameModeStore'
 import {storeToRefs} from 'pinia'
@@ -139,6 +177,10 @@ const chatRecords = ref(
         })
     )
 );
+
+// 新增：导出信息相关的响应式变量
+const showExportDialog = ref(false)
+const exportedInfo = ref('')
 
 const options = computed(() => {
   return selectedMode.value ? selectedMode.value.phrases : []
@@ -203,10 +245,11 @@ function toggleElection(player) {
   player.election = (player.election % 3) + 1;
 }
 
+// 重置自记信息
 const resetRemarks = () => {
   ElMessageBox.confirm(
       '确定要重置自记信息吗？',
-      '警告',
+      '重置自记信息',
       {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -231,10 +274,11 @@ const resetRemarks = () => {
       })
 }
 
+// 重置发言信息
 const resetTalks = () => {
   ElMessageBox.confirm(
       '确定要重置所有玩家的发言内容吗？',
-      '警告',
+      '重置发言信息',
       {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -261,6 +305,69 @@ const resetTalks = () => {
           duration: 500
         })
       })
+}
+
+// 一键上警
+const handUp = () => {
+  ElMessageBox.confirm(
+      '确定要使所有玩家更新为上警举手状态吗？',
+      '一键上警',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true,
+      }
+  )
+      .then(() => {
+        Object.keys(chatRecords.value).forEach(key => {
+          chatRecords.value[key].election = 1
+        })
+        ElMessage({
+          type: 'success',
+          message: '所有玩家已更新为上警状态',
+          duration: 500
+        })
+      })
+      .catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '已取消更新',
+          duration: 500
+        })
+      })
+}
+
+// 导出完整笔记信息
+const exportInfo = () => {
+  //todo 具体逻辑需手动修改
+  // 生成导出信息
+  let info = `自记信息：\n${remarks.value}\n\n发言信息：\n`
+  Object.entries(chatRecords.value).forEach(([key, record]) => {
+    info += `玩家 ${key.slice(-2)}：\n`
+    info += `  角色：${record.sign || '未设置'}\n`
+    info += `  状态：${getElectionAlt(record.election)}\n`
+    info += `  发言：${record.message || '无'}\n\n`
+  })
+  exportedInfo.value = info
+  showExportDialog.value = true
+}
+
+const copyExportedInfo = () => {
+  navigator.clipboard.writeText(exportedInfo.value).then(() => {
+    ElMessage({
+      message: '信息已复制到剪贴板',
+      type: 'success',
+      duration: 2000
+    })
+    showExportDialog.value = false
+  }).catch(() => {
+    ElMessage({
+      message: '复制失败，请手动复制',
+      type: 'error',
+      duration: 2000
+    })
+  })
 }
 
 const handleSettingsClose = (done) => {
@@ -473,4 +580,6 @@ $noteWidth: 700px;
     width: calc(100% - 35px); // 相应调整右侧宽度
   }
 }
+
+
 </style>
