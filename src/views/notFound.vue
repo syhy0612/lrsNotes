@@ -10,7 +10,9 @@
 </script>
 
 <style lang="scss" scoped>
-
+.bgColor{
+  text-align: center;
+}
 .title {
   color: #000000;
   font-family: 'Microsoft YaHei', serif;

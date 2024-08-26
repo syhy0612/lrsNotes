@@ -34,9 +34,9 @@
             <div class="messageInfo">
               <div class="messageInfo-left">
                 <img
-                    :src="chatRecords[`player${String(i).padStart(2, '0')}`].election === 1 ? handOnImage : handOffImage"
-                    :alt="chatRecords[`player${String(i).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
-                    :title="chatRecords[`player${String(i).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
+                    :src="getElectionImage(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
+                    :alt="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
+                    :title="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
                     @click="toggleElection(chatRecords[`player${String(i).padStart(2, '0')}`])"
                 >
                 <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
@@ -65,9 +65,9 @@
             <div class="messageInfo">
               <div class="messageInfo-left">
                 <img
-                    :src="chatRecords[`player${String(i+6).padStart(2, '0')}`].election === 1 ? handOnImage : handOffImage"
-                    :alt="chatRecords[`player${String(i+6).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
-                    :title="chatRecords[`player${String(i+6).padStart(2, '0')}`].election === 1 ? '警上' : '警下'"
+                    :src="getElectionImage(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
+                    :alt="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
+                    :title="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
                     @click="toggleElection(chatRecords[`player${String(i+6).padStart(2, '0')}`])"
                 >
                 <div class="player-number">{{ String(i + 6).padStart(2, '0') }}</div>
@@ -93,7 +93,6 @@
         </div>
       </div>
     </div>
-    <!--    <el-button type="primary" @click="debug">调试</el-button>-->
     <el-dialog
         v-model="showSettings"
         title="版型设置"
@@ -109,7 +108,8 @@
 
 <script setup>
 import {ref, computed, watch, onMounted} from 'vue'
-import handOnImage from '@/assets/hand-on.svg'
+import handUpImage from '@/assets/hand-up.svg'
+import handDownImage from '@/assets/hand-down.svg'
 import handOffImage from '@/assets/hand-off.svg'
 import RoleSelector from './RoleSelector.vue'
 import GameSettings from './GameSettings.vue'
@@ -130,7 +130,7 @@ const chatRecords = ref(
         Array.from({length: 12}, (_, i) => {
           const playerKey = `player${String(i + 1).padStart(2, '0')}`;
           return [playerKey, {
-            election: 2,//上警信息 0-init,1-警上,2-警下
+            election: 3,//上警信息 0-init,1-警上刚手,2-警上放手,3-警下
             flag: true,//是否存在 后续如果加入非12人场预留属性
             message: '',//发言信息
             sign: '',//标记信息 如'狼','民'
@@ -173,14 +173,34 @@ const updatePlayerRole = (playerKey, newRole) => {
   chatRecords.value[playerKey].sign = newRole
 }
 
-function debug() {
-  console.log('remarks:', remarks.value)
-  console.log('chatRecords:', toRaw(chatRecords))
+function getElectionImage(election) {
+  switch (election) {
+    case 1:
+      return handUpImage;
+    case 2:
+      return handDownImage;
+    case 3:
+      return handOffImage;
+    default:
+      return handOffImage;
+  }
 }
 
+function getElectionAlt(election) {
+  switch (election) {
+    case 1:
+      return '警上刚手';
+    case 2:
+      return '警上放手';
+    case 3:
+      return '警下';
+    default:
+      return '警下';
+  }
+}
 
 function toggleElection(player) {
-  player.election = player.election === 1 ? 2 : 1
+  player.election = (player.election % 3) + 1;
 }
 
 const resetRemarks = () => {
@@ -226,7 +246,7 @@ const resetTalks = () => {
         Object.keys(chatRecords.value).forEach(key => {
           chatRecords.value[key].message = ''
           chatRecords.value[key].sign = ''
-          chatRecords.value[key].election = 2
+          chatRecords.value[key].election = 3 // 重置为默认状态3
         })
         ElMessage({
           type: 'success',

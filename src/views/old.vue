@@ -73,7 +73,7 @@
                 <div class="role-entry" :class="{ odd: index % 2 === 0, even: index % 2 !== 0 }">
                   <label>
                     <img
-                        :src="role.handOn ? 'svg/hand-on.svg' : 'svg/hand-off.svg'"
+                        :src="role.handOn ? 'svg/hand-up.svg' : 'svg/hand-off.svg'"
                         class="toggle-icon"
                         @click="toggleHand(index)"
                     >
