@@ -14,7 +14,7 @@
             type="primary"
             @click="exportInfo"
             size="small"
-            :icon="Edit "
+            :icon="Edit"
             class="reset-button"/>
       </h2>
       <el-input
@@ -23,6 +23,7 @@
           class="note-textarea"
           :rows="4"
           placeholder="请输入自记信息"
+          @blur="handleBlur(null)"
       />
     </div>
     <div class="note">
@@ -72,6 +73,7 @@
                     :placeholder="`请输入${i}号玩家发言信息`"
                     :prefix="['A','C']"
                     :options="options"
+                    @blur="handleBlur(`player${String(i).padStart(2, '0')}`)"
                 />
               </div>
             </div>
@@ -103,6 +105,7 @@
                     :placeholder="`请输入${i+6}号玩家发言信息`"
                     :prefix="['A','C']"
                     :options="options"
+                    @blur="handleBlur(`player${String(i+6).padStart(2, '0')}`)"
                 />
               </div>
             </div>
@@ -130,7 +133,7 @@
     <el-input
         v-model="exportedInfo"
         type="textarea"
-        :rows="10"
+        :rows="24"
         class="export-textarea"
     />
     <template #footer>
@@ -150,7 +153,7 @@ import handDownImage from '@/assets/hand-down.svg?url'
 import handOffImage from '@/assets/hand-off.svg?url'
 import RoleSelector from './RoleSelector.vue'
 import GameSettings from './GameSettings.vue'
-import {Edit, RefreshRight,} from "@element-plus/icons-vue"
+import {Edit, RefreshRight} from "@element-plus/icons-vue"
 import LittleHand from '@/assets/little-hand.svg?component'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useGameModeStore} from '@/stores/gameModeStore'
@@ -189,8 +192,8 @@ const options = computed(() => {
 const showSettings = ref(false)
 const gameSettingsRef = ref(null)
 
-// 从 localStorage 加载数据
 onMounted(() => {
+  // 从 localStorage 加载数据
   const savedRemarks = localStorage.getItem('remarks')
   if (savedRemarks) {
     remarks.value = savedRemarks
@@ -201,6 +204,13 @@ onMounted(() => {
     Object.assign(chatRecords.value, JSON.parse(savedChatRecords))
   }
 })
+
+// 处理输入框失去焦点时的修剪函数
+const handleBlur = (key) => {
+  const player = chatRecords.value[key]
+  player.message = player.message.trim()
+  remarks.value = remarks.value.trim()
+}
 
 // 监听数据变化并保存到 localStorage
 watch(remarks, (newValue) => {
@@ -340,16 +350,49 @@ const handUp = () => {
 
 // 导出完整笔记信息
 const exportInfo = () => {
-  //todo 具体逻辑需手动修改
-  // 生成导出信息
-  let info = `自记信息：\n${remarks.value}\n\n发言信息：\n`
+  let info = `版型：${selectedMode.value ? selectedMode.value.name : '未选择'}\n`
+  info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+  info += `自记信息：\n${remarks.value.trim()}\n`
+  info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+
+  const upPlayers = Object.entries(chatRecords.value)
+      .filter(([_, record]) => record.election === 1 || record.election === 2)
+      .map(([key, _]) => key.slice(-2))
+
+  const downPlayers = Object.entries(chatRecords.value)
+      .filter(([_, record]) => record.election === 3)
+      .map(([key, _]) => key.slice(-2))
+
+  if (upPlayers.length > 0) {
+    if (upPlayers.length === 12) {
+      info += `全员上警\n`
+    } else {
+      info += `警上：[${upPlayers.join(',')}]\n`
+      info += `警下：[${downPlayers.join(',')}]\n`
+    }
+    info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+  }
+
+  info += `发言信息：\n`
+
+  const allDown = downPlayers.length === 12
+
   Object.entries(chatRecords.value).forEach(([key, record]) => {
-    info += `玩家 ${key.slice(-2)}：\n`
-    info += `  角色：${record.sign || '未设置'}\n`
-    info += `  状态：${getElectionAlt(record.election)}\n`
-    info += `  发言：${record.message || '无'}\n\n`
+    const playerNumber = key.slice(-2)
+    let electionSymbol = ''
+    if (!allDown) {
+      electionSymbol = (record.election === 1 || record.election === 2) ? '*' : '_'
+    }
+    const messageLines = record.message.split('\n')
+    if (messageLines.length > 0) {
+      info += `[${playerNumber}]${electionSymbol} ${messageLines[0]}\n`
+      for (let i = 1; i < messageLines.length; i++) {
+        info += `   \t ${messageLines[i]}\n`
+      }
+    }
   })
-  exportedInfo.value = info
+
+  exportedInfo.value = info.trim()
   showExportDialog.value = true
 }
 
