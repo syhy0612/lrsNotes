@@ -81,6 +81,8 @@
         </div>
         <div class="players-column">
           <div v-for="i in 6" :key="`player${i+6}`" class="player-item">
+            <!--                    <div class="players-column" v-if="playerCount > 6">-->
+            <!--          <div v-for="i in playerCount - 6" :key="`player${i+6}`" class="player-item">-->
             <div class="messageInfo">
               <div class="messageInfo-left">
                 <img
@@ -128,7 +130,7 @@
       v-model="showExportDialog"
       title="导出信息"
       :close-on-click-modal="false"
-      class="export-dialog"
+      :style="{ width: dialogWidth }"
   >
     <el-input
         v-model="exportedInfo"
@@ -192,6 +194,24 @@ const options = computed(() => {
 const showSettings = ref(false)
 const gameSettingsRef = ref(null)
 
+// 定义响应式变量来存储对话框的宽度
+const dialogWidth = ref('50%'); // 默认宽度
+const windowWidth = ref(window.innerWidth); // 存储窗口宽度
+
+// 定义一个函数来更新对话框宽度
+const updateDialogWidth = () => {
+  if (windowWidth.value >= 768) { // 电脑屏幕
+    dialogWidth.value = '50%';
+  } else { // 手机屏幕
+    dialogWidth.value = '80%';
+  }
+};
+
+// 使用watch来观察windowWidth的变化
+watch(windowWidth, (newWidth) => {
+  updateDialogWidth();
+});
+
 onMounted(() => {
   // 从 localStorage 加载数据
   const savedRemarks = localStorage.getItem('remarks')
@@ -203,6 +223,13 @@ onMounted(() => {
   if (savedChatRecords) {
     Object.assign(chatRecords.value, JSON.parse(savedChatRecords))
   }
+
+  updateDialogWidth();
+  // 监听窗口大小变化
+  const handleResize = () => {
+    windowWidth.value = window.innerWidth;
+  };
+  window.addEventListener('resize', handleResize);
 })
 
 // 处理输入框失去焦点时的修剪函数
@@ -335,7 +362,7 @@ const handUp = () => {
         })
         ElMessage({
           type: 'success',
-          message: '所有玩家已更新为上警状态',
+          message: '所有玩家已上警',
           duration: 500
         })
       })
@@ -351,9 +378,9 @@ const handUp = () => {
 // 导出完整笔记信息
 const exportInfo = () => {
   let info = `版型：${selectedMode.value ? selectedMode.value.name : '未选择'}\n`
-  info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+  info += `♫♪♫♪♫♪♫♪♫♪♫♪♫♪\n`
   info += `自记信息：\n${remarks.value.trim()}\n`
-  info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+  info += `♫♪♫♪♫♪♫♪♫♪♫♪♫♪\n`
 
   const upPlayers = Object.entries(chatRecords.value)
       .filter(([_, record]) => record.election === 1 || record.election === 2)
@@ -365,12 +392,12 @@ const exportInfo = () => {
 
   if (upPlayers.length > 0) {
     if (upPlayers.length === 12) {
-      info += `全员上警\n`
+      info += `（全员上警）\n`
     } else {
       info += `警上：[${upPlayers.join(',')}]\n`
       info += `警下：[${downPlayers.join(',')}]\n`
     }
-    info += `◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆\n`
+    info += `♫♪♫♪♫♪♫♪♫♪♫♪♫♪\n`
   }
 
   info += `发言信息：\n`
@@ -442,8 +469,6 @@ $noteWidth: 700px;
 }
 
 .outBox {
-  //margin: 30px auto 0;
-  //border: #770e3a 2px solid;
   box-sizing: border-box;
   width: 1000px;
   height: auto;
@@ -478,7 +503,6 @@ $noteWidth: 700px;
   display: block; // 确保 margin: 0 auto 生效
 }
 
-
 .players-container {
   display: flex;
   justify-content: space-between;
@@ -492,7 +516,6 @@ $noteWidth: 700px;
   margin-bottom: 15px;
 }
 
-
 .messageInfo {
   display: flex;
   align-items: flex-start;
@@ -503,7 +526,7 @@ $noteWidth: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40px; // 设置固定宽度
+    width: 40px;
 
     img {
       cursor: pointer;
@@ -548,45 +571,34 @@ $noteWidth: 700px;
   }
 
   .players-column {
-    width: 49%; /* 略微小于50%以确保两列之间有一点间隔 */
+    width: 49%;
   }
 
   .player-item {
     margin-bottom: 10px;
   }
 
-  .messageInfo {
-    display: flex;
-    align-items: flex-start;
-  }
-
   .messageInfo-left {
-    width: 40px; /* 保持固定宽度以确保一致性 */
-    margin-right: 5px;
-  }
+    width: 30px;
 
-  .messageInfo-left img {
-    width: 20px;
-    height: 20px;
-  }
+    img {
+      width: 16px;
+      height: 16px;
+    }
 
-  .player-number {
-    font-size: 12px;
+    .player-number {
+      font-size: 10px;
+    }
   }
 
   .messageInfo-right {
-    flex-grow: 1;
-    width: calc(100% - 45px); /* 减去左侧宽度和间距 */
+    width: calc(100% - 35px);
   }
 
   .note h2 {
     font-size: 16px;
     padding: 8px;
     margin-bottom: 10px;
-  }
-
-  .note-textarea {
-    width: 100%;
   }
 
   :deep(.el-textarea__inner) {
@@ -596,7 +608,6 @@ $noteWidth: 700px;
     padding: 5px;
   }
 
-  /* 确保 RoleSelector 组件在移动设备上也能正确显示 */
   .messageInfo-left .el-select {
     width: 100%;
   }
@@ -605,24 +616,5 @@ $noteWidth: 700px;
     padding: 0 5px;
     font-size: 12px;
   }
-
-  .messageInfo-left {
-    width: 30px; // 稍微减小宽度
-
-    img {
-      width: 16px; // 减小图片大小
-      height: 16px;
-    }
-
-    .player-number {
-      font-size: 10px; // 减小玩家编号字体大小
-    }
-  }
-
-  .messageInfo-right {
-    width: calc(100% - 35px); // 相应调整右侧宽度
-  }
 }
-
-
 </style>
