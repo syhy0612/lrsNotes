@@ -30,3 +30,6 @@ coverage
 
 # Environment variables
 .env
+
+# VitePress cache
+docs/.vitepress/cache

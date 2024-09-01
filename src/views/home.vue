@@ -1,44 +1,63 @@
 <template>
   <div class="bgColor">
-    <div class="title">在线笔记</div>
-    <router-link to="/board">
-      <el-button color="#6633cc">开始使用</el-button>
-    </router-link>
-    <router-link to="/test">
-      <el-button color="#6633cc" class="btnOld">beta1</el-button>
-    </router-link>
-    <router-link to="/add">
-      <el-button color="#6633cc" class="btnOld">beta2</el-button>
-    </router-link>
+    <div class="content">
+      <div class="title">在线笔记</div>
+      <div class="button-container">
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/board')">开始使用</el-button>
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">开发环境</el-button>
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/add')">测试环境</el-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
+
+const navigateTo = (path) => {
+  router.push(path);
+};
 </script>
 
 <style lang="scss" scoped>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30vh;
+  user-select: none;
+}
 
 .title {
   color: #000000;
   font-family: 'Microsoft YaHei', serif;
   font-weight: bold;
   font-size: 32px;
-  margin-top: 30vh;
   margin-bottom: 20px;
   letter-spacing: 6px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+}
+
 .btnOld {
-  margin-top: 20px;
+  margin-top: 20px; // 恢复原有的按钮间距
+}
+
+.btnOld:nth-child(1) {
+  margin-left: 10px;
 }
 
 .bgColor {
   text-align: center;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   background-color: #20240427;
 }
 </style>
