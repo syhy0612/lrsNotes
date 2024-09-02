@@ -50,9 +50,10 @@ const navigateTo = (path) => {
   margin-top: 20px; // 恢复原有的按钮间距
 }
 
-.btnOld:nth-child(1) {
-  margin-left: 10px;
+.btnOld:nth-child(2), .btnOld:nth-child(3) {
+  margin-left: 0px;
 }
+
 
 .bgColor {
   text-align: center;
