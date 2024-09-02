@@ -22,13 +22,6 @@ const router = createRouter({
 })
 
 router.afterEach((to, from) => {
-    /*    const userStore = useUserStore()
-        if (!userStore.isLoggedIn && to.name !== 'login') {
-            // 如果是未登录状态，3秒后跳转到登录页
-            setTimeout(() => {
-                router.push({name: 'login'})
-            }, 3000)
-        }*/
     if (to.name === 'NotFound') {
         setTimeout(() => {
             router.push({name: 'home'})
