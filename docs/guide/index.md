@@ -1,51 +1,79 @@
-# 狼人杀在线笔记
+# 前言
 
-狼人杀在线笔记是一个为狼人杀游戏玩家设计的工具，方便玩家记录发言信息并导出，提高游戏体验。
+::: tip 在线使用👉
+http://lrsnotes.cc/board
+:::
 
-在线使用：[点击访问](https://lrs-notes.vercel.app)
+这是一个专为狼人杀玩家设计的工具，方便玩家记录发言信息并导出，提高游戏体验。
 
+## ✨ 特点
 
+<div class="feature-grid">
 
-## 💡 项目背景
+<div class="feature-card">
 
-这个小项目源于我观看狼人杀游戏直播时的一个发现。我注意到大多数主播用记事本等工具记录游戏中的发言信息，觉得不太方便。于是我在网上查找有关狼人杀的笔记工具，但遗憾的是，那时的我并没有找到特别合适的工具。
+### 💾 自动保存
 
-2024年6月初，实习结束后，我决定自己尝试制作一个专门的狼人杀在线笔记页面。作为前端小白，借助AI工具，我花了两周时间东拼西凑做了一个简易版本，那时候只会用基础的`HTML`、`CSS`
-和一点点`JavaScript`
-，连怎么修改角色标记都不会，最后不得不暂时搁置。虽然做得很不专业，但那个简易的版本见证了新版本的起点。我把它保存在了`old`
-分支里，作为我学习历程的一个纪念。
+笔记信息自动保存，无需担心数据丢失。
 
-2024年7月初，因工作需要，我开始学习`Vue3`的基础，以及`Echarts`和`Element Plus`的简单使用。
+</div>
 
-2024年8月初，因试用期能力不足，我从公司离职，这次经历让我认识到自己还有很多需要学习的地方。离职后，我决定重新投入到这个项目中，借此机会提升自己的技能。我用`Vue3`
-框架重写了这个项目，新版本放在了`main`分支。借助`Claude`等AI工具的帮助，我逐步改进了这个小项目。虽然比最初的尝试有所进步，但我清楚还有很大的提升空间。
+<div class="feature-card">
 
-## 👨‍💻 开发者说明
+### 📜 版型选择
 
-这个小项目采用了MIT协议开源。如果您觉得它有任何可取之处：
+支持官方多种游戏版型，适应不同场景。
 
-- 欢迎Fork去自由修改，也许您能把它变得更好。
-- [MIT许可证](https://opensource.org/license/MIT)允许您在遵守协议的前提下自由使用和分发。
+</div>
 
-由于我的技术水平还很有限，可能无法处理复杂的改动，但非常欢迎：
+<div class="feature-card">
 
-- 在Issues中分享您的想法或建议，无论大小。
-- 如果您做了什么有趣的改进，也欢迎在Issues里告诉大家。
+### ⚡ 快捷记录
 
-## 💬 反馈与交流
+一键记录关键起跳信息，操作更便捷。
 
-如果您在使用过程中有任何问题、建议或想法，欢迎提Issue交流。
+</div>
 
-Issue：[点击跳转](https://github.com/syhy0612/lrsNotes/issues)
+<div class="feature-card">
 
-Email：syhy0612@163.com
+### 📤 导出功能
 
-> Tip：也可以发邮箱留下联系方式交流。
+轻松导出游戏记录，方便赛后复盘。
 
-感谢您对这个小项目的关注，祝您游戏愉快！
+</div>
 
-如果您觉得这个项目对您有所帮助，欢迎点个star⭐支持一下。
+</div>
 
-## ⭐ Star历史
+<style>
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
 
-[![Star History Chart](https://api.star-history.com/svg?repos=syhy0612/lrsNotes&type=Date)](https://star-history.com/#syhy0612/lrsNotes&Date)
+.feature-card {
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--vp-c-brand);
+}
+
+@media (max-width: 640px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

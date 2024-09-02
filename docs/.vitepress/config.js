@@ -7,6 +7,7 @@ export default defineConfig({
     lang: 'zh-CN',
     title: "狼人杀在线笔记",
     description: "为狼人杀游戏玩家设计的在线笔记工具",
+    cleanUrls: true,
     themeConfig: {
         logo: {
             light: '/logo.svg',
@@ -16,8 +17,7 @@ export default defineConfig({
             {text: '主页', link: '/'},
             {text: '简介', link: '/guide/'},
             {text: '功能介绍', link: '/features/'},
-            {text: '待开发功能', link: '/todo/'},
-            {text: '关于项目', link: '/about/'},
+            {text: '关于', link: '/about/'},
         ],
 
         sidebar: [
@@ -30,14 +30,14 @@ export default defineConfig({
             {
                 text: '功能介绍',
                 items: [
-                    {text: '自动保存', link: '/features/#💾-添加自动保存笔记信息'},
-                    {text: '版型选择', link: '/features/#📜-官狼各游戏版型选择'},
-                    {text: '快捷记录', link: '/features/#⚡-快捷记录起跳关键信息'},
-                    {text: '导出记录', link: '/features/#⚡-导出游戏记录信息'},
+                    {text: '自动保存', link: '/features/#💾-自动保存笔记信息'},
+                    {text: '版型选择', link: '/features/#📜-官狼游戏版型选择'},
+                    {text: '快捷记录', link: '/features/#⚡-快捷记录起跳信息'},
+                    {text: '导出记录', link: '/features/#📤-导出游戏记录信息'},
                 ]
             },
             {
-                text: '关于项目',
+                text: '关于',
                 link: '/about/'
             }
         ],

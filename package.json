@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "vite build && vitepress build docs",
     "preview": "vite preview",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --host 0.0.0.0 --port 3000",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
