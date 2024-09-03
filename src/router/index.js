@@ -1,24 +1,23 @@
-import {createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/home.vue'
 
 const router = createRouter({
-    history: createWebHistory (import.meta.env.BASE_URL), routes: [{
-        path: '/', redirect: '/home'
-    }, {
-        path: '/login', name: 'login', component: () => import('../views/login.vue')
-    }, {
-        path: '/home', name: 'home', component: HomeView
-    }, {
-        path: '/board', name: 'board', component: () => import('../views/main.vue')
-    }, {
-        path: '/test', name: 'test', component: () => import('../components/searchTypes.vue')
-    }, {
-        path: '/add', name: 'add', component: () => import('../views/testMain.vue')
-    }, {
-        path: '/old', name: 'old', component: () => import('../views/old.vue')
-    }, {
-        path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/notFound.vue')
-    }]
+    history: createWebHistory(import.meta.env.BASE_URL), routes: [
+        {
+            path: '/login', name: 'login', component: () => import('../views/login.vue')
+        }, {
+            path: '/', name: 'home', component: HomeView
+        }, {
+            path: '/board', name: 'board', component: () => import('../views/main.vue')
+        }, {
+            path: '/test', name: 'test', component: () => import('../components/searchTypes.vue')
+        }, {
+            path: '/add', name: 'add', component: () => import('../views/testMain.vue')
+        }, {
+            path: '/old', name: 'old', component: () => import('../views/old.vue')
+        }, {
+            path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/notFound.vue')
+        }]
 })
 
 router.afterEach((to, from) => {
