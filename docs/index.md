@@ -4,14 +4,14 @@ layout: home
 hero:
   name: "狼人杀在线笔记"
   text: "专为狼人杀玩家设计"
-  tagline: 方便玩家记录发言信息并导出，提高游戏体验
+  tagline: 方便玩家记录发言信息，提高游戏体验
   image:
     src: /logo.svg
     alt: 狼人杀在线笔记
   actions:
     - theme: brand
       text: 开始使用
-      link: 'http://lrsnotes.cc/board'
+      link: 'https://lrsnotes.cc/board'
     - theme: alt
       text: 功能介绍
       link: /features/

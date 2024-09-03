@@ -30,11 +30,14 @@
 
 如果您在使用过程中有任何问题、建议或想法，欢迎提Issue交流。
 
-Issue：[点击跳转](https://github.com/syhy0612/lrsNotes/issues)
+Issue：[github](https://github.com/syhy0612/lrsNotes/issues) / [gitee](https://gitee.com/syhy0612/lrsNotes/issues)
 
 Email：syhy0612@163.com
 
-> Tip：也可以发邮箱留下联系方式交流。
+::: tip Tips:
+
+- 也可以发邮箱留下联系方式交流。
+  :::
 
 感谢您对这个小项目的关注，祝您游戏愉快！
 
