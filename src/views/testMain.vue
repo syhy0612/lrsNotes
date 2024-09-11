@@ -36,7 +36,7 @@ import { Setting } from '@element-plus/icons-vue';
 import { useGameModeStore } from '@/stores/gameModeStore';
 import SearchTypes from "@/components/searchTypes.vue";
 import Board from '@/components/board.vue';
-import GameSettings from '@/components/GameSettings.vue';
+import GameSettings from '@/components/devGameSettings.vue';
 
 const showSettings = ref(false);
 const store = useGameModeStore();

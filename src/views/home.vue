@@ -4,7 +4,7 @@
       <div class="title">在线笔记</div>
       <div class="button-container">
         <el-button color="#6633cc" class="btnOld" @click="navigateTo('/board')">开始使用</el-button>
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">开发环境</el-button>
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">版型切换</el-button>
         <el-button color="#6633cc" class="btnOld" @click="navigateTo('/add')">测试环境</el-button>
       </div>
     </div>

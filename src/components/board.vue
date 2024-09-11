@@ -1,5 +1,8 @@
 <template>
   <div class="outBox">
+    <div class="topText">
+      当前版型：<a href="#" @click.prevent="openSettings">{{ selectedMode ? selectedMode.name : '点击选择' }}</a>
+    </div>
     <div class="note note-top">
       <h2>自记信息
         <el-button
@@ -116,14 +119,15 @@
       </div>
     </div>
     <el-dialog
-        v-model="showSettings"
-        title="版型设置"
+        v-model="showGameSettings"
+        title="设置"
         :close-on-click-modal="false"
         :close-on-press-escape="false"
         :before-close="handleSettingsClose"
         class="settings-dialog"
+        width="40%"
     >
-      <GameSettings ref="gameSettingsRef" @update-config="updateConfig"/>
+      <GameSettings ref="gameSettingsRef"/>
     </el-dialog>
   </div>
   <el-dialog
@@ -153,8 +157,8 @@ import {ref, computed, watch, onMounted} from 'vue'
 import handUpImage from '@/assets/hand-up.svg?url'
 import handDownImage from '@/assets/hand-down.svg?url'
 import handOffImage from '@/assets/hand-off.svg?url'
-import RoleSelector from './RoleSelector.vue'
-import GameSettings from './GameSettings.vue'
+import RoleSelector from './roleSelector.vue'
+import GameSettings from './gameSettings.vue'
 import {Edit, RefreshRight} from "@element-plus/icons-vue"
 import LittleHand from '@/assets/little-hand.svg?component'
 import {ElMessage, ElMessageBox} from 'element-plus'
@@ -190,6 +194,12 @@ const exportedInfo = ref('')
 const options = computed(() => {
   return selectedMode.value ? selectedMode.value.phrases : []
 })
+
+// 版型设置按钮
+const showGameSettings = ref(false)
+const openSettings = () => {
+  showGameSettings.value = true;
+}
 
 const showSettings = ref(false)
 const gameSettingsRef = ref(null)
@@ -475,6 +485,23 @@ $noteWidth: 700px;
   padding: 20px;
 }
 
+.topText {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+
+  a {
+    text-decoration: none;
+    color: #000000;
+
+    &:hover {
+      text-decoration: underline;
+      color: #888;
+    }
+  }
+}
+
 .note {
   width: $noteWidth;
   margin: 0 auto 20px;
@@ -550,6 +577,10 @@ $noteWidth: 700px;
   margin-left: 4px;
   height: 16px;
   width: 16px;
+}
+
+:deep(.settings-dialog) {
+  min-width: 300px;
 }
 
 @media screen and (max-width: 768px) {

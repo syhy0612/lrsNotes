@@ -175,7 +175,7 @@ watch(gameModes, (newGameModes) => {
 <style scoped>
 .search-container {
   position: relative;
-  width: 300px;
+  width: 200px;
   font-family: Arial, sans-serif;
 }
 
