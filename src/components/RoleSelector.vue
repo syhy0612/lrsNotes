@@ -93,7 +93,7 @@ const selectRole = (roleText) => {
 
 <style scoped lang="scss">
 $hexagon-size: 18px;
-$hexagon-height: calc($hexagon-size * 2 / 1.7321);
+$hexagon-height: calc(#{$hexagon-size} * 2 / 1.7321);
 
 @mixin hexagon-base {
   width: $hexagon-size;
@@ -135,7 +135,7 @@ $hexagon-height: calc($hexagon-size * 2 / 1.7321);
       purple: #c616c5,
       gray: #c8c8c8
   ) {
-    &-#{$color} {
+    &-#{"#{$color}"} {
       background-color: $bg-color;
     }
   }

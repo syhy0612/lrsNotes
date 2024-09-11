@@ -1,7 +1,7 @@
 # 前言
 
 ::: tip 在线使用👉
-http://lrsnotes.cc/board
+https://lrsnotes.cc/home/board
 :::
 
 这是一个专为狼人杀玩家设计的工具，方便玩家记录发言信息并导出，提高游戏体验。

@@ -2,10 +2,10 @@
   <div class="game-settings">
     <el-select v-model="selectedModeId" placeholder="选择游戏版型" @change="handleModeChange">
       <el-option
-        v-for="mode in gameModes"
-        :key="mode.id"
-        :label="mode.name"
-        :value="mode.id"
+          v-for="mode in gameModes"
+          :key="mode.id"
+          :label="mode.name"
+          :value="mode.id"
       />
     </el-select>
 
@@ -18,9 +18,9 @@
           <div class="role-options">
             <div class="role-group wolves">
               <div
-                v-for="role in wolveRoles"
-                :key="role.text"
-                class="role-container"
+                  v-for="role in wolfRoles"
+                  :key="role.text"
+                  class="role-container"
               >
                 <div v-if="role.count > 1" class="role-count hexagon">
                   {{ role.count }}
@@ -32,9 +32,9 @@
             </div>
             <div class="role-group villagers">
               <div
-                v-for="role in villagerRoles"
-                :key="role.text"
-                class="role-container"
+                  v-for="role in villagerRoles"
+                  :key="role.text"
+                  class="role-container"
               >
                 <div v-if="role.count > 1" class="role-count hexagon">
                   {{ role.count }}
@@ -64,10 +64,10 @@
       <el-tab-pane label="查看配置" name="view">
         <div class="config-view-container">
           <el-button
-            class="copy-button"
-            :icon="CopyDocument"
-            circle
-            @click="copyConfig"
+              class="copy-button"
+              :icon="CopyDocument"
+              circle
+              @click="copyConfig"
           />
           <pre v-if="selectedMode" class="config-view">{{ JSON.stringify(selectedMode, null, 2) }}</pre>
         </div>
@@ -82,16 +82,16 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
-import { ElMessage, ElMessageBox } from 'element-plus';
-import { Delete, CopyDocument } from '@element-plus/icons-vue';
-import { useGameModeStore } from '@/stores/gameModeStore';
-import { storeToRefs } from 'pinia';
+import {ref, computed, watch, onMounted} from 'vue';
+import {ElMessage, ElMessageBox} from 'element-plus';
+import {Delete, CopyDocument} from '@element-plus/icons-vue';
+import {useGameModeStore} from '@/stores/gameModeStore';
+import {storeToRefs} from 'pinia';
 
 const emit = defineEmits(['update-config']);
 
 const store = useGameModeStore();
-const { gameModes } = storeToRefs(store);
+const {gameModes} = storeToRefs(store);
 
 const activeTab = ref('config');
 const selectedModeId = ref(null);
@@ -102,7 +102,7 @@ const selectedMode = computed(() => {
   return gameModes.value.find(mode => mode.id === selectedModeId.value);
 });
 
-const wolveRoles = computed(() => {
+const wolfRoles = computed(() => {
   if (!selectedMode.value || !selectedMode.value.roles) return [];
   return selectedMode.value.roles.filter(role => role.color === 'red');
 });
@@ -122,7 +122,7 @@ const markAsChanged = () => {
 
 const addPhrase = () => {
   if (selectedMode.value) {
-    selectedMode.value.phrases.push({ label: '', value: '' });
+    selectedMode.value.phrases.push({label: '', value: ''});
     markAsChanged();
   }
 };
@@ -136,13 +136,13 @@ const removePhrase = (index) => {
 
 const confirmSave = () => {
   ElMessageBox.confirm(
-    '确定要保存当前配置吗？这将覆盖之前的配置。',
-    '保存确认',
-    {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-    }
+      '确定要保存当前配置吗？这将覆盖之前的配置。',
+      '保存确认',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
   ).then(() => {
     saveConfig();
   }).catch(() => {
@@ -167,13 +167,13 @@ const saveConfig = () => {
 
 const confirmReset = () => {
   ElMessageBox.confirm(
-    '确定要重置所有配置吗？这将丢失所有未保存的更改。',
-    '重置确认',
-    {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-    }
+      '确定要重置所有配置吗？这将丢失所有未保存的更改。',
+      '重置确认',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
   ).then(() => {
     resetConfig();
   }).catch(() => {
@@ -220,7 +220,7 @@ const copyConfig = () => {
 // 监听 gameModes 的变化
 watch(gameModes, () => {
   hasChanges.value = JSON.stringify(gameModes.value) !== JSON.stringify(originalModes.value);
-}, { deep: true });
+}, {deep: true});
 
 // 初始化选中的模式
 onMounted(() => {
@@ -231,29 +231,29 @@ onMounted(() => {
 const handleClose = (done) => {
   if (hasChanges.value) {
     ElMessageBox.confirm(
-      '有未保存的更改，是否保存？',
-      '确认',
-      {
-        confirmButtonText: '保存',
-        cancelButtonText: '不保存',
-        type: 'warning',
-        distinguishCancelAndClose: true,
-      }
-    )
-      .then(() => {
-        saveConfig();
-        done(true);
-      })
-      .catch((action) => {
-        if (action === 'cancel') {
-          // 用户选择不保存
-          hasChanges.value = false;
-          done(true);
-        } else {
-          // 用户关闭对话框，不执行任何操作
-          done(false);
+        '有未保存的更改，是否保存？',
+        '确认',
+        {
+          confirmButtonText: '保存',
+          cancelButtonText: '不保存',
+          type: 'warning',
+          distinguishCancelAndClose: true,
         }
-      });
+    )
+        .then(() => {
+          saveConfig();
+          done(true);
+        })
+        .catch((action) => {
+          if (action === 'cancel') {
+            // 用户选择不保存
+            hasChanges.value = false;
+            done(true);
+          } else {
+            // 用户关闭对话框，不执行任何操作
+            done(false);
+          }
+        });
   } else {
     done(true);
   }
@@ -265,10 +265,12 @@ defineExpose({
 </script>
 
 <style scoped lang="scss">
+@use "sass:math";
+
 $hexagon-size: 36px;
-$hexagon-height: calc($hexagon-size * 2 / 1.7321);
 $count-hexagon-size: 18px;
-$count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
+$hexagon-height: math.div($hexagon-size * 2, 1.7321);
+$count-hexagon-height: math.div($count-hexagon-size * 2, 1.7321);
 
 @mixin hexagon-base($size, $height) {
   width: $size;
@@ -291,7 +293,7 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
 
 .role-options {
   display: flex;
-  gap: 10px; // 狼人组和好人组之间的间距
+  gap: 10px; // 对立阵营之间的间距
   padding: 20px 10px 5px;
 }
 
@@ -338,7 +340,7 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
 .role-count {
   @include hexagon-base($count-hexagon-size, $count-hexagon-height);
   position: absolute;
-  top: -$count-hexagon-height / 2;
+  top: math.div($count-hexagon-height, -2);
   left: 50%;
   transform: translateX(-50%);
   background-color: #a8abb2;
@@ -373,11 +375,12 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
   text-align: right;
 }
 
+// 媒体查询
 @media screen and (max-width: 768px) {
   $hexagon-size: 28px;
-  $hexagon-height: calc($hexagon-size * 2 / 1.7321);
   $count-hexagon-size: 14px;
-  $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
+  $hexagon-height: math.div($hexagon-size * 2, 1.7321);
+  $count-hexagon-height: math.div($count-hexagon-size * 2, 1.7321);
 
   .hexagon {
     width: $hexagon-size;
@@ -391,7 +394,7 @@ $count-hexagon-height: calc($count-hexagon-size * 2 / 1.7321);
     height: $count-hexagon-height;
     line-height: $count-hexagon-height;
     font-size: 10px;
-    top: -$count-hexagon-height / 2;
+    top: math.div($count-hexagon-height, -2);
   }
 }
 
