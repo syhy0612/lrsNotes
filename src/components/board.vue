@@ -563,13 +563,35 @@ $noteWidth: 700px;
     }
 
     .player-number {
-      font-size: 14px;
-      margin: 4px 0;
+      font-size: 12px;
+      margin: 2px 0 6px;
+      box-sizing: border-box;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      background-color: white;
     }
+
   }
 
   &-right {
     flex-grow: 1;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      width: 10px;
+      height: 1px;
+      background-color: #666;
+      transform: translateY(-50%) scaleY(0.5);
+    }
   }
 }
 
@@ -619,11 +641,25 @@ $noteWidth: 700px;
 
     .player-number {
       font-size: 10px;
+      margin: 0 0 3px;
+      width: 14px;
+      height: 14px;
     }
   }
 
   .messageInfo-right {
     width: calc(100% - 35px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      width: 10px;
+      height: 1px;
+      background-color: #666;
+      transform: translateY(-50%) scaleY(0.5);
+    }
   }
 
   .note h2 {

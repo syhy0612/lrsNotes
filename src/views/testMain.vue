@@ -10,11 +10,12 @@
       </div>
     </div>
     <div class="content">
+      <!--<div class="section">
+              <SearchTypes class="search-types" @select-mode="handleModeSelect"/>
+            </div>
+      -->
       <div class="section">
-        <SearchTypes class="search-types" @select-mode="handleModeSelect"/>
-      </div>
-      <div class="section">
-        <Board />
+        <Board/>
       </div>
     </div>
 
@@ -25,15 +26,15 @@
         :close-on-press-escape="false"
         class="settings-dialog"
     >
-      <GameSettings @update-config="updateConfig" />
+      <GameSettings @update-config="updateConfig"/>
     </el-dialog>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { Setting } from '@element-plus/icons-vue';
-import { useGameModeStore } from '@/stores/gameModeStore';
+import {ref, onMounted} from 'vue';
+import {Setting} from '@element-plus/icons-vue';
+import {useGameModeStore} from '@/stores/gameModeStore';
 import SearchTypes from "@/components/searchTypes.vue";
 import Board from '@/components/board.vue';
 import GameSettings from '@/components/devGameSettings.vue';
@@ -56,6 +57,17 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.circle {
+  width: 50px; /* 设置宽度 */
+  height: 50px; /* 设置高度 */
+  border: 2px solid black; /* 设置边框 */
+  border-radius: 50%; /* 使元素变为圆形 */
+  display: flex; /* 使用 flex 居中内容 */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  font-size: 20px; /* 调整文字大小 */
+}
+
 .header {
   display: flex;
   justify-content: space-between;
