@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 import gitee from '../public/gitee.js';
 
 export default defineConfig({
-    base: './',
+    base: '/',
     lang: 'zh-CN',
     title: "狼人杀在线笔记",
     description: "为狼人杀游戏玩家设计的在线笔记工具",
