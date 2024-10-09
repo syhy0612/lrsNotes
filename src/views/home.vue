@@ -4,7 +4,8 @@
       <div class="title">在线笔记</div>
       <div class="button-container">
         <el-button color="#6633cc" class="btnOld" @click="navigateTo('/board')">开始使用</el-button>
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">版型切换</el-button>
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/full')">全屏使用</el-button>
+        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">组件调试</el-button>
         <el-button color="#6633cc" class="btnOld" @click="navigateTo('/add')">测试环境</el-button>
       </div>
     </div>
@@ -50,8 +51,8 @@ const navigateTo = (path) => {
   margin-top: 20px; // 恢复原有的按钮间距
 }
 
-.btnOld:nth-child(2), .btnOld:nth-child(3) {
-  margin-left: 0px;
+.btnOld:nth-child(2), .btnOld:nth-child(3), .btnOld:nth-child(4) {
+  margin-left: 0;
 }
 
 

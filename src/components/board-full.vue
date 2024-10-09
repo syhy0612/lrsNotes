@@ -5,124 +5,128 @@
       <el-button
           plain
           type="primary"
-          @click="goFullScreen"
+          @click="toggleFullScreen"
           size="small"
           :icon="FullScreen"
           class="reset-button"/>
     </div>
-    <div class="note note-top">
-      <h2>自记信息
-        <el-button
-            plain
-            type="primary"
-            @click="resetRemarks"
-            size="small"
-            :icon="RefreshRight"
-            class="reset-button"/>
-        <el-button
-            plain
-            type="primary"
-            @click="exportInfo"
-            size="small"
-            :icon="Edit"
-            class="reset-button"/>
-      </h2>
-      <el-input
-          v-model="remarks"
-          type="textarea"
-          class="note-textarea"
-          :rows="4"
-          placeholder="请输入自记信息"
-          @blur="handleBlur(null)"
-      />
-    </div>
-    <div class="note">
-      <h2>发言信息
-        <el-button
-            plain
-            type="primary"
-            @click="resetTalks"
-            size="small"
-            :icon="RefreshRight"
-            class="reset-button"/>
-        <el-button
-            plain
-            type="primary"
-            @click="handUp"
-            size="small"
-            class="reset-button">
-          <el-icon>
-            <LittleHand/>
-          </el-icon>
-        </el-button>
-      </h2>
-      <div class="players-container">
-        <div class="players-column">
-          <div v-for="i in 6" :key="`player${i}`" class="player-item">
-            <div class="messageInfo">
-              <div class="messageInfo-left">
-                <img
-                    :src="getElectionImage(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
-                    :alt="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
-                    :title="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
-                    @click="toggleElection(chatRecords[`player${String(i).padStart(2, '0')}`])"
-                >
-                <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
-                <RoleSelector
-                    :currentRole="chatRecords[`player${String(i).padStart(2, '0')}`].sign"
-                    @update:role="(newRole) => updatePlayerRole(`player${String(i).padStart(2, '0')}`, newRole)"
-                    placement="right"
-                />
+    <div class="full-box">
+      <div class="note">
+        <h2>发言信息
+          <el-button
+              plain
+              type="primary"
+              @click="resetTalks"
+              size="small"
+              :icon="RefreshRight"
+              class="reset-button"/>
+          <el-button
+              plain
+              type="primary"
+              @click="handUp"
+              size="small"
+              class="reset-button">
+            <el-icon>
+              <LittleHand/>
+            </el-icon>
+          </el-button>
+        </h2>
+        <div class="players-container">
+          <div class="players-column">
+            <div v-for="i in 6" :key="`player${i}`" class="player-item">
+              <div class="messageInfo">
+                <div class="messageInfo-left">
+                  <img
+                      :src="getElectionImage(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
+                      :alt="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
+                      :title="getElectionAlt(chatRecords[`player${String(i).padStart(2, '0')}`].election)"
+                      @click="toggleElection(chatRecords[`player${String(i).padStart(2, '0')}`])"
+                  >
+                  <div class="player-number">{{ String(i).padStart(2, '0') }}</div>
+                  <RoleSelector
+                      :currentRole="chatRecords[`player${String(i).padStart(2, '0')}`].sign"
+                      @update:role="(newRole) => updatePlayerRole(`player${String(i).padStart(2, '0')}`, newRole)"
+                      placement="right"
+                  />
+                </div>
+                <div class="messageInfo-right">
+                  <el-mention
+                      v-model="chatRecords[`player${String(i).padStart(2, '0')}`].message"
+                      type="textarea"
+                      class="note-textarea"
+                      :rows="6"
+                      :placeholder="`请输入${i}号玩家发言信息`"
+                      :prefix="['A','C']"
+                      :options="options"
+                      @blur="handleBlur(`player${String(i).padStart(2, '0')}`)"
+                      style="font-size: 14px;"
+                  />
+                </div>
               </div>
-              <div class="messageInfo-right">
-                <el-mention
-                    v-model="chatRecords[`player${String(i).padStart(2, '0')}`].message"
-                    type="textarea"
-                    class="note-textarea"
-                    :rows="3"
-                    :placeholder="`请输入${i}号玩家发言信息`"
-                    :prefix="['A','C']"
-                    :options="options"
-                    @blur="handleBlur(`player${String(i).padStart(2, '0')}`)"
-                />
+            </div>
+          </div>
+          <div class="players-column">
+            <div v-for="i in 6" :key="`player${i+6}`" class="player-item">
+              <!--                    <div class="players-column" v-if="playerCount > 6">-->
+              <!--          <div v-for="i in playerCount - 6" :key="`player${i+6}`" class="player-item">-->
+              <div class="messageInfo">
+                <div class="messageInfo-left">
+                  <img
+                      :src="getElectionImage(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
+                      :alt="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
+                      :title="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
+                      @click="toggleElection(chatRecords[`player${String(i+6).padStart(2, '0')}`])"
+                  >
+                  <div class="player-number">{{ String(i + 6).padStart(2, '0') }}</div>
+                  <RoleSelector
+                      :currentRole="chatRecords[`player${String(i+6).padStart(2, '0')}`].sign"
+                      @update:role="(newRole) => updatePlayerRole(`player${String(i+6).padStart(2, '0')}`, newRole)"
+                      placement="left"
+                  />
+                </div>
+                <div class="messageInfo-right">
+                  <el-mention
+                      v-model="chatRecords[`player${String(i+6).padStart(2, '0')}`].message"
+                      type="textarea"
+                      class="note-textarea"
+                      :rows="6"
+                      :placeholder="`请输入${i+6}号玩家发言信息`"
+                      :prefix="['A','C']"
+                      :options="options"
+                      @blur="handleBlur(`player${String(i+6).padStart(2, '0')}`)"
+                      style="font-size: 14px;"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="players-column">
-          <div v-for="i in 6" :key="`player${i+6}`" class="player-item">
-            <!--                    <div class="players-column" v-if="playerCount > 6">-->
-            <!--          <div v-for="i in playerCount - 6" :key="`player${i+6}`" class="player-item">-->
-            <div class="messageInfo">
-              <div class="messageInfo-left">
-                <img
-                    :src="getElectionImage(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
-                    :alt="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
-                    :title="getElectionAlt(chatRecords[`player${String(i+6).padStart(2, '0')}`].election)"
-                    @click="toggleElection(chatRecords[`player${String(i+6).padStart(2, '0')}`])"
-                >
-                <div class="player-number">{{ String(i + 6).padStart(2, '0') }}</div>
-                <RoleSelector
-                    :currentRole="chatRecords[`player${String(i+6).padStart(2, '0')}`].sign"
-                    @update:role="(newRole) => updatePlayerRole(`player${String(i+6).padStart(2, '0')}`, newRole)"
-                    placement="left"
-                />
-              </div>
-              <div class="messageInfo-right">
-                <el-mention
-                    v-model="chatRecords[`player${String(i+6).padStart(2, '0')}`].message"
-                    type="textarea"
-                    class="note-textarea"
-                    :rows="3"
-                    :placeholder="`请输入${i+6}号玩家发言信息`"
-                    :prefix="['A','C']"
-                    :options="options"
-                    @blur="handleBlur(`player${String(i+6).padStart(2, '0')}`)"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="note note-top">
+        <h2>自记信息
+          <el-button
+              plain
+              type="primary"
+              @click="resetRemarks"
+              size="small"
+              :icon="RefreshRight"
+              class="reset-button"/>
+          <el-button
+              plain
+              type="primary"
+              @click="exportInfo"
+              size="small"
+              :icon="Edit"
+              class="reset-button"/>
+        </h2>
+        <el-input
+            v-model="remarks"
+            type="textarea"
+            class="note-textarea"
+            :rows="24"
+            placeholder="请输入自记信息"
+            @blur="handleBlur(null)"
+        />
       </div>
     </div>
     <el-dialog
@@ -171,7 +175,6 @@ import LittleHand from '@/assets/little-hand.svg?component'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useGameModeStore} from '@/stores/gameModeStore'
 import {storeToRefs} from 'pinia'
-import router from "@/router/index.js";
 
 const store = useGameModeStore()
 const {selectedMode} = storeToRefs(store)
@@ -223,6 +226,38 @@ const updateDialogWidth = () => {
   } else { // 手机屏幕
     dialogWidth.value = '80%';
   }
+};
+
+const isFullScreen = ref(false); // 记录全屏状态
+
+const toggleFullScreen = () => {
+  const element = document.documentElement; // 获取文档元素
+
+  if (!isFullScreen.value) {
+    // 进入全屏
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  } else {
+    // 退出全屏
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+
+  isFullScreen.value = !isFullScreen.value; // 切换全屏状态
 };
 
 // 使用watch来观察windowWidth的变化
@@ -473,30 +508,6 @@ const handleSettingsClose = (done) => {
   }
 }
 
-// 跳转全屏
-const goFullScreen = () => {
-  ElMessageBox.confirm(
-      '确定要跳转全屏模式页面吗？',
-      '确认',
-      {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-        center: true,
-      }
-  )
-      .then(() => {
-        router.push('/full');
-      })
-      .catch(() => {
-        ElMessage({
-          type: 'info',
-          message: '已取消操作',
-          duration: 500,
-        });
-      });
-};
-
 const updateConfig = (newConfig) => {
   // 处理配置更新
   store.updateGameModes(newConfig)
@@ -504,7 +515,7 @@ const updateConfig = (newConfig) => {
 </script>
 
 <style scoped lang="scss">
-$noteWidth: 700px;
+$noteWidth: 100vw;
 
 * {
   font-family: "微软雅黑", Arial, sans-serif;
@@ -512,9 +523,15 @@ $noteWidth: 700px;
 
 .outBox {
   box-sizing: border-box;
-  width: 1000px;
-  height: auto;
-  padding: 20px;
+  width: 100vw;
+  height: 100vw;
+  padding: 10px;
+}
+
+.full-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; //子元素顶部对齐
 }
 
 .topText {
@@ -535,7 +552,7 @@ $noteWidth: 700px;
 }
 
 .note {
-  width: $noteWidth;
+  width: calc($noteWidth / 3 * 2 - 100px);
   margin: 0 auto 20px;
   user-select: none;
 
@@ -549,10 +566,19 @@ $noteWidth: 700px;
 
   .note-textarea {
     width: 100%;
+    font-size: 14px !important;
   }
 
   :deep(.el-textarea__inner) {
     resize: none !important;
+  }
+}
+
+.note-top {
+  width: calc($noteWidth / 3) !important;
+
+  :deep(.el-textarea__inner) {
+    resize: vertical !important;
   }
 }
 
@@ -568,16 +594,16 @@ $noteWidth: 700px;
 }
 
 .players-column {
-  width: 48%;
+  width: 50%;
 }
 
 .player-item {
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 }
 
 .messageInfo {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   &-left {
     margin-top: 2px;
@@ -635,85 +661,5 @@ $noteWidth: 700px;
 
 :deep(.settings-dialog) {
   min-width: 300px;
-}
-
-@media screen and (max-width: 768px) {
-  .outBox {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .note {
-    width: 100%;
-    margin: 0 auto 20px;
-  }
-
-  .players-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .players-column {
-    width: 49%;
-  }
-
-  .player-item {
-    margin-bottom: 10px;
-  }
-
-  .messageInfo-left {
-    width: 30px;
-
-    img {
-      width: 16px;
-      height: 16px;
-    }
-
-    .player-number {
-      font-size: 10px;
-      margin: 0 0 3px;
-      width: 14px;
-      height: 14px;
-    }
-  }
-
-  .messageInfo-right {
-    width: calc(100% - 35px);
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: -6px;
-      top: 50%;
-      width: 10px;
-      height: 1px;
-      background-color: #666;
-      transform: translateY(-50%) scaleY(0.5);
-    }
-  }
-
-  .note h2 {
-    font-size: 16px;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-
-  :deep(.el-textarea__inner) {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 10px;
-    padding: 5px;
-  }
-
-  .messageInfo-left .el-select {
-    width: 100%;
-  }
-
-  .messageInfo-left .el-select .el-input__inner {
-    padding: 0 5px;
-    font-size: 12px;
-  }
 }
 </style>

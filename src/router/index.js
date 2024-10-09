@@ -12,6 +12,8 @@ const router = createRouter({
     }, {
         path: '/test', name: 'test', component: () => import('../components/searchTypes.vue')
     }, {
+        path: '/full', name: 'full', component: () => import('../views/full.vue')
+    }, {
         path: '/add', name: 'add', component: () => import('../views/testMain.vue')
     }, {
         path: '/old', name: 'old', component: () => import('../views/old.vue')
