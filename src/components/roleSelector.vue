@@ -98,7 +98,8 @@ $hexagon-height: calc(#{$hexagon-size} * 2 / 1.7321);
 @mixin hexagon-base {
   width: $hexagon-size;
   height: $hexagon-height;
-  line-height: calc($hexagon-height - 1px);
+  //line-height: calc($hexagon-height - 1px);
+  line-height: $hexagon-height;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   font-family: var(--noto-sans-sc), Arial, sans-serif;
   color: white;
@@ -112,6 +113,7 @@ $hexagon-height: calc(#{$hexagon-size} * 2 / 1.7321);
   @include hexagon-base;
   margin: 0 auto 5px auto;
   background-color: #c8c8c8;
+  white-space: nowrap; // 禁止换行
 
   &.active {
     transform: scale(1.1);
@@ -142,20 +144,26 @@ $hexagon-height: calc(#{$hexagon-size} * 2 / 1.7321);
 }
 
 .role-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 每行3个按钮
+  gap: 5px; // 按钮之间的间距
   padding: 5px;
 }
 
 .role-button {
-  flex: 0 0 calc(30% - 2.5px);
-  margin: 0;
   color: white;
   border: none;
   padding: 5px 0;
   text-align: center;
   font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%; // 确保按钮宽度一致
+  white-space: nowrap; // 防止文字换行
+  overflow: hidden; // 防止内容溢出
+  text-overflow: ellipsis; // 溢出显示省略号
+  margin-left: 0 !important; // 确保布局正常
+
 
   &:hover {
     opacity: 0.7;
