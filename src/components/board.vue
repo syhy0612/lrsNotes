@@ -486,6 +486,11 @@ const goFullScreen = () => {
       }
   )
       .then(() => {
+        ElMessage({
+          message: '请再次点击全屏按钮或手动按F11进入全屏模式',
+          type: 'success',
+          duration: 2000
+        })
         router.push('/full');
       })
       .catch(() => {
@@ -642,6 +647,10 @@ $noteWidth: 700px;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+  }
+
+  .reset-button {
+    display: none;
   }
 
   .note {
