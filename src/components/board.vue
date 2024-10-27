@@ -1,6 +1,13 @@
 <template>
   <div class="outBox">
     <div class="topText">
+      <el-button
+          plain
+          type="text"
+          @click="goHome"
+          size="default"
+          :icon="HomeFilled"
+          class=""/>
       当前版型：<a href="#" @click.prevent="openSettings">{{ selectedMode ? selectedMode.name : '点击选择' }}</a>
       <el-button
           plain
@@ -166,7 +173,7 @@ import handDownImage from '@/assets/hand-down.svg?url'
 import handOffImage from '@/assets/hand-off.svg?url'
 import RoleSelector from './roleSelector.vue'
 import GameSettings from './gameSettings.vue'
-import {Edit, FullScreen, RefreshRight} from "@element-plus/icons-vue"
+import {Edit, FullScreen, HomeFilled, RefreshRight} from "@element-plus/icons-vue"
 import LittleHand from '@/assets/little-hand.svg?component'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useGameModeStore} from '@/stores/gameModeStore'
@@ -502,6 +509,10 @@ const goFullScreen = () => {
       });
 };
 
+const goHome = () => {
+  window.location.href = 'https://lrsnotes.cc';
+}
+
 const updateConfig = (newConfig) => {
   // 处理配置更新
   store.updateGameModes(newConfig)
@@ -650,7 +661,7 @@ $noteWidth: 700px;
   }
 
   .reset-button {
-    display: none;
+    //display: none;
   }
 
   .note {

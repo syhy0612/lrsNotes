@@ -1,72 +1,6 @@
 [
   {
     "id": 1,
-    "name": "觉醒女巫",
-    "pinyin": "jxnw",
-    "type": "常驻开放场",
-    "isFavorite": false,
-    "roles": [
-      {
-        "text": "狼",
-        "color": "red",
-        "count": 3
-      },
-      {
-        "text": "觉狼",
-        "color": "red",
-        "count": 1
-      },
-      {
-        "text": "民",
-        "color": "blue",
-        "count": 4
-      },
-      {
-        "text": "预",
-        "color": "blue",
-        "count": 1
-      },
-      {
-        "text": "守",
-        "color": "blue",
-        "count": 1
-      },
-      {
-        "text": "猎",
-        "color": "blue",
-        "count": 1
-      },
-      {
-        "text": "觉女",
-        "color": "blue",
-        "count": 1
-      }
-    ],
-    "phrases": [
-      {
-        "label": "跳-预言家-发金水",
-        "value": "C预@0金水/1.2.3/"
-      },
-      {
-        "label": "跳-预言家-发查杀",
-        "value": "预@0查杀/1.2.3/"
-      },
-      {
-        "label": "跳-觉醒女巫-发银水",
-        "value": "C女巫@0银水"
-      },
-      {
-        "label": "跳-猎人",
-        "value": "猎人"
-      },
-      {
-        "label": "跳-守卫-报盾口",
-        "value": "守卫/0.1.2/"
-      }
-    ]
-  },
-  {
-    "id": 2,
     "name": "标准场",
     "pinyin": "bzc",
     "type": "常驻开放场",
@@ -127,7 +61,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "奇迹商人",
     "pinyin": "qjsr",
     "type": "常驻开放场",
@@ -210,7 +144,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "镜隐迷踪",
     "pinyin": "jymz",
     "type": "常驻开放场",
@@ -268,6 +202,72 @@
       {
         "label": "跳-猎人",
         "value": "猎人"
+      },
+      {
+        "label": "跳-守卫-报盾口",
+        "value": "守卫/0.1.2/"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "暗夜星辰",
+    "pinyin": "ayxc",
+    "type": "常驻开放场",
+    "isFavorite": false,
+    "roles": [
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "觉美",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "女",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉猎",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": [
+      {
+        "label": "跳-预言家-发金水",
+        "value": "预@0金水/1.2.3/"
+      },
+      {
+        "label": "跳-预言家-发查杀",
+        "value": "预@0查杀/1.2.3/"
+      },
+      {
+        "label": "跳-女巫-发银水",
+        "value": "女巫@0银水"
+      },
+      {
+        "label": "跳-觉猎",
+        "value": "觉猎"
       },
       {
         "label": "跳-守卫-报盾口",
@@ -1850,6 +1850,72 @@
       {
         "label": "跳-流光伯爵",
         "value": "流光伯爵"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "觉醒女巫",
+    "pinyin": "jxnw",
+    "type": "每周轮播场",
+    "isFavorite": false,
+    "roles": [
+      {
+        "text": "狼",
+        "color": "red",
+        "count": 3
+      },
+      {
+        "text": "觉狼",
+        "color": "red",
+        "count": 1
+      },
+      {
+        "text": "民",
+        "color": "blue",
+        "count": 4
+      },
+      {
+        "text": "预",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "守",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "猎",
+        "color": "blue",
+        "count": 1
+      },
+      {
+        "text": "觉女",
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "phrases": [
+      {
+        "label": "跳-预言家-发金水",
+        "value": "预@0金水/1.2.3/"
+      },
+      {
+        "label": "跳-预言家-发查杀",
+        "value": "预@0查杀/1.2.3/"
+      },
+      {
+        "label": "跳-觉醒女巫-发银水",
+        "value": "女巫@0银水"
+      },
+      {
+        "label": "跳-猎人",
+        "value": "猎人"
+      },
+      {
+        "label": "跳-守卫-报盾口",
+        "value": "守卫/0.1.2/"
       }
     ]
   }
