@@ -510,7 +510,7 @@ const goFullScreen = () => {
 };
 
 const goHome = () => {
-  window.location.href = 'https://lrsnotes.cc';
+  window.location.href = 'https://lrs-notes.edgeone.app/';
 }
 
 const updateConfig = (newConfig) => {

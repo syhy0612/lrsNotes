@@ -1,8 +1,8 @@
-# 🐺 狼人杀在线笔记
+# 🐺 狼人杀在线笔记（已弃）
 
 狼人杀在线笔记是一个为狼人杀游戏玩家设计的工具，方便玩家记录发言信息并导出，提高游戏体验。
 <p align="center">
-    <a href="https://lrsnotes.cc/"><img src="https://img.shields.io/badge/访问-在线使用-lgreen?style=plastic" alt="在线使用"></a>
+    <a href="https://lrs-notes.edgeone.app/"><img src="https://img.shields.io/badge/访问-在线使用-lgreen?style=plastic" alt="在线使用"></a>
     <a href="https://github.com/syhy0612/lrsNotes"><img src="https://img.shields.io/badge/github-项目地址-blue?style=plastic" alt="GitHub 项目地址"></a>
     <a href="https://gitee.com/syhy0612/lrsNotes"><img src="https://img.shields.io/badge/gitee-项目地址-blue?style=plastic" alt="Gitee 项目地址"></a>
     <a href="https://github.com/syhy0612/lrsNotes/stargazers"><img src="https://img.shields.io/github/stars/syhy0612/lrsNotes?style=social" alt="GitHub Star 数"></a>
@@ -24,7 +24,7 @@
 
 - [ ] 计时器功能
 - [ ] 玩家号码可以是6-12人之间
-- [ ] 可以另外写一个给法官用的页面
+- [ ] 可以另外写一个给法官用的页面*
 - [ ] 支持做双层笔记记录，即同时记录战术或抿的身份等
 - [ ] 添加暗黑模式
 

@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: 'https://cc.lrsnotes.cc'
+      link: 'https://lrs-notes.edgeone.app/'
     - theme: alt
       text: 功能介绍
       link: /features/

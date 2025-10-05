@@ -49,7 +49,7 @@ export default defineConfig({
 
         footer: {
             message: `基于 <a href="https://opensource.org/license/MIT" target="_blank">MIT</a> 许可发布`,
-            copyright: `版权所有 © 2024 <a href="https://github.com/syhy0612" target="_blank">syhy0612</a> | <a href="https://beian.miit.gov.cn" target="_blank">湘ICP备2024080657号-1</a>`
+            copyright: `版权所有 © 2024 <a href="https://github.com/syhy0612" target="_blank">syhy0612</a>`
         },
 
         docFooter: {
