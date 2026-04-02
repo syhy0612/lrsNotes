@@ -33,3 +33,4 @@ coverage
 
 # VitePress cache
 docs/.vitepress/cache
+docs/.vitepress/theme/font

@@ -2,9 +2,8 @@
 
 狼人杀在线笔记是一个为狼人杀游戏玩家设计的工具，方便玩家记录发言信息并导出，提高游戏体验。
 <p align="center">
-    <a href="https://lrs-notes.edgeone.app/"><img src="https://img.shields.io/badge/访问-在线使用-lgreen?style=plastic" alt="在线使用"></a>
+    <a href="https://lrsnotes.pages.dev"><img src="https://img.shields.io/badge/访问-在线使用-lgreen?style=plastic" alt="在线使用"></a>
     <a href="https://github.com/syhy0612/lrsNotes"><img src="https://img.shields.io/badge/github-项目地址-blue?style=plastic" alt="GitHub 项目地址"></a>
-    <a href="https://gitee.com/syhy0612/lrsNotes"><img src="https://img.shields.io/badge/gitee-项目地址-blue?style=plastic" alt="Gitee 项目地址"></a>
     <a href="https://github.com/syhy0612/lrsNotes/stargazers"><img src="https://img.shields.io/github/stars/syhy0612/lrsNotes?style=social" alt="GitHub Star 数"></a>
 </p>
 
@@ -19,6 +18,10 @@
 - [x] 重置功能
 - [x] 导出功能
 - [x] 主页介绍
+- [x] 沉浸式星空/纯白背景一键切换
+- [x] 现代化 UI 极简重构（网易风非对称圆角）
+- [x] 移动端完美适配与弹窗优化
+- [x] 动态状态组件路由合并切换
 
 ### 📝 TODO
 
@@ -26,9 +29,9 @@
 - [ ] 玩家号码可以是6-12人之间
 - [ ] 可以另外写一个给法官用的页面*
 - [ ] 支持做双层笔记记录，即同时记录战术或抿的身份等
-- [ ] 添加暗黑模式
+- [ ] 更多主题颜色搭配支持
 
-## 💡 项目背景
+## 💡 项  目背景
 
 这个小项目源于我观看狼人杀游戏直播时的一个发现。我注意到大多数主播用记事本等工具记录游戏中的发言信息，觉得不太方便。于是我在网上查找有关狼人杀的笔记工具，但遗憾的是，那时的我并没有找到特别合适的工具。
 
@@ -61,8 +64,6 @@
 如果您在使用过程中有任何问题、建议或想法，欢迎提Issue交流。
 
 - [在GitHub上提Issue](https://github.com/syhy0612/lrsNotes/issues)
-
-- [在Gitee上提Issue](https://gitee.com/syhy0612/lrsNotes/issues)
 
 - 发送邮件至 syhy0612@163.com
 

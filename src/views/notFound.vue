@@ -1,25 +1,22 @@
 <template>
-  <div class="container">
-    <div class="bgColor">
-      <div class="title">你来到了知识的荒漠</div>
-    </div>
+  <div class="not-found">
+    <div class="icon">🌙</div>
+    <h1>页面不存在</h1>
+    <p>3秒后自动返回</p>
   </div>
 </template>
 
-<script setup>
-</script>
-
-<style lang="scss" scoped>
-.bgColor{
-  text-align: center;
+<style scoped>
+.not-found {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
 }
-.title {
-  color: #000000;
-  font-family: 'Microsoft YaHei', serif;
-  font-weight: bold;
-  font-size: 32px;
-  margin-top: 30vh;
-  margin-bottom: 20px;
-  letter-spacing: 6px;
-}
+.icon { font-size: 48px; margin-bottom: 12px; }
+h1 { font-size: 20px; color: #1d1d1f; margin-bottom: 6px; }
+p { color: #aeaeb2; font-size: 13px; }
 </style>

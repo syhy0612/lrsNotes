@@ -1,77 +1,105 @@
 <template>
-  <div class="bgColor">
+  <div class="home">
     <div class="content">
-      <div class="title">在线笔记</div>
-      <div class="button-container">
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/board')">开始使用</el-button>
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/full')">全屏使用</el-button>
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/test')">组件调试</el-button>
-        <el-button color="#6633cc" class="btnOld" @click="navigateTo('/add')">测试环境</el-button>
+      <img src="/logo.svg" alt="logo" class="logo">
+      <h1 class="title">狼人杀<span class="thin">在线笔记</span></h1>
+      <p class="desc">快速记录 · 智能标记 · 一键导出</p>
+      <button class="start-btn" @click="$emit('start')">
+        开始游戏
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div class="links">
+        <a href="https://github.com/syhy0612/lrsNotes" target="_blank">GitHub</a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router';
-
-const router = useRouter();
-
-const navigateTo = (path) => {
-  router.push(path);
-};
+const emit = defineEmits(['start'])
 </script>
 
 <style lang="scss" scoped>
-.content {
+.home {
+  position: fixed;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding-top: 30vh;
-  user-select: none;
+  justify-content: center;
+  background: #fafafa;
+}
+
+.content { text-align: center; }
+
+.logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 12px;
+  /* Add subtle shadow if needed */
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
 }
 
 .title {
-  color: #000000;
-  font-family: 'Microsoft YaHei', serif;
-  font-weight: bold;
-  font-size: 32px;
-  margin-bottom: 20px;
-  letter-spacing: 6px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+
+  .thin {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6e6e73;
+    letter-spacing: 6px;
+    margin-top: 4px;
+  }
 }
 
-.button-container {
-  display: flex;
-  flex-direction: column;
+.desc {
+  color: #aeaeb2;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.start-btn {
+  display: inline-flex;
   align-items: center;
-  margin: 0px;
+  gap: 8px;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  background: #1d1d1f;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+
+  &:hover {
+    background: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  &:active { transform: translateY(0); }
 }
 
-.btnOld {
-  margin-top: 20px; // 恢复原有的按钮间距
-}
+.links {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #d1d1d6;
+  font-size: 12px;
 
-.btnOld:nth-child(2), .btnOld:nth-child(3), .btnOld:nth-child(4) {
-  margin-left: 0;
-}
-
-
-.bgColor {
-  text-align: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #20240427;
-}
-</style>
-
-<style lang="scss">
-.bgColor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #20240427;
-  overflow-y: auto;
+  a {
+    color: #aeaeb2;
+    text-decoration: none;
+    &:hover { color: #6e6e73; }
+  }
 }
 </style>

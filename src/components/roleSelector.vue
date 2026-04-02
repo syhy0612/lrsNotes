@@ -9,7 +9,7 @@
       <div
           :class="hexagonClasses"
       >
-        {{ currentRole || '未选' }}
+        {{ currentRole || '?' }}
       </div>
     </template>
     <div class="role-options">

@@ -1,10 +1,66 @@
 @import "./fonts.css";
-* {
-    margin: 0;
-    padding: 0;
+
+:root {
+    --bg-primary: #f2f3f5;
+    --bg-card: #ffffff;
+    --bg-input: #f7f8fa;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-muted: #aeaeb2;
+    --border-color: rgba(0, 0, 0, 0.06);
+    --border-hover: rgba(0, 0, 0, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.2s ease;
+    
+    /* 全局 Element Plus 圆角定制 (网易狼人杀不对称风格: 左上大, 其余小) */
+    --el-border-radius-base: 14px 6px 6px 6px !important;
+    --el-border-radius-small: 12px 4px 4px 4px !important;
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     height: 100%;
     width: 100%;
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+a { color: var(--text-primary); text-decoration: none; }
+
+/* Element Plus Dialog 覆盖 - 让内部下拉列表正常显示及响应式宽度 */
+.settings-dialog .el-dialog__body {
+    overflow: visible;
+}
+
+@media (max-width: 600px) {
+    .el-dialog, .el-message-box {
+        width: 90vw !important;
+        max-width: 90vw !important;
+        margin: 15vh auto !important;
+        box-sizing: border-box;
+    }
+}
+
+/* 全局弹窗非对称圆角定制 */
+.el-dialog, .el-message-box {
+    border-radius: 20px 8px 8px 8px !important;
+    overflow: hidden; /* 防止头部内容溢出破坏圆角 */
+}
+
+/* 全局按钮非对称圆角定制 */
+.el-button {
+    border-radius: 12px 4px 4px 4px !important;
 }
