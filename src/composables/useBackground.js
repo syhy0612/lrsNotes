@@ -1,25 +1,15 @@
 import {ref} from 'vue'
 
-const BG_KEY = 'customBackground'
-const DEFAULT_BG = '/bg.webp'
+function createBackgroundState(key, defaultBg) {
+    const initialVal = localStorage.getItem(key)
+    const backgroundImage = ref(initialVal !== null ? (initialVal === 'white' ? null : initialVal) : defaultBg)
 
-// The initial logic: if not set in localStorage, use default image. If they deliberately chose white, we save 'white' in localStorage.
-const initialVal = localStorage.getItem(BG_KEY)
-const backgroundImage = ref(initialVal !== null ? (initialVal === 'white' ? null : initialVal) : DEFAULT_BG)
-
-/**
- * 自定义背景图管理
- * 模块级别共享状态，所有组件实例共用同一份数据
- */
-export function useBackground() {
     const setBackground = (dataUrl) => {
         backgroundImage.value = dataUrl === 'white' ? null : dataUrl
         if (dataUrl) {
-            localStorage.setItem(BG_KEY, dataUrl)
+            localStorage.setItem(key, dataUrl)
         } else {
-            // Because null means we haven't selected anything, we probably want to save 'white' to insist pure white rather than falling back to default image next load.
-            // But dataUrl is null. Let's just set 'white' to represent blank.
-            localStorage.setItem(BG_KEY, 'white')
+            localStorage.setItem(key, 'white')
             backgroundImage.value = null
         }
     }
@@ -39,7 +29,20 @@ export function useBackground() {
     }
 
     const clearBackground = () => setBackground(null) // This becomes "Pure White"
-    const setDefaultStarry = () => setBackground(DEFAULT_BG)
+    const setDefaultStarry = () => setBackground('/bg.webp')
 
     return {backgroundImage, setBackground, uploadBackground, clearBackground, setDefaultStarry}
 }
+
+const wolfState = createBackgroundState('customBackground', null)
+const spyState = createBackgroundState('spyBackground', null) // default pure color
+
+/**
+ * 自定义背景图管理
+ * 按模式隔离背景图
+ * @param {string} mode 'wolf' 或 'spy'
+ */
+export function useBackground(mode = 'wolf') {
+    return mode === 'spy' ? spyState : wolfState
+}
+

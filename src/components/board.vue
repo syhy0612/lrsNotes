@@ -15,9 +15,9 @@
           </button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="upload">上传自定义图片</el-dropdown-item>
-              <el-dropdown-item command="starry">恢复默认背景图</el-dropdown-item>
-              <el-dropdown-item command="white">纯白清爽背景</el-dropdown-item>
+              <el-dropdown-item command="upload">上传图片</el-dropdown-item>
+              <el-dropdown-item command="starry">游戏背景</el-dropdown-item>
+              <el-dropdown-item command="white">纯白背景</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -26,6 +26,15 @@
           <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
         </button>
       </div>
+    </div>
+
+    <!-- 版型提示条 -->
+    <div class="rule-bar" v-if="showRules && modeDesc">
+      <div class="rule-content">
+        <span class="rule-tag">版型</span>
+        <span>{{ modeDesc }}</span>
+      </div>
+      <button class="rule-close" @click="showRules = false">×</button>
     </div>
 
     <!-- 内容区 -->
@@ -113,6 +122,8 @@ const emit = defineEmits(['go-home'])
 const {uploadBackground, clearBackground, setDefaultStarry, backgroundImage} = useBackground()
 const hasBackground = computed(() => !!backgroundImage.value)
 
+const showRules = ref(true)
+
 const handleBackgroundCommand = (cmd) => {
   if (cmd === 'upload') uploadBackground()
   else if (cmd === 'starry') setDefaultStarry()
@@ -121,7 +132,7 @@ const handleBackgroundCommand = (cmd) => {
 
 const {
   selectedMode, remarks, chatRecords, showExportDialog, exportedInfo,
-  showGameSettings, gameSettingsRef, options,
+  showGameSettings, gameSettingsRef, options, modeDesc,
   handleBlur, resetRemarks, resetTalks, handUp, exportInfo,
   copyExportedInfo, handleSettingsClose, openSettings, updatePlayerRole
 } = useBoard()
@@ -186,6 +197,48 @@ const goHome = () => emit('go-home')
 }
 
 .toolbar-actions { display: flex; gap: 4px; }
+
+/* ---- 版型提示 ---- */
+.rule-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(88, 86, 214, 0.08);
+  border: 1px solid rgba(88, 86, 214, 0.15);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #5856d6;
+}
+
+.rule-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rule-tag {
+  background: #5856d6;
+  color: white;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.rule-close {
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: #5856d6;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.6;
+  &:hover { opacity: 1; }
+}
 
 .tool-btn {
   display: flex;

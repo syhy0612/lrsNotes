@@ -4,20 +4,20 @@
       <img src="../assets/wechat_bg.jpg" alt="请点击右上角，选择在浏览器中打开" class="wechat_bg">
     </div>
     <div v-else class="container">
-      <Board @go-home="$emit('go-home')"/>
+      <SpyBoard @go-home="$emit('go-home')"/>
     </div>
   </div>
 </template>
 
 <script setup>
 import {computed} from 'vue'
-const emit = defineEmits(['go-home'])
-import Board from '../components/board.vue'
+defineEmits(['go-home'])
+import SpyBoard from '../components/SpyBoard.vue'
 import {useDeviceDetect} from '@/composables/useDeviceDetect'
 import {useBackground} from '@/composables/useBackground'
 
 const {isWechatBrowser} = useDeviceDetect()
-const {backgroundImage} = useBackground('wolf')
+const {backgroundImage} = useBackground('spy')
 
 const bgStyle = computed(() => {
   if (!backgroundImage.value) return {}

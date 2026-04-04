@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Home v-if="!isStarted" @start="isStarted = true" />
-    <Main v-else @go-home="isStarted = false" />
+    <Home v-if="currentView === 'home'" @start="handleStart" />
+    <Main v-else-if="currentView === 'werewolf'" @go-home="currentView = 'home'" />
+    <Spy v-else-if="currentView === 'spy'" @go-home="currentView = 'home'" />
   </div>
 </template>
 
@@ -10,9 +11,14 @@ import {ref, onMounted} from 'vue'
 import {useGameModeStore} from '@/stores/gameModeStore'
 import Home from '@/views/home.vue'
 import Main from '@/views/main.vue'
+import Spy from '@/views/spy.vue'
 
 const store = useGameModeStore()
-const isStarted = ref(false)
+const currentView = ref('home')
+
+const handleStart = (game) => {
+  currentView.value = game
+}
 
 onMounted(async () => {
   await store.initializeStore()

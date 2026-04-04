@@ -53,6 +53,12 @@ export function useBoard() {
     // 快捷短语选项
     const options = computed(() => selectedMode.value?.phrases || [])
 
+    // 版型简述
+    const modeDesc = computed(() => {
+        if (!selectedMode.value || !selectedMode.value.roles) return ''
+        return selectedMode.value.roles.map(r => r.count > 1 ? r.count + r.text : r.text).join('·')
+    })
+
     // 从 localStorage 加载数据
     onMounted(() => {
         const savedRemarks = localStorage.getItem('remarks')
@@ -241,7 +247,7 @@ export function useBoard() {
     return {
         store, selectedMode, remarks, chatRecords,
         showExportDialog, exportedInfo, showGameSettings,
-        showSettings, gameSettingsRef, dialogWidth, options,
+        showSettings, gameSettingsRef, dialogWidth, options, modeDesc,
         handleBlur, getElectionImage, getElectionAlt, toggleElection,
         resetRemarks, resetTalks, handUp, exportInfo, copyExportedInfo,
         handleSettingsClose, openSettings, updatePlayerRole, updateConfig
